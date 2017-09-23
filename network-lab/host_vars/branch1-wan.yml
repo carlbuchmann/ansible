@@ -1,0 +1,88 @@
+---
+hostname: branch1-wan
+
+type:
+  site: branch
+  iwan: dual-transport
+
+vrfs:
+  - vrf_name: IWAN-MPLS-1
+  - vrf_name: IWAN-INET-1
+
+static_routes:
+  
+  - route_name: mpls-default
+    vrf: IWAN-MPLS-1
+    destination:
+      prefix: 0.0.0.0
+      mask: 0.0.0.0
+    forwarding_router: 10.255.21.1
+  
+  - route_name: inet-default
+    vrf: IWAN-INET-1
+    destination:
+      prefix: 0.0.0.0
+      mask: 0.0.0.0
+    forwarding_router: 192.168.21.1
+
+eigrp_instances:
+  - instance: ent_eigrp
+    summary_addresses:
+    - 172.21.0.0/16
+
+loopback_interfaces:
+ 
+  - interface: Loopback0
+    state_enabled: true
+    description: mgmt
+    ip:
+      address: 172.21.255.1/32
+
+wan_interfaces:
+  
+  - interface: GigabitEthernet2
+    state_enabled: true 
+    description: mpls_provider
+    bandwidth: 100000
+    vrf: IWAN-MPLS-1
+    ip:
+      address: 10.255.21.2/30
+    
+  - interface: GigabitEthernet3
+    state_enabled: true 
+    description: inet_provider
+    bandwidth: 250000
+    vrf: IWAN-INET-1
+    ip:
+      address: 192.168.21.2/30
+#   acl_in: ACL-INET-PUBLIC
+#   zone_member: OUTSIDE
+
+lan_interfaces:
+  
+  - interface: GigabitEthernet4
+    state_enabled: true
+    description: branch1-core_ge0/1
+    ip:
+      address: 172.21.0.1/30
+    delay: 25000
+ 
+tunnel_interfaces:
+  
+  - interface: Tunnel10
+    profile: dmvpn_mpls_1
+    state_enabled: true
+    bandwidth: 100000
+    ip:
+      address: 172.16.101.21/24
+    source: GigabitEthernet2
+
+  - interface: Tunnel11
+    profile: dmvpn_inet_1
+    state_enabled: true
+    bandwidth: 250000
+    ip:
+      address: 172.16.102.21/24
+    source: GigabitEthernet3
+
+ 

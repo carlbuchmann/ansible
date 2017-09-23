@@ -1,0 +1,10 @@
+---
+
+- name: Apply LAN configuration
+  ios_config:
+    src: templates/lan_interface.j2
+    provider: "{{ ioscli }}"
+  tags: lan
+  register: lan_config_results
+  
+- set_fact: lan_config_changes={{ lan_config_results | to_nice_yaml }}

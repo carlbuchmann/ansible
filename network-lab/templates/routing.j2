@@ -1,0 +1,15 @@
+{# vrf configuration #}
+{% for vrf in vrfs %}
+ip vrf {{ vrf.vrf_name }}
+{%     if vrf_attributes[vrf.vrf_name] is defined %}
+ rd {{ vrf_attributes[vrf.vrf_name].rd }}
+{%     endif %} 
+{% endfor%}
+{# Static route configuration #}
+{% for static_route in static_routes %}
+{%     if static_route.vrf is defined %}
+ip route vrf {{ static_route.vrf }} {{ static_route.destination.prefix }} {{ static_route.destination.mask }} {{ static_route.forwarding_router }} name {{ static_route.route_name }}
+{%     else %}
+ip route {{ static_route.destination.prefix }} {{ static_route.destination.mask }} {{ static_route.forwarding_router }} name {{ static_route.route_name }}
+{%     endif %} 
+{% endfor%}

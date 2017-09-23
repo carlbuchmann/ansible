@@ -1,0 +1,10 @@
+---
+
+- name: Apply Loopback configuration
+  ios_config:
+    src: templates/loopback_interface.j2
+    provider: "{{ ioscli }}"
+  tags: loopback
+  register: loopback_config_results
+  
+- set_fact: loopback_config_changes={{ loopback_config_results | to_nice_yaml }}

@@ -1,0 +1,141 @@
+---
+
+hostname: branch2-wan
+
+type:
+  site: branch
+  iwan: dual-transport
+
+vrfs:
+  - vrf_name: IWAN-MPLS-1
+  - vrf_name: IWAN-INET-1
+
+static_routes:
+  
+  - route_name: mpls-default
+    vrf: IWAN-MPLS-1
+    destination:
+      prefix: 0.0.0.0
+      mask: 0.0.0.0
+    forwarding_router: 10.255.22.1
+  
+  - route_name: inet-default
+    vrf: IWAN-INET-1
+    destination:
+      prefix: 0.0.0.0
+      mask: 0.0.0.0
+    forwarding_router: 192.168.22.1
+
+eigrp_instances:
+  - instance: ent_eigrp
+    summary_addresses:
+    - 172.22.0.0/16
+
+loopback_interfaces:
+ 
+  - interface: Loopback0
+    state_enabled: true
+    description: mgmt
+    ip:
+      address: 172.22.255.1/32
+
+wan_interfaces:
+  
+  - interface: GigabitEthernet2
+    state_enabled: true 
+    description: mpls_provider
+    bandwidth: 100000
+    vrf: IWAN-MPLS-1
+    ip:
+      address: 10.255.22.2/30
+    
+  - interface: GigabitEthernet3
+    state_enabled: true 
+    description: inet_provider
+    bandwidth: 250000
+    vrf: IWAN-INET-1
+    ip:
+      address: 192.168.22.2/30
+#   acl_in: ACL-INET-PUBLIC
+#   zone_member: OUTSIDE
+
+lan_interfaces:
+  
+  - interface: GigabitEthernet4
+    state_enabled: true
+    description: branch2-lan_ge0/1
+  
+  - interface: GigabitEthernet4.10
+    state_enabled: true 
+    description: data
+    trunk:
+      dot1q: 10
+    ip:
+      address: 172.22.10.1/24
+    ip_helper:
+      addresses:
+      - 172.22.10.11
+      - 172.22.10.12
+      - 172.22.10.13
+  
+  - interface: GigabitEthernet4.11
+    state_enabled: true 
+    description: voice
+    trunk:
+      dot1q: 11
+    ip:
+      address: 172.22.11.1/24
+    ip_helper:
+      addresses:
+      - 172.22.10.11
+      - 172.22.10.12
+      - 172.22.10.13
+    delay: 25000
+  
+  - interface: GigabitEthernet4.12
+    state_enabled: true 
+    description: guest
+    trunk:
+      dot1q: 12
+    ip:
+      address: 172.22.12.1/24
+    ip_helper:
+      addresses:
+      - 172.22.10.11
+      - 172.22.10.12
+    acl_in:
+      name: acl-guest
+    delay: 25000
+  
+  - interface: GigabitEthernet4.13
+    state_enabled: true 
+    description: wifi
+    trunk:
+      dot1q: 13
+    ip:
+      address: 172.22.13.1/24
+    ip_helper:
+      addresses:
+      - 172.20.5.11
+      - 172.20.5.12
+    acl_in:
+      name: acl-wifi
+    delay: 25000
+
+tunnel_interfaces:
+  
+  - interface: Tunnel10
+    profile: dmvpn_mpls_1
+    state_enabled: true
+    bandwidth: 100000
+    ip:
+      address: 172.16.101.22/24
+    source: GigabitEthernet2
+
+  - interface: Tunnel11
+    profile: dmvpn_inet_1
+    state_enabled: true
+    bandwidth: 250000
+    ip:
+      address: 172.16.102.22/24
+    source: GigabitEthernet3

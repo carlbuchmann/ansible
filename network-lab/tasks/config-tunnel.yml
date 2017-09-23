@@ -1,0 +1,12 @@
+---
+
+- name: Apply tunnel configuration
+  ios_config:
+    src: templates/tunnel_interface.j2
+    provider: "{{ ioscli }}"
+  tags: tunnel
+  register: tunnel_config_results
+
+  
+- set_fact: tunnel_config_changes={{ tunnel_config_results | to_nice_yaml }}
+  

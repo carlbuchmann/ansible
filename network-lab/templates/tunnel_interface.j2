@@ -1,0 +1,55 @@
+{% for tunnel_interface in tunnel_interfaces %}
+interface {{ tunnel_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%     if tunnel_interface.state_enabled == true %}
+{%         if interface_facts[tunnel_interface.interface] is defined %}
+{%             if interface_facts[tunnel_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%           endif %}
+{%         else %}
+ no shutdown
+{%         endif %}
+{%     else %}
+ shutdown
+{%     endif %}
+{# configure interface settings based host_vars and levarages profile for group_vars defined in iwan.yml #}
+ description {{ tunnel_interface.profile }}
+ bandwidth {{ tunnel_interface.bandwidth }}
+ ip address {{ tunnel_interface.ip.address | ipaddr('address') }} {{ tunnel_interface.ip.address | ipaddr('netmask') }}
+ no ip redirects
+ ip mtu {{ tunnel_profiles[tunnel_interface.profile].mtu }}
+ ip tcp adjust-mss {{ tunnel_profiles[tunnel_interface.profile].ip_tcp_adjust_mss }}
+ hold-queue 4096 in
+ hold-queue 4096 out
+ tunnel source {{ tunnel_interface.source }}
+ tunnel mode {{ tunnel_profiles[tunnel_interface.profile].tunnel_mode.encapsulation }} {{ tunnel_profiles[tunnel_interface.profile].tunnel_mode.type }}
+ tunnel key {{ tunnel_profiles[tunnel_interface.profile].tunnel_key }}
+ tunnel vrf {{ tunnel_profiles[tunnel_interface.profile].tunnel_vrf }}
+ tunnel protection ipsec profile {{ tunnel_profiles[tunnel_interface.profile].tunnel_protection }}
+{%    if tunnel_profiles[tunnel_interface.profile].ip_nhrp is defined %}
+ ip nhrp authentication {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.authentication }}
+ ip nhrp network-id {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.network_id }}
+{# ! default value 600 ! 
+ ip nhrp holdtime {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.holdtime }} - excluded for idempotency #}
+{%        if type.site == 'hub' %}
+{# !default value ip nhrp map multicast dynamic - excluded for idempotency #}
+ ip nhrp redirect
+ ip pim nbma-mode
+{%        endif %}
+{%        if type.site == 'branch' %}
+ ip nhrp nhs {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.nhs }} nbma {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.nbma }} multicast
+{# !default settings!
+  ip nhrp registration no-unique
+  ip nhrp shortcut 
+  - excluded for idempotency#}
+ if-state nhrp
+{%        endif %} 
+{%        if type.iwan == 'dual-transport' %}
+ no nhrp route-watch
+{%        endif %}
+{%    endif %}
+{%    if tunnel_profiles[tunnel_interface.profile].eigrp is defined %}
+ delay {{ tunnel_profiles[tunnel_interface.profile].eigrp.delay }}
+{%    endif %}
+ cdp enable
+{% endfor%}

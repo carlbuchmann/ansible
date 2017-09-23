@@ -1,0 +1,6 @@
+---
+ioscli:
+  username: "{{ansible_user}}"
+  password: "{{ansible_password}}"
+  host: "{{inventory_hostname}}"
+  transport: cli

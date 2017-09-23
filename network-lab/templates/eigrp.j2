@@ -1,0 +1,56 @@
+{% for key_chain in key_chains %}
+key chain {{ key_chain.key_chain_name }}
+ key 1
+  key-string {{ key_chain.key_string }}
+{% endfor%}
+
+{% if eigrp_instances is defined %}
+{%     for eigrp_instance in eigrp_instances %}
+router eigrp {{ eigrp_global[eigrp_instance.instance].virtual_instances_name }}
+ address-family ipv4 unicast autonomous-system {{ eigrp_global[eigrp_instance.instance].ipv4_autonomous_system }}
+  af-interface default
+{%         if eigrp_global[eigrp_instance.instance].af_interface_default.passive_interface == true %}
+   passive-interface
+{%         endif %}
+  exit-af-interface
+  topology base
+{%         if eigrp_instance.summary_addresses is defined %}
+{%             for summary_address in eigrp_instance.summary_addresses %}
+   summary-metric {{ summary_address }} 1000000 10000 255 1 1500
+{%             endfor%}
+{%         endif %}
+  exit-af-topology
+{%         for lan_interface in lan_interfaces %}
+{%             if lan_interface.ip is defined %}
+  network {{ lan_interface.ip.address | ipaddr('network') }} {{ lan_interface.ip.address | ipaddr('hostmask') }}
+{%             endif %}
+{%         endfor%}
+{# provision af-interface for Tunnels #}
+{%         for tunnel_interface in tunnel_interfaces %}
+{%             if tunnel_profiles[tunnel_interface.profile].eigrp is defined %}
+  af-interface {{ tunnel_interface.interface }}
+{%                 for summary_address in eigrp_instance.summary_addresses %}
+   summary-address {{ summary_address | ipaddr('network') }} {{ summary_address | ipaddr('netmask') }}
+{%                 endfor%}
+   authentication mode {{ tunnel_profiles[tunnel_interface.profile].eigrp.authentication.mode }}
+   authentication key-chain {{ tunnel_profiles[tunnel_interface.profile].eigrp.authentication.key_chain }}
+   hello-interval {{ tunnel_profiles[tunnel_interface.profile].eigrp.hello_interval }}
+   hold-time {{ tunnel_profiles[tunnel_interface.profile].eigrp.hold_time }}
+   no passive-interface
+{%                 if type.site == 'hub' %}
+   no split-horizon
+{%                 endif %}
+{%                 if type.site == 'branch' %}
+   stub-site wan-interface
+{%                 endif %}
+  exit-af-interface
+{%             endif %}
+{# add network statement for tunnel interface note:hostmask=wildcard #}
+{%             if tunnel_interface.ip is defined %}
+  network {{ tunnel_interface.ip.address | ipaddr('network') }} {{ tunnel_interface.ip.address | ipaddr('hostmask') }}
+{%             endif %}
+{%         endfor%}
+{# use first defined loopback interface as loopback id #}
+  eigrp router-id {{ loopback_interfaces[0].ip.address | ipaddr('address') }}
+{%     endfor%}
+{% endif %}

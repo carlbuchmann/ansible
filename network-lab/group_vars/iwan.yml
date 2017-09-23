@@ -1,0 +1,118 @@
+---
+
+vrf_attributes:
+  IWAN-MPLS-1:
+    rd: 65511:101
+  IWAN-INET-1:
+    rd: 65511:102
+
+key_chains: 
+   - key_chain_name: MPLS-WAN-KEY
+     key_string: mpls-wan@154
+   - key_chain_name: INET-WAN-KEY
+     key_string: inet-wan@154
+
+eigrp_global:
+  ent_eigrp:
+    virtual_instances_name: ENTERPRISE-EIGRP
+    ipv4_autonomous_system: 100
+    af_interface_default:
+      passive_interface: true
+
+    
+pfr:
+  domain: iWAN-LAB
+  hub_loopback_ip: 172.20.255.4
+
+crypto:
+
+  ikev2_keyrings:
+    - keyring_name: DMVPN-KEYRING
+      peer: ANY
+      address: 0.0.0.0 0.0.0.0
+      pre_shared_key: iWAN@lab#154
+
+  ikev2_proposals:
+    - proposal_name: AES/GCM/256
+      encryption: aes-gcm-256
+      prf: sha512
+      group: 19
+
+  ikev2_policies:
+    - policy_name: AES/GCM/256
+      match_fvrf: any
+      proposal: AES/GCM/256
+
+  
+  ikev2_profiles:
+    - profile_name: DMVPN-IKEv2-PROFILE
+      description: PSK-Profile
+      match_fvrf: any
+      identity:
+        remote_address: 0.0.0.0
+        local_address: loopback0
+      keyring_local: DMVPN-KEYRING
+    
+
+  ipsec_transform_sets:
+    - transform_set_tag: AES256/GCM/TRANSFORM
+      transform_type: esp-gcm
+      transform_keys: 256
+      mode: transport
+
+  ipsec_profiles:
+    - profile_name: DMVPN-IPSEC-PROFILE
+      transform_set: AES256/GCM/TRANSFORM
+      ikev2_profile: DMVPN-IKEv2-PROFILE
+
+  ipsec_anti_replay_window_size: 1024
+
+
+tunnel_profiles:
+  
+  dmvpn_mpls_1:
+    mtu: 1400
+    ip_tcp_adjust_mss: 1360
+    ip_nhrp:
+      authentication: LABmpls1
+      network_id: 101
+      holdtime: 600
+      nhs: 172.16.101.1
+      nbma: 10.255.20.2 
+    tunnel_mode: 
+      encapsulation: gre
+      type: multipoint
+    tunnel_key: 101
+    tunnel_vrf: IWAN-MPLS-1
+    tunnel_protection: DMVPN-IPSEC-PROFILE
+    eigrp:
+      authentication:
+        mode: md5
+        key_chain: MPLS-WAN-KEY
+      hello_interval: 20
+      hold_time: 60
+      delay: 1000
+     
+
+  dmvpn_inet_1:
+    mtu: 1400
+    ip_tcp_adjust_mss: 1360
+    ip_nhrp:
+      authentication: LABinet1
+      network_id: 102
+      holdtime: 600
+      nhs: 172.16.102.1
+      nbma: 192.168.20.2
+    tunnel_mode: 
+      encapsulation: gre
+      type: multipoint
+    tunnel_key: 102
+    tunnel_vrf: IWAN-INET-1
+    tunnel_protection: DMVPN-IPSEC-PROFILE
+    eigrp:
+      authentication:
+        mode: md5
+        key_chain: INET-WAN-KEY
+      hello_interval: 20
+      hold_time: 60
+      delay: 2000

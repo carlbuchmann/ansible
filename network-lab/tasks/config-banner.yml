@@ -1,0 +1,8 @@
+- name: Configure banner from file
+  ios_banner:
+    banner:  motd
+    text: "{{ lookup('file', './global_config/motd-banner.cfg') }}"
+    state: present
+    provider: "{{ ioscli }}"
+  check_mode: no
+

@@ -1,0 +1,60 @@
+---
+hostname: hq-wan-inet
+
+type: 
+  site: hub
+  iwan: inet
+
+vrfs:
+  - vrf_name: IWAN-INET-1
+
+static_routes:
+  
+  - route_name: inet-default
+    vrf: IWAN-INET-1
+    destination:
+      prefix: 0.0.0.0
+      mask: 0.0.0.0
+    forwarding_router: 192.168.20.1
+
+eigrp_instances:
+  - instance: ent_eigrp
+    summary_addresses:
+    - 172.20.0.0/16
+
+loopback_interfaces:
+  
+  - interface: Loopback0
+    state_enabled: true
+    description: mgmt
+    ip:
+      address: 172.20.255.2/30
+
+lan_interfaces:
+  
+  - interface: GigabitEthernet3
+    state_enabled: true
+    description: hq-core_ge0/3
+    ip:
+      address: 172.20.0.5/30
+    cdp_enabled: true
+
+wan_interfaces:
+  
+  - interface: GigabitEthernet2
+    state_enabled: true 
+    description: inet_provider_ge0/5
+    bandwidth: 50000
+    vrf: IWAN-INET-1
+    ip:
+      address: 192.168.20.2/30
+    
+tunnel_interfaces:
+  
+  - interface: Tunnel11
+    profile: dmvpn_inet_1
+    state_enabled: true
+    bandwidth: 100000
+    ip:
+      address: 172.16.102.1/24
+    source: GigabitEthernet2

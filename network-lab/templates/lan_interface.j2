@@ -1,0 +1,39 @@
+{% for lan_interface in lan_interfaces %}
+interface {{ lan_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%     if lan_interface.state_enabled == true %}
+{%         if interface_facts[lan_interface.interface] is defined %}
+{%             if interface_facts[lan_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%           endif %}
+{%         else %}
+ no shutdown
+{%         endif %}
+{%     else %}
+ shutdown
+{% endif %}
+ description {{ lan_interface.description }}
+{%     if lan_interface.trunk is defined %}
+ encapsulation dot1Q {{ lan_interface.trunk.dot1q }}
+{%     endif %}
+{%     if lan_interface.ip is defined %}
+ ip address {{ lan_interface.ip.address | ipaddr('address') }} {{ lan_interface.ip.address | ipaddr('netmask') }}
+{%     else %}
+ no ip address
+{%     endif %}
+{%     if lan_interface.ip_helper is defined %}
+{%         for helper_address in lan_interface.ip_helper.addresses %}
+ ip helper-address {{ helper_address }}
+{%         endfor%}
+{%     endif %}
+{%     if lan_interface.acl_in is defined %}
+ ip access-group {{lan_interface.acl_in.name}} in
+{%     endif %} 
+{%     if lan_interface.acl_out is defined %}
+ ip access-group {{lan_interface.acl_out.name}} out
+{%     endif %} 
+{%     if lan_interface.delay is defined %}
+ delay {{lan_interface.delay}}
+{%     endif %} 
+ cdp enable
+{% endfor%}

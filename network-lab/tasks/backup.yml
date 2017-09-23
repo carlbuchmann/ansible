@@ -1,0 +1,7 @@
+---
+
+- name: Configure router common configuration
+  ios_config:
+    backup: yes
+    provider: "{{ ioscli }}"
+  tags: backup

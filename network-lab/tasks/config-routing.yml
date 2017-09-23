@@ -1,0 +1,9 @@
+- name: Apply Routing Configuration
+  ios_config:
+    src: templates/routing.j2
+    provider: "{{ ioscli }}"
+  tags: routing
+  register: routing_config_results
+
+  
+- set_fact: routing_config_changes={{ routing_config_results | to_nice_yaml }}

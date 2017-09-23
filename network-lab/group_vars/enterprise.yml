@@ -1,0 +1,10 @@
+---
+
+ntp_servers: 
+  - 172.20.5.101
+  
+domain_name: iwan.lab
+
+snmp_community:
+  ro: LAB@APICEMro
+  rw: LAB@APICEMrw
