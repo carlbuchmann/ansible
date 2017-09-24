@@ -4,7 +4,7 @@
 This repository contains Ansible scripts I'm developing in a lab environment using Cisco VIRL to fully automate an enterprise network infrastructure.
 
 * Current focus of the project is to automate the WAN topology based on Cisco's iWAN CVDs (published April 2017)
-  * For current project update: https://github.com/carlbuchmann/ansible/projects/1
+  * For current project updates - visit: https://github.com/carlbuchmann/ansible/projects/1
 
 ## Topology 
 
