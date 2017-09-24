@@ -1,0 +1,16 @@
+[CAMPUS-CORE]
+campus-core
+
+[CAMPUS-DIST]
+campus-dist1
+campus-dist2
+campus-dist3
+campus-dist4
+
+[CAMPUS:children]
+CAMPUS-CORE
+CAMPUS-DIST
+
+
+[all:vars]
+ansible_user=ansible
