@@ -14,6 +14,6 @@
 
 - set_fact: iproutevrf_corp_oz={{ iproutevrf_result.results[0].stdout_lines | to_nice_yaml }}
 - set_fact: iproutevrf_corp_rz={{ iproutevrf_result.results[1].stdout_lines | to_nice_yaml }}
-- set_fact: iproutevrf_Lguest={{ iproutevrf_result.results[2].stdout_lines | to_nice_yaml }}
+- set_fact: iproutevrf_guest={{ iproutevrf_result.results[2].stdout_lines | to_nice_yaml }}
 
 - set_fact: iproutevrf={{ iproutevrf_corp_oz }}{{iproutevrf_corp_rz }}{{ iproutevrf_guest }}
