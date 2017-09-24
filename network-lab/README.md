@@ -11,7 +11,7 @@ This repository contains Ansible scripts I'm developing in a lab environment usi
   * HQ:
     * hq-wan-mpls: csr-1000v (mpls DMVPN hub)
     * hq-wan-inet: csr-1000v (inet DMVPN hub)
-    * hq-mc: csr-1000v (pfr master controller)
+    * hq-mc: csr-1000v (pfr master controller - IOS CA root)
     * hq-core: IOSv (planning to update to HA pair of NX-OS)
   * Branch1 (L3 site):
     * branch1-wanc: csr-1000v (wan edge - dual-transport inet+mpls)
