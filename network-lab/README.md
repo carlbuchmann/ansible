@@ -9,16 +9,16 @@ This repository contains Ansible scripts I'm developing in a lab environment usi
 ## Topology 
 
   * HQ:
-    * hq-wan-mpls: csr-1000v
-    * hq-wan-inet: csr-1000v
-    * hq-mc: csr-1000v
+    * hq-wan-mpls: csr-1000v (mpls DMVPN hub)
+    * hq-wan-inet: csr-1000v (inet DMVPN hub)
+    * hq-mc: csr-1000v (pfr master controller)
     * hq-core: IOSv (planning to update to HA pair of NX-OS)
   * Branch1 (L3 site):
-    * branch1-wanc: csr-1000v
-    * branch1-core: IOSvL2
+    * branch1-wanc: csr-1000v (wan edge - dual-transport inet+mpls)
+    * branch1-core: IOSvL2 (LAN Core L3 enable)
   * Branch2 (L2 Site):
-    * branch2-wanc: csr-1000v
-    * branch2-lan: IOSvL2
+    * branch2-wan: csr-1000v (wan edge - dual-transport inet+mpls)
+    * branch2-lan: IOSvL2 (LAN acces L2 only)
   * MPLS/INET Backbone
     * Provider: IOSv (planning to update to multiple IOS-XR with MPLS/BGP)
   
