@@ -12,7 +12,7 @@ This repository contains Ansible scripts I'm developing in a lab environment usi
     * hq-wan-mpls: csr-1000v (mpls DMVPN hub)
     * hq-wan-inet: csr-1000v (inet DMVPN hub)
     * hq-mc: csr-1000v (pfr master controller - IOS CA root)
-    * hq-core: IOSv (planning to update to HA pair of NX-OS)
+    * hq-core: IOSv (planning to update to redundant pair of NX-OS)
   * Branch1 (L3 site):
     * branch1-wanc: csr-1000v (wan edge - dual-transport inet+mpls)
     * branch1-core: IOSvL2 (LAN Core L3 enable)
@@ -26,3 +26,7 @@ This repository contains Ansible scripts I'm developing in a lab environment usi
 ## Network Logical Topology
 
 ![Alt text](diagrams/logical_network_topology.jpg?raw=true "Logical Network Topology")
+
+
+## Network Physical Topology (VIRL)
+![Alt text](diagrams/physical_network_topology.jpg?raw=true "Logical Network Topology")
