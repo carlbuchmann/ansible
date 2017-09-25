@@ -32,8 +32,8 @@ interface {{ lan_interface.interface }}
 {%     if lan_interface.acl_out is defined %}
  ip access-group {{lan_interface.acl_out.name}} out
 {%     endif %} 
-{%     if lan_interface.delay is defined %}
- delay {{lan_interface.delay}}
+{%     if lan_interface.eigrp is defined %}
+ delay {{lan_interface.eigrp.delay}}
 {%     endif %} 
  cdp enable
 {% endfor%}
