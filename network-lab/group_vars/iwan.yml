@@ -6,7 +6,7 @@ vrf_attributes:
   IWAN-INET-1:
     rd: 65511:102
 
-key_chains: 
+wan_key_chains: 
    - key_chain_name: MPLS-WAN-KEY
      key_string: mpls-wan@154
    - key_chain_name: INET-WAN-KEY
