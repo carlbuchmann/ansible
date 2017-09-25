@@ -65,7 +65,12 @@ lan_interfaces:
     description: branch1-core_ge0/1
     ip:
       address: 172.21.0.1/30
-    delay: 25000
+    eigrp:
+      authentication:
+        mode: md5
+        key_chain: LAN-KEY
+      delay: 24000
+  
  
 tunnel_interfaces:
   

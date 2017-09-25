@@ -1,8 +1,19 @@
-{% for key_chain in key_chains %}
-key chain {{ key_chain.key_chain_name }}
+{% for wan_key_chain in wan_key_chains %}
+key chain {{ wan_key_chain.key_chain_name }}
  key 1
-  key-string {{ key_chain.key_string }}
+  key-string {{ wan_key_chain.key_string }}
 {% endfor%}
+
+{% for lan_interface in lan_interfaces %}
+{%     if lan_interface.eigrp is defined %}
+{%         for lan_key_chain in lan_key_chains %}
+key chain {{ lan_key_chain.key_chain_name }}
+ key 1
+  key-string {{ lan_key_chain.key_string }}
+{%         endfor%}
+{%     endif %}
+{% endfor%}
+
 
 {% if eigrp_instances is defined %}
 {%     for eigrp_instance in eigrp_instances %}
@@ -23,15 +34,25 @@ router eigrp {{ eigrp_global[eigrp_instance.instance].virtual_instances_name }}
 {%         for lan_interface in lan_interfaces %}
 {%             if lan_interface.ip is defined %}
   network {{ lan_interface.ip.address | ipaddr('network') }} {{ lan_interface.ip.address | ipaddr('hostmask') }}
+{# provision af-interface for lan interfaces #}
+{%                 if lan_interface.eigrp is defined %}
+  af-interface {{ lan_interface.interface }}
+   no passive-interface
+   authentication mode {{ lan_interface.eigrp.authentication.mode }}
+   authentication key-chain {{ lan_interface.eigrp.authentication.key_chain }}
+  exit-af-interface
+{%                 endif %}
 {%             endif %}
 {%         endfor%}
 {# provision af-interface for Tunnels #}
 {%         for tunnel_interface in tunnel_interfaces %}
 {%             if tunnel_profiles[tunnel_interface.profile].eigrp is defined %}
   af-interface {{ tunnel_interface.interface }}
-{%                 for summary_address in eigrp_instance.summary_addresses %}
+{%                 if eigrp_instance.summary_addresses is defined %}
+{%                     for summary_address in eigrp_instance.summary_addresses %}
    summary-address {{ summary_address | ipaddr('network') }} {{ summary_address | ipaddr('netmask') }}
-{%                 endfor%}
+{%                     endfor%}
+{%                 endif %}
    authentication mode {{ tunnel_profiles[tunnel_interface.profile].eigrp.authentication.mode }}
    authentication key-chain {{ tunnel_profiles[tunnel_interface.profile].eigrp.authentication.key_chain }}
    hello-interval {{ tunnel_profiles[tunnel_interface.profile].eigrp.hello_interval }}

@@ -39,6 +39,11 @@ lan_interfaces:
     ip:
       address: 172.20.0.1/30
     cdp_enabled: true
+    eigrp:
+      authentication:
+        mode: md5
+        key_chain: LAN-KEY
+      delay: 24000
 
 wan_interfaces:
   

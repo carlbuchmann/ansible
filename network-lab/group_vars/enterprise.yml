@@ -8,3 +8,7 @@ domain_name: iwan.lab
 snmp_community:
   ro: LAB@APICEMro
   rw: LAB@APICEMrw
+
+lan_key_chains: 
+   - key_chain_name: LAN-KEY
+     key_string: eigrp@LAN
