@@ -29,4 +29,4 @@ This repository contains Ansible scripts I'm developing in a lab environment usi
 
 
 ## Network Physical Topology (VIRL)
-![Alt text](diagrams/physical_network_topology.jpg?raw=true "Logical Network Topology")
+![Alt text](diagrams/physical_network_topology.jpg?raw=true "Physical Network Topology")
