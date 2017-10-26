@@ -4,17 +4,17 @@
 
 
   tasks:
-   - include: tasks/gather-facts.yml
-   - include: tasks/config-banner.yml
-   - include: tasks/config-loopback.yml
-   - include: tasks/config-common.yml
-   - include: tasks/config-routing.yml
-   - include: tasks/config-lan.yml
-   - include: tasks/config-wan.yml
-   - include: tasks/config-crypto.yml
-   - include: tasks/config-tunnel.yml
-   - include: tasks/config-eigrp.yml
-   - include: tasks/backup.yml
+   - import_tasks: tasks/gather-facts.yml
+   - import_tasks: tasks/config-banner.yml
+   - import_tasks: tasks/config-loopback.yml
+   - import_tasks: tasks/config-common.yml
+   - import_tasks: tasks/config-routing.yml
+   - import_tasks: tasks/config-lan.yml
+   - import_tasks: tasks/config-wan.yml
+   - import_tasks: tasks/config-crypto.yml
+   - import_tasks: tasks/config-tunnel.yml
+   - import_tasks: tasks/config-eigrp.yml
+   - import_tasks: tasks/backup.yml
 
    - name: create log file for individual device
      file: path=./change-logs/{{inventory_hostname}}.txt state=touch
