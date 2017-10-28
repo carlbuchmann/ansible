@@ -25,5 +25,5 @@ mc
 lan
 
 [all:vars]
-ansible_user=ansible
-ansible_password=@github!
+ansible_user=cisco
+ansible_password=cisco
