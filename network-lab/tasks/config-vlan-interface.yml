@@ -1,0 +1,10 @@
+---
+
+- name: Apply Vlan configuration
+  ios_config:
+    src: templates/vlan_interface.j2
+    provider: "{{ ioscli }}"
+  tags: vlan
+  register: vlan_config_results
+  
+- set_fact: vlan_config_changes={{ vlan_config_results | to_nice_yaml }}
