@@ -1,2 +1,53 @@
 ---
 hostname: branch1-core
+
+eigrp_instances:
+  - instance: ent_eigrp
+
+loopback_interfaces:
+ 
+  - interface: Loopback0
+    state_enabled: true
+    description: mgmt
+    ip:
+      address: 172.21.255.2/32
+
+lan_interfaces:
+
+  - interface: GigabitEthernet0/0
+    state_enabled: true 
+    description: mgmt
+    trunk:
+      dot1q: 10-13
+
+  - interface: GigabitEthernet0/1
+    state_enabled: true 
+    description: branch1-lan-p2p
+    ip:
+      address: 172.21.0.2/30
+
+vlan_interfaces:
+  
+  - interface: Vlan10
+    state_enabled: true 
+    description: data
+    ip:
+      address: 172.21.10.1/24
+
+  - interface: Vlan11
+    state_enabled: true 
+    description: voice
+    ip:
+      address: 172.21.11.1/24   
+
+  - interface: Vlan12
+    state_enabled: true 
+    description: guest
+    ip:
+      address: 172.21.12.1/24   
+
+  - interface: Vlan13
+    state_enabled: true 
+    description: wifi
+    ip:
+      address: 172.21.12.1/24      
