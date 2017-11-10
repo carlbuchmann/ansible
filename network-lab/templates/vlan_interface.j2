@@ -1,0 +1,31 @@
+{% for vlan_interface in vlan_interfaces %}
+interface {{ vlan_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%     if vlan_interface.state_enabled == true %}
+{%         if interface_facts[vlan_interface.interface] is defined %}
+{%             if interface_facts[vlan_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%           endif %}
+{%         else %}
+ no shutdown
+{%         endif %}
+{%     else %}
+ shutdown
+{% endif %}
+ description {{ vlan_interface.description }}
+{%     if vlan_interface.ip is defined %}
+ ip address {{ vlan_interface.ip.address | ipaddr('address') }} {{ vlan_interface.ip.address | ipaddr('netmask') }}
+{%     endif %}
+{%     if vlan_interface.ip_helper is defined %}
+{%         for helper_address in vlan_interface.ip_helper.addresses %}
+ ip helper-address {{ helper_address }}
+{%         endfor%}
+{%     endif %}
+{%     if vlan_interface.acl_in is defined %}
+ ip access-group {{vlan_interface.acl_in.name}} in
+{%     endif %} 
+{%     if vlan_interface.acl_out is defined %}
+ ip access-group {{vlan_interface.acl_out.name}} out
+{%     endif %} 
+ cdp enable
+{% endfor%}

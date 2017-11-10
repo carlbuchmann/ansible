@@ -1,0 +1,34 @@
+---
+
+- hosts: branch1-core
+
+
+  tasks:
+   - import_tasks: tasks/gather-facts.yml
+   - import_tasks: tasks/config-banner.yml
+   - import_tasks: tasks/config-loopback.yml
+   - import_tasks: tasks/config-common.yml
+   - import_tasks: tasks/config-vlan-interface.yml 
+   - import_tasks: tasks/backup.yml
+
+   - name: create log file for individual device
+     file: path=./change-logs/{{inventory_hostname}}.txt state=touch
+     check_mode: no
+  
+   - name: log to file for individual device
+     lineinfile:
+       insertafter: EOF
+       path: ./change-logs/{{inventory_hostname}}.txt
+       line: '{{ item }}'
+     with_items:
+       - "#####{{inventory_hostname}}#####"
+       - "{{ ios_facts_results }}"
+       - "{{ loopback_config_changes }}"
+       - "{{ common_config_changes }}"
+       - "{{ routing_config_changes }}"
+       - "{{ lan_config_changes }}"
+       - "{{ wan_config_changes }}"
+       - "{{ crypto_config_changes }}"
+       - "{{ tunnel_config_changes }}"
+       - "{{ eigrp_config_changes }}" 
+     check_mode: no
