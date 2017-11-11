@@ -1,6 +1,6 @@
 ---
 
-- name: Configure router common configuration
+- name: backup router configuration
   ios_config:
     backup: yes
     provider: "{{ ioscli }}"
