@@ -1,6 +1,6 @@
 ---
 
-- name: backup router configuration
+- name: backup device configuration
   ios_config:
     backup: yes
     provider: "{{ ioscli }}"
