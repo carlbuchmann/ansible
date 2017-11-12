@@ -1,6 +1,5 @@
 ---
 - hosts: dc
-  serial: 1
 
   tasks:
     - name: gather nxos facts
