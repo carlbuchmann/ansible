@@ -1,0 +1,19 @@
+---
+- hosts: dc
+  serial: 1
+
+  tasks:
+    - name: gather nxos facts
+      nxos_facts:
+        gather_subset: interfaces
+        provider: "{{ nxoscli }}"
+      register: results
+
+    - name: view output
+      debug:
+        msg: "{{ results.ansible_facts.ansible_net_interfaces }}"
+
+    - name: save output results
+      template:
+        src: "./templates/port-dest-status-report.j2"
+        dest: './reports/{{inventory_hostname}}interface-report.csv'
