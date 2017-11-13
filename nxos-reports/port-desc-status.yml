@@ -1,5 +1,6 @@
 ---
 - hosts: dc
+  serial: 1
 
   tasks:
     - name: gather nxos facts
@@ -15,4 +16,7 @@
     - name: save output results
       template:
         src: "./templates/port-dest-status-report.j2"
-        dest: './reports/{{inventory_hostname}}interface-report.csv'
+        dest: './reports/nxos-interface-report.csv'
+        owner: ansible
+        group: ansible_users
+        mode: 0777
