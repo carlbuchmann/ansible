@@ -1,4 +1,3 @@
-switch_name,interface,description,state,speed
-{% for interface,int in results.ansible_facts.ansible_net_interfaces|dictsort %}
+{% for interface,int in nxos_facts_interfaces|dictsort %}
 {{ inventory_hostname }},{{ interface }},{% if int.description is defined %} {{int.description}} {% else %} - {% endif %},{{ int.state }},{{ int.speed }}
 {% endfor %}
