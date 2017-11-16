@@ -2,7 +2,7 @@
 
 - name: Apply Loopback configuration
   ios_config:
-    src: templates/wan/03-loopback_interface.j2
+    src: templates/lan/02-loopback_interface.j2
     provider: "{{ ioscli }}"
   tags: loopback
   register: loopback_config_results
