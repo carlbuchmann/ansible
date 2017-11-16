@@ -1,7 +1,7 @@
 ---
 - name: Apply WAN Configuration
   ios_config:
-    src: templates/wan_interface.j2
+    src: templates/wan/05-wan_interface.j2
     provider: "{{ ioscli }}"
   tags: wan
   register: wan_config_results

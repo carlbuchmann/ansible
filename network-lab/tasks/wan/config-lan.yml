@@ -2,7 +2,7 @@
 
 - name: Apply LAN configuration
   ios_config:
-    src: templates/lan_interface.j2
+    src: templates/wan/06-lan_interface.j2
     provider: "{{ ioscli }}"
   tags: lan
   register: lan_config_results

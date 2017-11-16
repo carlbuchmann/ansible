@@ -1,0 +1,10 @@
+---
+
+- name: Configure router common configuration
+  ios_config:
+    src: templates/wan/01-common.j2
+    provider: "{{ ioscli }}"
+  tags: common
+  register: crypto_config_results
+  
+- set_fact: common_config_changes={{ crypto_config_results | to_nice_yaml }}
