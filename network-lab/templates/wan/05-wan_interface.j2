@@ -1,0 +1,28 @@
+{% for wan_interface in wan_interfaces %}
+interface {{ wan_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%    if wan_interface.state_enabled == true %}
+{%        if interface_facts[wan_interface.interface] is defined %}
+{%            if interface_facts[wan_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%            endif %}
+{%        else %}
+ no shutdown
+{%        endif %}
+{%    else %}
+ shutdown
+{%    endif %}
+ description {{ wan_interface.description }}
+ bandwidth {{ wan_interface.bandwidth }}
+ ip vrf forwarding {{ wan_interface.vrf }}
+ ip address {{ wan_interface.ip.address | ipaddr('address') }} {{ wan_interface.ip.address | ipaddr('netmask') }}
+{# no cdp enable !default #}
+{%    if wan_interface.acl_in is defined %}
+ ip access-group {{ wan_interface.acl_in }} in
+{%    endif %} 
+{%    if wan_interface.zone_member is defined %}
+ zone-member security {{ wan_interface.acl_zone_member }}
+{%    endif %} 
+ hold-queue 4096 in
+ hold-queue 4096 out
+{% endfor%}

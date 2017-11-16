@@ -1,7 +1,7 @@
 ---
 - name: Apply Crypto Configuration
   ios_config:
-    src: templates/crypto.j2
+    src: templates/wan/02-crypto.j2
     provider: "{{ ioscli }}"
   tags: crypto
   register: crypto_config_results

@@ -1,4 +1,4 @@
-- hosts: iwan
+- hosts: iwan:lan
 
   tasks:
 

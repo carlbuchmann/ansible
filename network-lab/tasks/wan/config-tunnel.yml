@@ -2,7 +2,7 @@
 
 - name: Apply tunnel configuration
   ios_config:
-    src: templates/tunnel_interface.j2
+    src: templates/wan/04-tunnel_interface.j2
     provider: "{{ ioscli }}"
   tags: tunnel
   register: tunnel_config_results

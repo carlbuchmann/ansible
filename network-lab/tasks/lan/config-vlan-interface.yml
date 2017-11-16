@@ -2,7 +2,7 @@
 
 - name: Apply Vlan configuration
   ios_config:
-    src: templates/vlan_interface.j2
+    src: templates/lan/03-vlan_interface.j2
     provider: "{{ ioscli }}"
   tags: vlan
   register: vlan_config_results
