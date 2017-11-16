@@ -6,8 +6,8 @@
   tasks:
    - import_tasks: tasks/ios-gather-facts.yml
    - import_tasks: tasks/ios-config-banner.yml
-   - import_tasks: tasks/lan/config-common.yml
    - import_tasks: tasks/lan/config-loopback.yml
+   - import_tasks: tasks/lan/config-common.yml
    - import_tasks: tasks/lan/config-vlan-interface.yml 
    - import_tasks: tasks/ios-backup.yml
 
