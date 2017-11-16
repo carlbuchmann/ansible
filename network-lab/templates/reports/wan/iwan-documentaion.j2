@@ -1,0 +1,11 @@
+
+#{{ inventory_hostname }} - Intent Configuration
+
+
+## LAN Interfaces
+
+| interface     | description  | ip address   |
+| ------------- | -------------| ------------ |
+{% for lan_interface in lan_interfaces %}
+| {{ lan_interface.interface }} | {{ lan_interface.description }} | {{ lan_interface.ip.address }} |
+{% endfor %}
