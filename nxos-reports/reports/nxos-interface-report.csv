@@ -579,7 +579,7 @@ hq-dc-acc-2B,Ethernet4/7, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/8, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/9, - ,down,auto-speed
 hq-dc-acc-2B,mgmt0, - ,up,1000 Mb/s
-hq-dc-core-1,Ethernet2/1, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/1, asible-test ,down,auto-speed
 hq-dc-core-1,Ethernet2/10, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/11, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/12, - ,down,auto-speed
