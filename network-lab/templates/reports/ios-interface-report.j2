@@ -1,0 +1,3 @@
+{% for interface,value in nxos_facts_interfaces|dictsort %}
+{{ inventory_hostname }},{{ interface }},{% if value.description is defined %} {{value.description}} {% else %} - {% endif %},{{ value.state }},{{ value.speed }}
+{% endfor %}
