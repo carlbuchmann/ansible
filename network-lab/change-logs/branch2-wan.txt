@@ -1,0 +1,454 @@
+#####branch2-wan#####
+{'failed': False, 'changed': False, 'ansible_facts': {'ansible_net_serialnum': '9ZWUPZHTA3S', 'ansible_net_all_ipv4_addresses': ['172.22.13.1', '172.22.10.1', '172.22.11.1', '172.16.1.17', '10.255.22.2', '192.168.22.2', '172.22.12.1', '172.22.255.1', '172.16.101.22', '172.16.102.22'], 'ansible_net_model': None, 'ansible_net_hostname': 'branch2-wan', 'ansible_net_gather_subset': ['default', 'interfaces'], 'ansible_net_interfaces': {'GigabitEthernet4.12': {'macaddress': 'fa16.3e85.69d8', 'lineprotocol': 'up ', 'description': 'guest', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.12.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.13': {'macaddress': 'fa16.3e85.69d8', 'lineprotocol': 'up ', 'description': 'wifi', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.13.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.10': {'macaddress': 'fa16.3e85.69d8', 'lineprotocol': 'up ', 'description': 'data', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.10.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.11': {'macaddress': 'fa16.3e85.69d8', 'lineprotocol': 'up ', 'description': 'voice', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.11.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet1': {'macaddress': '5e00.0003.0000', 'lineprotocol': 'up ', 'description': None, 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.16.1.17'}], 'type': 'CSR vNIC'}, 'GigabitEthernet2': {'macaddress': 'fa16.3e58.4a92', 'lineprotocol': 'up ', 'description': 'mpls_provider', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 100000, 'ipv4': [{'subnet': '30', 'address': '10.255.22.2'}], 'type': 'CSR vNIC'}, 'GigabitEthernet3': {'macaddress': 'fa16.3ea2.de34', 'lineprotocol': 'up ', 'description': 'inet_provider', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 250000, 'ipv4': [{'subnet': '30', 'address': '192.168.22.2'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4': {'macaddress': 'fa16.3e85.69d8', 'lineprotocol': 'up ', 'description': 'branch2-lan_ge0/1', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [], 'type': 'CSR vNIC'}, 'Loopback0': {'macaddress': '172.22.255.1/32', 'lineprotocol': 'up ', 'description': 'mgmt', 'duplex': None, 'mediatype': None, 'mtu': 1514, 'operstatus': 'up', 'bandwidth': 8000000, 'ipv4': [{'subnet': '32', 'address': '172.22.255.1'}], 'type': None}, 'Tunnel10': {'macaddress': '172.16.101.22/24', 'lineprotocol': 'up ', 'description': 'dmvpn_mpls_1', 'duplex': None, 'mediatype': None, 'mtu': 9972, 'operstatus': 'up', 'bandwidth': 100000, 'ipv4': [{'subnet': '24', 'address': '172.16.101.22'}], 'type': None}, 'Tunnel11': {'macaddress': '172.16.102.22/24', 'lineprotocol': 'up ', 'description': 'dmvpn_inet_1', 'duplex': None, 'mediatype': None, 'mtu': 9972, 'operstatus': 'up', 'bandwidth': 250000, 'ipv4': [{'subnet': '24', 'address': '172.16.102.22'}], 'type': None}}, 'ansible_net_version': '16.05.01b', 'ansible_net_all_ipv6_addresses': [], 'ansible_net_neighbors': {'null': [{'host': None, 'port': None}]}, 'ansible_net_image': 'bootflash:packages.conf'}}
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+{'failed': False, 'changed': False, 'ansible_facts': {'ansible_net_serialnum': '97X201QRB0M', 'ansible_net_all_ipv4_addresses': ['172.16.1.17'], 'ansible_net_model': None, 'ansible_net_hostname': 'branch2-wan', 'ansible_net_gather_subset': ['default', 'interfaces'], 'ansible_net_interfaces': {'GigabitEthernet4': {'macaddress': 'fa16.3e01.7109', 'lineprotocol': 'up ', 'description': None, 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [], 'type': 'CSR vNIC'}, 'GigabitEthernet1': {'macaddress': '5e00.0003.0000', 'lineprotocol': 'up ', 'description': None, 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.16.1.17'}], 'type': 'CSR vNIC'}, 'GigabitEthernet2': {'macaddress': 'fa16.3ee3.0a4e', 'lineprotocol': 'up ', 'description': None, 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [], 'type': 'CSR vNIC'}, 'GigabitEthernet3': {'macaddress': 'fa16.3ed4.80ac', 'lineprotocol': 'down ', 'description': None, 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'administratively down', 'bandwidth': 1000000, 'ipv4': [], 'type': 'CSR vNIC'}}, 'ansible_net_version': '16.05.01b', 'ansible_net_all_ipv6_addresses': [], 'ansible_net_neighbors': {'null': [{'host': None, 'port': None}]}, 'ansible_net_image': 'bootflash:packages.conf'}}
+banners: {}
+changed: true
+commands:
+- interface Loopback0
+- no shutdown
+- description mgmt
+- ip address 172.22.255.1 255.255.255.255
+failed: false
+updates:
+- interface Loopback0
+- no shutdown
+- description mgmt
+- ip address 172.22.255.1 255.255.255.255
+
+banners: {}
+changed: true
+commands:
+- snmp-server community LAB@APICEMro RO
+- snmp-server community LAB@APICEMrw RW
+- snmp-server trap-source Loopback0
+- cdp run
+failed: false
+updates:
+- snmp-server community LAB@APICEMro RO
+- snmp-server community LAB@APICEMrw RW
+- snmp-server trap-source Loopback0
+- cdp run
+
+banners: {}
+changed: true
+commands:
+- ip vrf IWAN-MPLS-1
+- rd 65511:101
+- ip vrf IWAN-INET-1
+- rd 65511:102
+- ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.22.1 name mpls-default
+- ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.22.1 name inet-default
+failed: false
+updates:
+- ip vrf IWAN-MPLS-1
+- rd 65511:101
+- ip vrf IWAN-INET-1
+- rd 65511:102
+- ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.22.1 name mpls-default
+- ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.22.1 name inet-default
+
+banners: {}
+changed: true
+commands:
+- interface GigabitEthernet4
+- description branch2-lan_ge0/1
+- cdp enable
+- interface GigabitEthernet4.10
+- no shutdown
+- description data
+- encapsulation dot1Q 10
+- ip address 172.22.10.1 255.255.255.0
+- ip helper-address 172.22.10.11
+- ip helper-address 172.22.10.12
+- ip helper-address 172.22.10.13
+- cdp enable
+- interface GigabitEthernet4.11
+- no shutdown
+- description voice
+- encapsulation dot1Q 11
+- ip address 172.22.11.1 255.255.255.0
+- ip helper-address 172.22.10.11
+- ip helper-address 172.22.10.12
+- ip helper-address 172.22.10.13
+- cdp enable
+- interface GigabitEthernet4.12
+- no shutdown
+- description guest
+- encapsulation dot1Q 12
+- ip address 172.22.12.1 255.255.255.0
+- ip helper-address 172.22.10.11
+- ip helper-address 172.22.10.12
+- ip access-group acl-guest in
+- cdp enable
+- interface GigabitEthernet4.13
+- no shutdown
+- description wifi
+- encapsulation dot1Q 13
+- ip address 172.22.13.1 255.255.255.0
+- ip helper-address 172.20.5.11
+- ip helper-address 172.20.5.12
+- ip access-group acl-wifi in
+- cdp enable
+failed: false
+updates:
+- interface GigabitEthernet4
+- description branch2-lan_ge0/1
+- cdp enable
+- interface GigabitEthernet4.10
+- no shutdown
+- description data
+- encapsulation dot1Q 10
+- ip address 172.22.10.1 255.255.255.0
+- ip helper-address 172.22.10.11
+- ip helper-address 172.22.10.12
+- ip helper-address 172.22.10.13
+- cdp enable
+- interface GigabitEthernet4.11
+- no shutdown
+- description voice
+- encapsulation dot1Q 11
+- ip address 172.22.11.1 255.255.255.0
+- ip helper-address 172.22.10.11
+- ip helper-address 172.22.10.12
+- ip helper-address 172.22.10.13
+- cdp enable
+- interface GigabitEthernet4.12
+- no shutdown
+- description guest
+- encapsulation dot1Q 12
+- ip address 172.22.12.1 255.255.255.0
+- ip helper-address 172.22.10.11
+- ip helper-address 172.22.10.12
+- ip access-group acl-guest in
+- cdp enable
+- interface GigabitEthernet4.13
+- no shutdown
+- description wifi
+- encapsulation dot1Q 13
+- ip address 172.22.13.1 255.255.255.0
+- ip helper-address 172.20.5.11
+- ip helper-address 172.20.5.12
+- ip access-group acl-wifi in
+- cdp enable
+
+banners: {}
+changed: true
+commands:
+- interface GigabitEthernet2
+- description mpls_provider
+- bandwidth 100000
+- ip vrf forwarding IWAN-MPLS-1
+- ip address 10.255.22.2 255.255.255.252
+- hold-queue 4096 in
+- hold-queue 4096 out
+- interface GigabitEthernet3
+- no shutdown
+- description inet_provider
+- bandwidth 250000
+- ip vrf forwarding IWAN-INET-1
+- ip address 192.168.22.2 255.255.255.252
+- hold-queue 4096 in
+- hold-queue 4096 out
+failed: false
+updates:
+- interface GigabitEthernet2
+- description mpls_provider
+- bandwidth 100000
+- ip vrf forwarding IWAN-MPLS-1
+- ip address 10.255.22.2 255.255.255.252
+- hold-queue 4096 in
+- hold-queue 4096 out
+- interface GigabitEthernet3
+- no shutdown
+- description inet_provider
+- bandwidth 250000
+- ip vrf forwarding IWAN-INET-1
+- ip address 192.168.22.2 255.255.255.252
+- hold-queue 4096 in
+- hold-queue 4096 out
+
+banners: {}
+changed: true
+commands:
+- key chain MPLS-WAN-KEY
+- key 1
+- key-string mpls-wan@154
+- key chain INET-WAN-KEY
+- key 1
+- key-string inet-wan@154
+- crypto ikev2 keyring DMVPN-KEYRING
+- peer ANY
+- address 0.0.0.0 0.0.0.0
+- pre-shared-key iWAN@lab#154
+- crypto ikev2 proposal AES/GCM/256
+- encryption aes-gcm-256
+- prf sha512
+- group 19
+- crypto ikev2 policy AES/GCM/256
+- match fvrf any
+- proposal AES/GCM/256
+- crypto ikev2 profile DMVPN-IKEv2-PROFILE
+- description PSK-Profile
+- match fvrf any
+- match identity remote address 0.0.0.0
+- identity local address 172.22.255.1
+- authentication local pre-share
+- authentication remote pre-share
+- keyring local DMVPN-KEYRING
+- dpd 40 5 on-demand
+- crypto ipsec transform-set AES256/GCM/TRANSFORM esp-gcm 256
+- mode transport
+- crypto ipsec profile DMVPN-IPSEC-PROFILE
+- set transform-set AES256/GCM/TRANSFORM
+- set ikev2-profile DMVPN-IKEv2-PROFILE
+- crypto ipsec security-association replay window-size 1024
+failed: false
+updates:
+- key chain MPLS-WAN-KEY
+- key 1
+- key-string mpls-wan@154
+- key chain INET-WAN-KEY
+- key 1
+- key-string inet-wan@154
+- crypto ikev2 keyring DMVPN-KEYRING
+- peer ANY
+- address 0.0.0.0 0.0.0.0
+- pre-shared-key iWAN@lab#154
+- crypto ikev2 proposal AES/GCM/256
+- encryption aes-gcm-256
+- prf sha512
+- group 19
+- crypto ikev2 policy AES/GCM/256
+- match fvrf any
+- proposal AES/GCM/256
+- crypto ikev2 profile DMVPN-IKEv2-PROFILE
+- description PSK-Profile
+- match fvrf any
+- match identity remote address 0.0.0.0
+- identity local address 172.22.255.1
+- authentication local pre-share
+- authentication remote pre-share
+- keyring local DMVPN-KEYRING
+- dpd 40 5 on-demand
+- crypto ipsec transform-set AES256/GCM/TRANSFORM esp-gcm 256
+- mode transport
+- crypto ipsec profile DMVPN-IPSEC-PROFILE
+- set transform-set AES256/GCM/TRANSFORM
+- set ikev2-profile DMVPN-IKEv2-PROFILE
+- crypto ipsec security-association replay window-size 1024
+
+banners: {}
+changed: true
+commands:
+- interface Tunnel10
+- no shutdown
+- description dmvpn_mpls_1
+- bandwidth 100000
+- ip address 172.16.101.22 255.255.255.0
+- no ip redirects
+- ip mtu 1400
+- ip tcp adjust-mss 1360
+- hold-queue 4096 in
+- hold-queue 4096 out
+- tunnel source GigabitEthernet2
+- tunnel mode gre multipoint
+- tunnel key 101
+- tunnel vrf IWAN-MPLS-1
+- tunnel protection ipsec profile DMVPN-IPSEC-PROFILE
+- ip nhrp authentication LABmpls1
+- ip nhrp network-id 101
+- ip nhrp nhs 172.16.101.1 nbma 10.255.20.2 multicast
+- if-state nhrp
+- no nhrp route-watch
+- delay 1000
+- cdp enable
+- interface Tunnel11
+- no shutdown
+- description dmvpn_inet_1
+- bandwidth 250000
+- ip address 172.16.102.22 255.255.255.0
+- no ip redirects
+- ip mtu 1400
+- ip tcp adjust-mss 1360
+- hold-queue 4096 in
+- hold-queue 4096 out
+- tunnel source GigabitEthernet3
+- tunnel mode gre multipoint
+- tunnel key 102
+- tunnel vrf IWAN-INET-1
+- tunnel protection ipsec profile DMVPN-IPSEC-PROFILE
+- ip nhrp authentication LABinet1
+- ip nhrp network-id 102
+- ip nhrp nhs 172.16.102.1 nbma 192.168.20.2 multicast
+- if-state nhrp
+- no nhrp route-watch
+- delay 2000
+- cdp enable
+failed: false
+updates:
+- interface Tunnel10
+- no shutdown
+- description dmvpn_mpls_1
+- bandwidth 100000
+- ip address 172.16.101.22 255.255.255.0
+- no ip redirects
+- ip mtu 1400
+- ip tcp adjust-mss 1360
+- hold-queue 4096 in
+- hold-queue 4096 out
+- tunnel source GigabitEthernet2
+- tunnel mode gre multipoint
+- tunnel key 101
+- tunnel vrf IWAN-MPLS-1
+- tunnel protection ipsec profile DMVPN-IPSEC-PROFILE
+- ip nhrp authentication LABmpls1
+- ip nhrp network-id 101
+- ip nhrp nhs 172.16.101.1 nbma 10.255.20.2 multicast
+- if-state nhrp
+- no nhrp route-watch
+- delay 1000
+- cdp enable
+- interface Tunnel11
+- no shutdown
+- description dmvpn_inet_1
+- bandwidth 250000
+- ip address 172.16.102.22 255.255.255.0
+- no ip redirects
+- ip mtu 1400
+- ip tcp adjust-mss 1360
+- hold-queue 4096 in
+- hold-queue 4096 out
+- tunnel source GigabitEthernet3
+- tunnel mode gre multipoint
+- tunnel key 102
+- tunnel vrf IWAN-INET-1
+- tunnel protection ipsec profile DMVPN-IPSEC-PROFILE
+- ip nhrp authentication LABinet1
+- ip nhrp network-id 102
+- ip nhrp nhs 172.16.102.1 nbma 192.168.20.2 multicast
+- if-state nhrp
+- no nhrp route-watch
+- delay 2000
+- cdp enable
+
+banners: {}
+changed: true
+commands:
+- router eigrp ENTERPRISE-EIGRP
+- address-family ipv4 unicast autonomous-system 100
+- af-interface default
+- passive-interface
+- exit-af-interface
+- topology base
+- summary-metric 172.22.0.0/16 1000000 10000 255 1 1500
+- exit-af-topology
+- network 172.22.10.0 0.0.0.255
+- network 172.22.11.0 0.0.0.255
+- network 172.22.12.0 0.0.0.255
+- network 172.22.13.0 0.0.0.255
+- af-interface Tunnel10
+- summary-address 172.22.0.0 255.255.0.0
+- authentication mode md5
+- authentication key-chain MPLS-WAN-KEY
+- hello-interval 20
+- hold-time 60
+- no passive-interface
+- stub-site wan-interface
+- exit-af-interface
+- network 172.16.101.0 0.0.0.255
+- af-interface Tunnel11
+- summary-address 172.22.0.0 255.255.0.0
+- authentication mode md5
+- authentication key-chain INET-WAN-KEY
+- hello-interval 20
+- hold-time 60
+- no passive-interface
+- stub-site wan-interface
+- exit-af-interface
+- network 172.16.102.0 0.0.0.255
+- eigrp router-id 172.22.255.1
+failed: false
+updates:
+- router eigrp ENTERPRISE-EIGRP
+- address-family ipv4 unicast autonomous-system 100
+- af-interface default
+- passive-interface
+- exit-af-interface
+- topology base
+- summary-metric 172.22.0.0/16 1000000 10000 255 1 1500
+- exit-af-topology
+- network 172.22.10.0 0.0.0.255
+- network 172.22.11.0 0.0.0.255
+- network 172.22.12.0 0.0.0.255
+- network 172.22.13.0 0.0.0.255
+- af-interface Tunnel10
+- summary-address 172.22.0.0 255.255.0.0
+- authentication mode md5
+- authentication key-chain MPLS-WAN-KEY
+- hello-interval 20
+- hold-time 60
+- no passive-interface
+- stub-site wan-interface
+- exit-af-interface
+- network 172.16.101.0 0.0.0.255
+- af-interface Tunnel11
+- summary-address 172.22.0.0 255.255.0.0
+- authentication mode md5
+- authentication key-chain INET-WAN-KEY
+- hello-interval 20
+- hold-time 60
+- no passive-interface
+- stub-site wan-interface
+- exit-af-interface
+- network 172.16.102.0 0.0.0.255
+- eigrp router-id 172.22.255.1
+
+{'failed': False, 'changed': False, 'ansible_facts': {'ansible_net_serialnum': '97X201QRB0M', 'ansible_net_all_ipv4_addresses': ['172.22.13.1', '172.22.10.1', '172.22.11.1', '172.16.1.17', '10.255.22.2', '192.168.22.2', '172.22.12.1', '172.22.255.1', '172.16.101.22', '172.16.102.22'], 'ansible_net_model': None, 'ansible_net_hostname': 'branch2-wan', 'ansible_net_gather_subset': ['default', 'interfaces'], 'ansible_net_interfaces': {'GigabitEthernet4.12': {'macaddress': 'fa16.3e01.7109', 'lineprotocol': 'up ', 'description': 'guest', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.12.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.13': {'macaddress': 'fa16.3e01.7109', 'lineprotocol': 'up ', 'description': 'wifi', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.13.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.10': {'macaddress': 'fa16.3e01.7109', 'lineprotocol': 'up ', 'description': 'data', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.10.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.11': {'macaddress': 'fa16.3e01.7109', 'lineprotocol': 'up ', 'description': 'voice', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.11.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet1': {'macaddress': '5e00.0003.0000', 'lineprotocol': 'up ', 'description': None, 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.16.1.17'}], 'type': 'CSR vNIC'}, 'GigabitEthernet2': {'macaddress': 'fa16.3ee3.0a4e', 'lineprotocol': 'up ', 'description': 'mpls_provider', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 100000, 'ipv4': [{'subnet': '30', 'address': '10.255.22.2'}], 'type': 'CSR vNIC'}, 'GigabitEthernet3': {'macaddress': 'fa16.3ed4.80ac', 'lineprotocol': 'up ', 'description': 'inet_provider', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 250000, 'ipv4': [{'subnet': '30', 'address': '192.168.22.2'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4': {'macaddress': 'fa16.3e01.7109', 'lineprotocol': 'up ', 'description': 'branch2-lan_ge0/1', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [], 'type': 'CSR vNIC'}, 'Loopback0': {'macaddress': '172.22.255.1/32', 'lineprotocol': 'up ', 'description': 'mgmt', 'duplex': None, 'mediatype': None, 'mtu': 1514, 'operstatus': 'up', 'bandwidth': 8000000, 'ipv4': [{'subnet': '32', 'address': '172.22.255.1'}], 'type': None}, 'Tunnel10': {'macaddress': '172.16.101.22/24', 'lineprotocol': 'up ', 'description': 'dmvpn_mpls_1', 'duplex': None, 'mediatype': None, 'mtu': 9972, 'operstatus': 'up', 'bandwidth': 100000, 'ipv4': [{'subnet': '24', 'address': '172.16.101.22'}], 'type': None}, 'Tunnel11': {'macaddress': '172.16.102.22/24', 'lineprotocol': 'up ', 'description': 'dmvpn_inet_1', 'duplex': None, 'mediatype': None, 'mtu': 9972, 'operstatus': 'up', 'bandwidth': 250000, 'ipv4': [{'subnet': '24', 'address': '172.16.102.22'}], 'type': None}}, 'ansible_net_version': '16.05.01b', 'ansible_net_all_ipv6_addresses': [], 'ansible_net_neighbors': {'null': [{'host': None, 'port': None}]}, 'ansible_net_image': 'bootflash:packages.conf'}}
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
