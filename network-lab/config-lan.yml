@@ -26,6 +26,6 @@
        - "{{ loopback_config_changes }}"
        - "{{ common_config_changes }}"
 #       - "{{ routing_config_changes }}"
-       - "{{ lan_config_changes }}"
+       - "{{ vlan_config_changes }}"
 #       - "{{ eigrp_config_changes }}" 
      check_mode: no
