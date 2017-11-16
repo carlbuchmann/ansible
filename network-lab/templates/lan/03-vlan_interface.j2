@@ -27,5 +27,4 @@ interface {{ vlan_interface.interface }}
 {%     if vlan_interface.acl_out is defined %}
  ip access-group {{vlan_interface.acl_out.name}} out
 {%     endif %} 
- cdp enable
 {% endfor%}
