@@ -22,6 +22,10 @@
         group: ansible_users
         mode: 0777
 
+- hosts: localhost
+
+  tasks:
+  
     - name: create combinned report
       assemble:
         src: ./reports/devices
