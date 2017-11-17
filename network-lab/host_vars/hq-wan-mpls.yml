@@ -50,7 +50,7 @@ wan_interfaces:
   - interface: GigabitEthernet2
     state_enabled: true 
     description: mpls_provider_ge0/2
-    bandwidth: 50000
+    bandwidth: 500000
     vrf: IWAN-MPLS-1
     ip:
       address: 10.255.20.2/30

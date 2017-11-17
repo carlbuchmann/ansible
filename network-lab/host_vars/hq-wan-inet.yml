@@ -49,7 +49,7 @@ wan_interfaces:
   - interface: GigabitEthernet2
     state_enabled: true 
     description: inet_provider_ge0/5
-    bandwidth: 50000
+    bandwidth: 500000
     vrf: IWAN-INET-1
     ip:
       address: 192.168.20.2/30
