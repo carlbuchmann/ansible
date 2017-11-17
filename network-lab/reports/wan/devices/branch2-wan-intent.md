@@ -15,5 +15,12 @@
 
 | interface     | description  | ip address   | bandwidth |
 | ------------- | -------------| ------------ |---------- |
-| GigabitEthernet2 | mpls_provider | 10.255.22.2/30 | 100000 |
-| GigabitEthernet3 | inet_provider | 192.168.22.2/30 | 250000 |
+| GigabitEthernet2 | mpls_provider | 10.255.22.2/30 | 1000.0 |
+| GigabitEthernet3 | inet_provider | 192.168.22.2/30 | 2500.0 |
+
+### Tunnel Interfaces
+
+| interface     | profile      | ip address   | tunnel source |
+| ------------- | -------------| ------------ | ------------- |
+| Tunnel10 | dmvpn_mpls_1 | 172.16.101.22/24 | GigabitEthernet2 |
+| Tunnel11 | dmvpn_inet_1 | 172.16.102.22/24 | GigabitEthernet3 |
