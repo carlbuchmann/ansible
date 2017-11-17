@@ -1,0 +1,56 @@
+#####branch2-wan#####
+{'failed': False, 'changed': False, 'ansible_facts': {'ansible_net_serialnum': '90GS6URPHV9', 'ansible_net_all_ipv4_addresses': ['172.22.13.1', '172.22.10.1', '172.22.11.1', '172.16.1.17', '10.255.22.2', '192.168.22.2', '172.22.12.1', '172.22.255.1', '172.16.101.22', '172.16.102.22'], 'ansible_net_model': None, 'ansible_net_hostname': 'branch2-wan', 'ansible_net_gather_subset': ['default', 'interfaces'], 'ansible_net_interfaces': {'GigabitEthernet4.12': {'macaddress': 'fa16.3e4d.ecee', 'lineprotocol': 'up ', 'description': 'guest', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.12.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.13': {'macaddress': 'fa16.3e4d.ecee', 'lineprotocol': 'up ', 'description': 'wifi', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.13.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.10': {'macaddress': 'fa16.3e4d.ecee', 'lineprotocol': 'up ', 'description': 'data', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.10.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4.11': {'macaddress': 'fa16.3e4d.ecee', 'lineprotocol': 'up ', 'description': 'voice', 'duplex': None, 'mediatype': None, 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.22.11.1'}], 'type': 'CSR vNIC'}, 'GigabitEthernet1': {'macaddress': '5e00.0003.0000', 'lineprotocol': 'up ', 'description': None, 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [{'subnet': '24', 'address': '172.16.1.17'}], 'type': 'CSR vNIC'}, 'GigabitEthernet2': {'macaddress': 'fa16.3e93.a97c', 'lineprotocol': 'up ', 'description': 'mpls_provider', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 100000, 'ipv4': [{'subnet': '30', 'address': '10.255.22.2'}], 'type': 'CSR vNIC'}, 'GigabitEthernet3': {'macaddress': 'fa16.3e03.6ec0', 'lineprotocol': 'up ', 'description': 'inet_provider', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 250000, 'ipv4': [{'subnet': '30', 'address': '192.168.22.2'}], 'type': 'CSR vNIC'}, 'GigabitEthernet4': {'macaddress': 'fa16.3e4d.ecee', 'lineprotocol': 'up ', 'description': 'branch2-lan_ge0/1', 'duplex': 'Full', 'mediatype': 'RJ45', 'mtu': 1500, 'operstatus': 'up', 'bandwidth': 1000000, 'ipv4': [], 'type': 'CSR vNIC'}, 'Loopback0': {'macaddress': '172.22.255.1/32', 'lineprotocol': 'up ', 'description': 'mgmt', 'duplex': None, 'mediatype': None, 'mtu': 1514, 'operstatus': 'up', 'bandwidth': 8000000, 'ipv4': [{'subnet': '32', 'address': '172.22.255.1'}], 'type': None}, 'Tunnel10': {'macaddress': '172.16.101.22/24', 'lineprotocol': 'up ', 'description': 'dmvpn_mpls_1', 'duplex': None, 'mediatype': None, 'mtu': 9972, 'operstatus': 'up', 'bandwidth': 100000, 'ipv4': [{'subnet': '24', 'address': '172.16.101.22'}], 'type': None}, 'Tunnel11': {'macaddress': '172.16.102.22/24', 'lineprotocol': 'up ', 'description': 'dmvpn_inet_1', 'duplex': None, 'mediatype': None, 'mtu': 9972, 'operstatus': 'up', 'bandwidth': 250000, 'ipv4': [{'subnet': '24', 'address': '172.16.102.22'}], 'type': None}}, 'ansible_net_version': '16.05.01b', 'ansible_net_all_ipv6_addresses': [], 'ansible_net_neighbors': {'null': [{'host': None, 'port': None}]}, 'ansible_net_image': 'bootflash:packages.conf'}}
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+banners: {}
+changed: true
+commands:
+- interface GigabitEthernet4.14
+- no shutdown
+- description wifi2
+- encapsulation dot1Q 14
+- ip address 172.22.14.1 255.255.255.0
+- ip helper-address 172.20.5.11
+- ip helper-address 172.20.5.12
+- ip access-group acl-wifi in
+- cdp enable
+failed: false
+updates:
+- interface GigabitEthernet4.14
+- no shutdown
+- description wifi2
+- encapsulation dot1Q 14
+- ip address 172.22.14.1 255.255.255.0
+- ip helper-address 172.20.5.11
+- ip helper-address 172.20.5.12
+- ip access-group acl-wifi in
+- cdp enable
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+changed: false
+failed: false
+
+banners: {}
+changed: true
+commands:
+- router eigrp ENTERPRISE-EIGRP
+- address-family ipv4 unicast autonomous-system 100
+- network 172.22.14.0 0.0.0.255
+failed: false
+updates:
+- router eigrp ENTERPRISE-EIGRP
+- address-family ipv4 unicast autonomous-system 100
+- network 172.22.14.0 0.0.0.255
+

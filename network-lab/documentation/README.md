@@ -40,6 +40,7 @@ _________________________________________________________________
 | GigabitEthernet4.11 | voice |  172.22.11.1/24 |
 | GigabitEthernet4.12 | guest |  172.22.12.1/24 |
 | GigabitEthernet4.13 | wifi |  172.22.13.1/24 |
+| GigabitEthernet4.14 | wifi2 |  172.22.14.1/24 |
 
 * WAN Interfaces
 
