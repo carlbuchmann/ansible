@@ -11,8 +11,8 @@
 
 | interface     | description  | ip address   | bandwidth |
 | ------------- | -------------| ------------ |---------- |
-| GigabitEthernet2 | mpls_provider | 10.255.21.2/30 | 1000.0 |
-| GigabitEthernet3 | inet_provider | 192.168.21.2/30 | 2500.0 |
+| GigabitEthernet2 | mpls_provider | 10.255.21.2/30 | 100.0 |
+| GigabitEthernet3 | inet_provider | 192.168.21.2/30 | 250.0 |
 
 ### Tunnel Interfaces
 
