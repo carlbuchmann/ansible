@@ -1,7 +1,7 @@
-## {{ inventory_hostname }} - Intent Configuration
+## {{ inventory_hostname }}
 
 
-### LAN Interfaces
+* LAN Interfaces
 
 | interface     | description  | ip address   |
 | ------------- | -------------| ------------ |
@@ -9,7 +9,7 @@
 | {{ lan_interface.interface }} | {{ lan_interface.description }} | {% if lan_interface.ip is defined %} {{ lan_interface.ip.address }} {% else %} N/A {% endif %}|
 {% endfor %}
 
-### WAN Interfaces
+* WAN Interfaces
 
 | interface     | description  | ip address   | bandwidth |
 | ------------- | -------------| ------------ |---------- |
@@ -17,7 +17,7 @@
 | {{ wan_interface.interface }} | {{ wan_interface.description }} | {{ wan_interface.ip.address }} | {{ wan_interface.bandwidth/1000 }} |
 {% endfor %}
 
-### Tunnel Interfaces
+* Tunnel Interfaces
 
 | interface     | profile      | ip address   | tunnel source |
 | ------------- | -------------| ------------ | ------------- |
