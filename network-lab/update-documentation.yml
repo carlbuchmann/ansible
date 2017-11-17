@@ -6,7 +6,7 @@
     - name: create documentation per device
       template:
         src: "./templates/reports/wan/iwan-documentation.j2"
-        dest: './reports/wan/devices/{{inventory_hostname}}iwan-doc.md'
+        dest: './reports/wan/devices/{{inventory_hostname}}-intent.md'
         owner: ansible
         group: ansible_users
         mode: 0777
