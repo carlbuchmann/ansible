@@ -14,7 +14,7 @@
 | interface     | description  | ip address   | bandwidth |
 | ------------- | -------------| ------------ |---------- |
 {% for wan_interface in wan_interfaces %}
-| {{ wan_interface.interface }} | {{ wan_interface.description }} | {{ wan_interface.ip.address }} | {{ [wan_interface.bandwidth]/100 }} |
+| {{ wan_interface.interface }} | {{ wan_interface.description }} | {{ wan_interface.ip.address }} | {{ wan_interface.bandwidth/100 }} |
 {% endfor %}
 
 ### Tunnel Interfaces
