@@ -1,0 +1,62 @@
+{% for wan_key_chain in wan_key_chains %}
+key chain {{ wan_key_chain.key_chain_name }}
+ key 1
+  key-string {{ wan_key_chain.key_string }}
+{% endfor%}
+
+{% for lan_interface in lan_interfaces %}
+{%     if lan_interface.eigrp is defined %}
+{%         for lan_key_chain in lan_key_chains %}
+key chain {{ lan_key_chain.key_chain_name }}
+ key 1
+  key-string {{ lan_key_chain.key_string }}
+{%         endfor%}
+{%     endif %}
+{% endfor%}
+
+{% for ikev2_keyring in crypto.ikev2_keyrings %}
+crypto ikev2 keyring {{ikev2_keyring.keyring_name}}
+ peer {{ikev2_keyring.peer}}
+  address {{ ikev2_keyring.address }}
+  pre-shared-key {{ikev2_keyring.pre_shared_key}}
+{% endfor%}
+
+{% for ikev2_proposal in crypto.ikev2_proposals %}
+crypto ikev2 proposal {{ ikev2_proposal.proposal_name }}
+ encryption {{ ikev2_proposal.encryption }}
+ prf {{ ikev2_proposal.prf}}
+ group {{ ikev2_proposal.group }}
+{% endfor%}
+
+{% for ikev2_policy in crypto.ikev2_policies %}
+crypto ikev2 policy {{ ikev2_policy.policy_name }}
+ match fvrf {{ ikev2_policy.match_fvrf }}
+ proposal {{ ikev2_policy.proposal }}
+{% endfor%}
+
+{% for ikev2_profile in crypto.ikev2_profiles %}
+crypto ikev2 profile {{ ikev2_profile.profile_name }}
+ description {{ ikev2_profile.description }}
+ match fvrf {{ ikev2_profile.match_fvrf }}
+ match identity remote address {{ ikev2_profile.identity.remote_address }}
+ identity local address {{ loopback_interfaces[0].ip.address | ipaddr('address') }}
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local {{ ikev2_profile.keyring_local }}
+{%     if type.site == 'branch' %}
+ dpd 40 5 on-demand
+{%     endif %} 
+{% endfor%}
+
+{% for ipsec_transform_set in crypto.ipsec_transform_sets %}
+crypto ipsec transform-set {{ ipsec_transform_set.transform_set_tag }} {{ ipsec_transform_set.transform_type }} {{ ipsec_transform_set.transform_keys }}
+ mode {{ ipsec_transform_set.mode }}
+{% endfor%}
+
+{% for ipsec_profile in crypto.ipsec_profiles %}
+crypto ipsec profile {{ ipsec_profile.profile_name }}
+ set transform-set {{ ipsec_profile.transform_set }}
+ set ikev2-profile {{ ipsec_profile.ikev2_profile }}
+{% endfor%}
+
+crypto ipsec security-association replay window-size {{ crypto.ipsec_anti_replay_window_size }} 

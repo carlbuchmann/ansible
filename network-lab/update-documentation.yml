@@ -1,0 +1,24 @@
+---
+- hosts: iwan
+
+  tasks:
+   
+    - name: create wan documentation per device
+      template:
+        src: "./templates/documentation/wan/iwan-documentation.j2"
+        dest: './documentation/wan/devices/{{inventory_hostname}}-intent.md'
+        owner: ansible
+        group: ansible_users
+        mode: 0777
+
+- hosts: localhost
+
+  tasks:
+  
+    - name: create wan combinned documentation
+      assemble:
+        src: ./documentation/wan/devices/
+        dest: './documentation/README.md'
+        owner: ansible
+        group: ansible_users
+        mode: 0777

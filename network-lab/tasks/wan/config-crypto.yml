@@ -1,0 +1,10 @@
+---
+- name: Apply Crypto Configuration
+  ios_config:
+    src: templates/wan/02-crypto.j2
+    provider: "{{ ioscli }}"
+  tags: crypto
+  register: crypto_config_results
+  
+- set_fact: crypto_config_changes={{ crypto_config_results | to_nice_yaml }}
+  

@@ -25,8 +25,8 @@ This repository contains Ansible scripts I'm developing in a lab environment usi
 
 ## Network Logical Topology
 
-![Alt text](diagrams/logical_network_topology.jpg?raw=true "Logical Network Topology")
+![Alt text](documentation/diagrams/logical_network_topology.jpg?raw=true "Logical Network Topology")
 
 
 ## Network Physical Topology (VIRL)
-![Alt text](diagrams/physical_network_topology.jpg?raw=true "Physical Network Topology")
+![Alt text](documentation/diagrams/physical_network_topology.jpg?raw=true "Physical Network Topology")

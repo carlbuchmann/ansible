@@ -1,0 +1,11 @@
+---
+nxosapi:
+  username: "{{ansible_user}}"
+  password: "{{ansible_password}}"
+  host: "{{inventory_hostname}}"
+  transport: cli
+  #setting for nxapi
+  #transport: nxapi
+  #use_ssl: yes
+  #port: 8443
+  #validate_certs: no

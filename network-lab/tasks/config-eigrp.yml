@@ -1,9 +1,0 @@
----
-- name: Apply EIGRP Configuration
-  ios_config:
-    src: templates/eigrp.j2
-    provider: "{{ ioscli }}"
-  tags: eigpr
-  register: eigrp_config_results
-  
-- set_fact: eigrp_config_changes={{ eigrp_config_results | to_nice_yaml }}

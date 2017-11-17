@@ -1,0 +1,10 @@
+---
+- name: Apply WAN Configuration
+  ios_config:
+    src: templates/wan/05-wan_interface.j2
+    provider: "{{ ioscli }}"
+  tags: wan
+  register: wan_config_results
+  
+- set_fact: wan_config_changes={{ wan_config_results | to_nice_yaml }}
+  

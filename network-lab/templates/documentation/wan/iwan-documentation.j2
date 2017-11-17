@@ -1,0 +1,26 @@
+## {{ inventory_hostname }}
+
+
+* LAN Interfaces
+
+| interface     | description  | ip address   |
+| ------------- | -------------| ------------ |
+{% for lan_interface in lan_interfaces %}
+| {{ lan_interface.interface }} | {{ lan_interface.description }} | {% if lan_interface.ip is defined %} {{ lan_interface.ip.address }} {% else %} N/A {% endif %}|
+{% endfor %}
+
+* WAN Interfaces
+
+| interface     | description  | ip address   | bandwidth |
+| ------------- | -------------| ------------ |---------- |
+{% for wan_interface in wan_interfaces %}
+| {{ wan_interface.interface }} | {{ wan_interface.description }} | {{ wan_interface.ip.address }} | {{ wan_interface.bandwidth/1000 }} |
+{% endfor %}
+
+* Tunnel Interfaces
+
+| interface     | profile      | ip address   | tunnel source |
+| ------------- | -------------| ------------ | ------------- |
+{% for tunnel_interface in tunnel_interfaces %}
+| {{ tunnel_interface.interface }} | {{ tunnel_interface.profile }} | {{ tunnel_interface.ip.address }} | {{ tunnel_interface.source }} |
+{% endfor %}
