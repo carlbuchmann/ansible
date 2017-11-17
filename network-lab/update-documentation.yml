@@ -5,8 +5,8 @@
    
     - name: create wan documentation per device
       template:
-        src: "./templates/reports/wan/iwan-documentation.j2"
-        dest: './reports/wan/devices/{{inventory_hostname}}-intent.md'
+        src: "./templates/documentation/wan/iwan-documentation.j2"
+        dest: './documentation/wan/devices/{{inventory_hostname}}-intent.md'
         owner: ansible
         group: ansible_users
         mode: 0777
@@ -17,8 +17,8 @@
   
     - name: create wan combinned documentation
       assemble:
-        src: ./reports/wan/devices/
-        dest: './reports/wan/README.md'
+        src: ./documentation/wan/devices/
+        dest: './documentation/README.md'
         owner: ansible
         group: ansible_users
         mode: 0777
