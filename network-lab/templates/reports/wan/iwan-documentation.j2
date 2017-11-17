@@ -19,8 +19,8 @@
 
 ### Tunnel Interfaces
 
-| interface     | description  | ip address   | tunnel source |
+| interface     | profile      | ip address   | tunnel source |
 | ------------- | -------------| ------------ | ------------- |
 {% for tunnel_interface in tunnel_interfaces %}
-| {{ tunnel_interface.interface }} | {{ tunnel_interface.description }} | {{ tunnel_interface.ip.address }} | {{ tunnel_interface.source }} |
+| {{ tunnel_interface.interface }} | {{ tunnel_interface.profile }} | {{ tunnel_interface.ip.address }} | {{ tunnel_interface.source }} |
 {% endfor %}
