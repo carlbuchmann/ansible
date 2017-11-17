@@ -14,5 +14,13 @@
 | interface     | description  | ip address   | bandwidth |
 | ------------- | -------------| ------------ |---------- |
 {% for wan_interface in wan_interfaces %}
-| {{ wan_interface.interface }} | {{ wan_interface.description }} | {{ wan_interface.ip.address }} | {{ wan_interface.bandwidth }} |
+| {{ wan_interface.interface }} | {{ wan_interface.description }} | {{ wan_interface.ip.address }} | {{ wan_interface.bandwidth/1000 }} |
+{% endfor %}
+
+### Tunnel Interfaces
+
+| interface     | profile      | ip address   | tunnel source |
+| ------------- | -------------| ------------ | ------------- |
+{% for tunnel_interface in tunnel_interfaces %}
+| {{ tunnel_interface.interface }} | {{ tunnel_interface.profile }} | {{ tunnel_interface.ip.address }} | {{ tunnel_interface.source }} |
 {% endfor %}
