@@ -10,15 +10,3 @@
         owner: ansible
         group: ansible_users
         mode: 0777
-
-#- hosts: localhost
-#
-#  tasks:
-#  
-#    - name: create combinned report
-#      assemble:
-#        src: ./reports/devices
-#        dest: './reports/nxos-interface-report.csv'
-#        owner: ansible
-#        group: ansible_users
-#        mode: 0777
