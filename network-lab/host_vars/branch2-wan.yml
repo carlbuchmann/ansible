@@ -122,6 +122,21 @@ lan_interfaces:
       name: acl-wifi
     delay: 25000
 
+  - interface: GigabitEthernet4.14
+    state_enabled: true 
+    description: wifi2
+    trunk:
+      dot1q: 14
+    ip:
+      address: 172.22.14.1/24
+    ip_helper:
+      addresses:
+      - 172.20.5.11
+      - 172.20.5.12
+    acl_in:
+      name: acl-wifi
+    delay: 25000
+
 tunnel_interfaces:
   
   - interface: Tunnel10
