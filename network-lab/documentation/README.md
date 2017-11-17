@@ -7,7 +7,6 @@
 ## WAN Router Device Intent Configuration
 ## branch1-wan
 
-
 * LAN Interfaces
 
 | interface     | description  | ip address   |
@@ -27,8 +26,10 @@
 | ------------- | -------------| ------------ | ------------- |
 | Tunnel10 | dmvpn_mpls_1 | 172.16.101.21/24 | GigabitEthernet2 |
 | Tunnel11 | dmvpn_inet_1 | 172.16.102.21/24 | GigabitEthernet3 |
-## branch2-wan
 
+_________________________________________________________________
+
+## branch2-wan
 
 * LAN Interfaces
 
@@ -53,8 +54,10 @@
 | ------------- | -------------| ------------ | ------------- |
 | Tunnel10 | dmvpn_mpls_1 | 172.16.101.22/24 | GigabitEthernet2 |
 | Tunnel11 | dmvpn_inet_1 | 172.16.102.22/24 | GigabitEthernet3 |
-## hq-wan-inet
 
+_________________________________________________________________
+
+## hq-wan-inet
 
 * LAN Interfaces
 
@@ -73,8 +76,10 @@
 | interface     | profile      | ip address   | tunnel source |
 | ------------- | -------------| ------------ | ------------- |
 | Tunnel11 | dmvpn_inet_1 | 172.16.102.1/24 | GigabitEthernet2 |
-## hq-wan-mpls
 
+_________________________________________________________________
+
+## hq-wan-mpls
 
 * LAN Interfaces
 
@@ -93,3 +98,6 @@
 | interface     | profile      | ip address   | tunnel source |
 | ------------- | -------------| ------------ | ------------- |
 | Tunnel10 | dmvpn_mpls_1 | 172.16.101.1/24 | GigabitEthernet2 |
+
+_________________________________________________________________
+

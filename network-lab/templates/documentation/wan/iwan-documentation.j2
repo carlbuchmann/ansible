@@ -1,6 +1,5 @@
 ## {{ inventory_hostname }}
 
-
 * LAN Interfaces
 
 | interface     | description  | ip address   |
@@ -24,3 +23,6 @@
 {% for tunnel_interface in tunnel_interfaces %}
 | {{ tunnel_interface.interface }} | {{ tunnel_interface.profile }} | {{ tunnel_interface.ip.address }} | {{ tunnel_interface.source }} |
 {% endfor %}
+
+_________________________________________________________________
+
