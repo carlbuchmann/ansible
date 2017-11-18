@@ -32,21 +32,18 @@
 ### Routing:
 
 * VRFs:
+
 | VRF name | route distinguisher |
 | -------- | ------------------- |
 | IWAN-MPLS-1 |  65511:101 | 
 | IWAN-INET-1 |  65511:102 | 
 
 * Static routes:
-
-|      | destination |   |   |
-| ---- | ------      | - | - |
+ 
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
-| mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.21.1 | IWAN-MPLS-1 |
- 
-| inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.21.1 | IWAN-INET-1 |
- 
+| mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.21.1 | IWAN-MPLS-1 | 
+| inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.21.1 | IWAN-INET-1 | 
 
 _________________________________________________________________
 ## branch2-wan
@@ -80,21 +77,18 @@ _________________________________________________________________
 ### Routing:
 
 * VRFs:
+
 | VRF name | route distinguisher |
 | -------- | ------------------- |
 | IWAN-MPLS-1 |  65511:101 | 
 | IWAN-INET-1 |  65511:102 | 
 
 * Static routes:
-
-|      | destination |   |   |
-| ---- | ------      | - | - |
+ 
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
-| mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.22.1 | IWAN-MPLS-1 |
- 
-| inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.22.1 | IWAN-INET-1 |
- 
+| mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.22.1 | IWAN-MPLS-1 | 
+| inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.22.1 | IWAN-INET-1 | 
 
 _________________________________________________________________
 ## hq-wan-inet
@@ -122,18 +116,16 @@ _________________________________________________________________
 ### Routing:
 
 * VRFs:
+
 | VRF name | route distinguisher |
 | -------- | ------------------- |
 | IWAN-INET-1 |  65511:102 | 
 
 * Static routes:
-
-|      | destination |   |   |
-| ---- | ------      | - | - |
+ 
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
-| inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.20.1 | IWAN-INET-1 |
- 
+| inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.20.1 | IWAN-INET-1 | 
 
 _________________________________________________________________
 ## hq-wan-mpls
@@ -161,17 +153,15 @@ _________________________________________________________________
 ### Routing:
 
 * VRFs:
+
 | VRF name | route distinguisher |
 | -------- | ------------------- |
 | IWAN-MPLS-1 |  65511:101 | 
 
 * Static routes:
-
-|      | destination |   |   |
-| ---- | ------      | - | - |
+ 
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
-| mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.20.1 | IWAN-MPLS-1 |
- 
+| mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.20.1 | IWAN-MPLS-1 | 
 
 _________________________________________________________________
