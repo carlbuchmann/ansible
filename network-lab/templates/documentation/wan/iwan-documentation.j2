@@ -1,6 +1,8 @@
 ## {{ inventory_hostname }}
 
-* LAN Interfaces
+### Interfaces:
+
+* LAN Interfaces:
 
 | interface     | description  | ip address   |
 | ------------- | -------------| ------------ |
@@ -8,7 +10,7 @@
 | {{ lan_interface.interface }} | {{ lan_interface.description }} | {% if lan_interface.ip is defined %} {{ lan_interface.ip.address }} {% else %} N/A {% endif %}|
 {% endfor %}
 
-* WAN Interfaces
+* WAN Interfaces:
 
 | interface     | description  | ip address   | bandwidth |
 | ------------- | -------------| ------------ |---------- |
@@ -16,7 +18,7 @@
 | {{ wan_interface.interface }} | {{ wan_interface.description }} | {{ wan_interface.ip.address }} | {{ wan_interface.bandwidth/1000 }} |
 {% endfor %}
 
-* Tunnel Interfaces
+* Tunnel Interfaces:
 
 | interface     | profile      | ip address   | tunnel source |
 | ------------- | -------------| ------------ | ------------- |
@@ -24,5 +26,26 @@
 | {{ tunnel_interface.interface }} | {{ tunnel_interface.profile }} | {{ tunnel_interface.ip.address }} | {{ tunnel_interface.source }} |
 {% endfor %}
 
-_________________________________________________________________
+### Routing:
 
+* VRFs:
+| VRF name | route distinguisher |
+| ---------| --------------------|
+{% for vrf in vrfs %}
+| {{ vrf.vrf_name }} | {% if vrf_attributes[vrf.vrf_name] is defined %} {{ vrf_attributes[vrf.vrf_name].rd }}{% endif %} | 
+{% endfor%}
+
+* Static routes:
+
+|      | destination        |                   |                     |
+| name | prefix     | mask  | forwarding router | vrf (if applicable) |
+| ---- | -----------| ----  | ----------------- | --------------------|
+{% for static_route in static_routes %}
+{% if static_route.vrf is defined %}
+| {{ static_route.route_name }} | {{ static_route.destination.prefix }} | {{ static_route.destination.mask }} | {{ static_route.forwarding_router }} | {{ static_route.vrf }} |
+{% else %}
+| {{ static_route.route_name }} | {{ static_route.destination.prefix }} | {{ static_route.destination.mask }} | {{ static_route.forwarding_router }} | 
+{%     endif %} 
+{% endfor%}
+
+_________________________________________________________________
