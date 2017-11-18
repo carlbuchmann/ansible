@@ -12,13 +12,13 @@
 * LAN Interfaces:
 
 | interface     | description  | ip address   |
-| ------------- | -------------| ------------ |
+| ------------- | ------------ | ------------ |
 | GigabitEthernet4 | branch1-core_ge0/1 |  172.21.0.1/30 |
 
 * WAN Interfaces:
 
 | interface     | description  | ip address   | bandwidth |
-| ------------- | -------------| ------------ |---------- |
+| ------------- | ------------ | ------------ | --------- |
 | GigabitEthernet2 | mpls_provider | 10.255.21.2/30 | 100.0 |
 | GigabitEthernet3 | inet_provider | 192.168.21.2/30 | 250.0 |
 
@@ -33,15 +33,16 @@
 
 * VRFs:
 | VRF name | route distinguisher |
-| ---------| --------------------|
+| -------- | ------------------- |
 | IWAN-MPLS-1 |  65511:101 | 
 | IWAN-INET-1 |  65511:102 | 
 
 * Static routes:
 
-|      | destination        |                   |                     |
-| name | prefix     | mask  | forwarding router | vrf (if applicable) |
-| ---- | -----------| ----  | ----------------- | --------------------|
+|      | destination |   |   |
+| ---- | ------      | - | - |
+| name | prefix | mask | forwarding router | vrf (if applicable) |
+| ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.21.1 | IWAN-MPLS-1 |
  
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.21.1 | IWAN-INET-1 |
@@ -55,7 +56,7 @@ _________________________________________________________________
 * LAN Interfaces:
 
 | interface     | description  | ip address   |
-| ------------- | -------------| ------------ |
+| ------------- | ------------ | ------------ |
 | GigabitEthernet4 | branch2-lan_ge0/1 |  N/A |
 | GigabitEthernet4.10 | data |  172.22.10.1/24 |
 | GigabitEthernet4.11 | voice |  172.22.11.1/24 |
@@ -65,7 +66,7 @@ _________________________________________________________________
 * WAN Interfaces:
 
 | interface     | description  | ip address   | bandwidth |
-| ------------- | -------------| ------------ |---------- |
+| ------------- | ------------ | ------------ | --------- |
 | GigabitEthernet2 | mpls_provider | 10.255.22.2/30 | 100.0 |
 | GigabitEthernet3 | inet_provider | 192.168.22.2/30 | 250.0 |
 
@@ -80,15 +81,16 @@ _________________________________________________________________
 
 * VRFs:
 | VRF name | route distinguisher |
-| ---------| --------------------|
+| -------- | ------------------- |
 | IWAN-MPLS-1 |  65511:101 | 
 | IWAN-INET-1 |  65511:102 | 
 
 * Static routes:
 
-|      | destination        |                   |                     |
-| name | prefix     | mask  | forwarding router | vrf (if applicable) |
-| ---- | -----------| ----  | ----------------- | --------------------|
+|      | destination |   |   |
+| ---- | ------      | - | - |
+| name | prefix | mask | forwarding router | vrf (if applicable) |
+| ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.22.1 | IWAN-MPLS-1 |
  
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.22.1 | IWAN-INET-1 |
@@ -102,13 +104,13 @@ _________________________________________________________________
 * LAN Interfaces:
 
 | interface     | description  | ip address   |
-| ------------- | -------------| ------------ |
+| ------------- | ------------ | ------------ |
 | GigabitEthernet3 | hq-core_ge0/3 |  172.20.0.5/30 |
 
 * WAN Interfaces:
 
 | interface     | description  | ip address   | bandwidth |
-| ------------- | -------------| ------------ |---------- |
+| ------------- | ------------ | ------------ | --------- |
 | GigabitEthernet2 | inet_provider_ge0/5 | 192.168.20.2/30 | 500.0 |
 
 * Tunnel Interfaces:
@@ -121,14 +123,15 @@ _________________________________________________________________
 
 * VRFs:
 | VRF name | route distinguisher |
-| ---------| --------------------|
+| -------- | ------------------- |
 | IWAN-INET-1 |  65511:102 | 
 
 * Static routes:
 
-|      | destination        |                   |                     |
-| name | prefix     | mask  | forwarding router | vrf (if applicable) |
-| ---- | -----------| ----  | ----------------- | --------------------|
+|      | destination |   |   |
+| ---- | ------      | - | - |
+| name | prefix | mask | forwarding router | vrf (if applicable) |
+| ---- | ------ | ---- | ----------------- | ------------------- |
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.20.1 | IWAN-INET-1 |
  
 
@@ -140,13 +143,13 @@ _________________________________________________________________
 * LAN Interfaces:
 
 | interface     | description  | ip address   |
-| ------------- | -------------| ------------ |
+| ------------- | ------------ | ------------ |
 | GigabitEthernet3 | hq-core_ge0/2 |  172.20.0.1/30 |
 
 * WAN Interfaces:
 
 | interface     | description  | ip address   | bandwidth |
-| ------------- | -------------| ------------ |---------- |
+| ------------- | ------------ | ------------ | --------- |
 | GigabitEthernet2 | mpls_provider_ge0/2 | 10.255.20.2/30 | 500.0 |
 
 * Tunnel Interfaces:
@@ -159,14 +162,15 @@ _________________________________________________________________
 
 * VRFs:
 | VRF name | route distinguisher |
-| ---------| --------------------|
+| -------- | ------------------- |
 | IWAN-MPLS-1 |  65511:101 | 
 
 * Static routes:
 
-|      | destination        |                   |                     |
-| name | prefix     | mask  | forwarding router | vrf (if applicable) |
-| ---- | -----------| ----  | ----------------- | --------------------|
+|      | destination |   |   |
+| ---- | ------      | - | - |
+| name | prefix | mask | forwarding router | vrf (if applicable) |
+| ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.20.1 | IWAN-MPLS-1 |
  
 
