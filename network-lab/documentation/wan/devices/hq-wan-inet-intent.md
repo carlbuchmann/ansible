@@ -30,9 +30,13 @@
 | IWAN-INET-1 |  65511:102 |
 
 * **Static Routes**
- 
+
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.20.1 | IWAN-INET-1 | 
 
-_________________________________________________________________
+### Running Configuration
+
+```./configurations/wan/hq-wan-inet.cfg```
+
+___

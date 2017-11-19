@@ -33,10 +33,14 @@
 | IWAN-INET-1 |  65511:102 |
 
 * **Static Routes**
- 
+
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.21.1 | IWAN-MPLS-1 | 
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.21.1 | IWAN-INET-1 | 
 
-_________________________________________________________________
+### Running Configuration
+
+```./configurations/wan/branch1-wan.cfg```
+
+___

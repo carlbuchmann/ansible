@@ -40,13 +40,17 @@
 | IWAN-INET-1 |  65511:102 |
 
 * **Static Routes**
- 
+
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.21.1 | IWAN-MPLS-1 | 
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.21.1 | IWAN-INET-1 | 
 
-_________________________________________________________________
+### Running Configuration
+
+```./configurations/wan/branch1-wan.cfg```
+
+___
 
 ## branch2-wan
 
@@ -86,13 +90,17 @@ _________________________________________________________________
 | IWAN-INET-1 |  65511:102 |
 
 * **Static Routes**
- 
+
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.22.1 | IWAN-MPLS-1 | 
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.22.1 | IWAN-INET-1 | 
 
-_________________________________________________________________
+### Running Configuration
+
+```./configurations/wan/branch2-wan.cfg```
+
+___
 
 ## hq-wan-inet
 
@@ -125,12 +133,16 @@ _________________________________________________________________
 | IWAN-INET-1 |  65511:102 |
 
 * **Static Routes**
- 
+
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 | inet-default | 0.0.0.0 | 0.0.0.0 | 192.168.20.1 | IWAN-INET-1 | 
 
-_________________________________________________________________
+### Running Configuration
+
+```./configurations/wan/hq-wan-inet.cfg```
+
+___
 
 ## hq-wan-mpls
 
@@ -163,9 +175,13 @@ _________________________________________________________________
 | IWAN-MPLS-1 |  65511:101 |
 
 * **Static Routes**
- 
+
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.20.1 | IWAN-MPLS-1 | 
 
-_________________________________________________________________
+### Running Configuration
+
+```./configurations/wan/hq-wan-mpls.cfg```
+
+___

@@ -30,9 +30,13 @@
 | IWAN-MPLS-1 |  65511:101 |
 
 * **Static Routes**
- 
+
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 | mpls-default | 0.0.0.0 | 0.0.0.0 | 10.255.20.1 | IWAN-MPLS-1 | 
 
-_________________________________________________________________
+### Running Configuration
+
+```./configurations/wan/hq-wan-mpls.cfg```
+
+___
