@@ -38,6 +38,7 @@
 ### Running Configuration
 
 ```
+
 hostname hq-wan-mpls
 
 ntp server 172.20.5.101
@@ -169,6 +170,7 @@ router eigrp ENTERPRISE-EIGRP
 ip vrf IWAN-MPLS-1
  rd 65511:101
  
-ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.20.1 name mpls-default```
+ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.20.1 name mpls-default
+```
 
 ___

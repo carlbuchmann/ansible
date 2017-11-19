@@ -49,6 +49,7 @@
 ### Running Configuration
 
 ```
+
 hostname branch1-wan
 
 ntp server 172.20.5.101
@@ -230,7 +231,8 @@ ip vrf IWAN-INET-1
  
 ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.21.1 name mpls-default
  
-ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.21.1 name inet-default```
+ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.21.1 name inet-default
+```
 
 ___
 
@@ -281,6 +283,7 @@ ___
 ### Running Configuration
 
 ```
+
 hostname branch2-wan
 
 ntp server 172.20.5.101
@@ -504,7 +507,8 @@ ip vrf IWAN-INET-1
  
 ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.22.1 name mpls-default
  
-ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.22.1 name inet-default```
+ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.22.1 name inet-default
+```
 
 ___
 
@@ -547,6 +551,7 @@ ___
 ### Running Configuration
 
 ```
+
 hostname hq-wan-inet
 
 ntp server 172.20.5.101
@@ -678,7 +683,8 @@ router eigrp ENTERPRISE-EIGRP
 ip vrf IWAN-INET-1
  rd 65511:102
  
-ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.20.1 name inet-default```
+ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.20.1 name inet-default
+```
 
 ___
 
@@ -721,6 +727,7 @@ ___
 ### Running Configuration
 
 ```
+
 hostname hq-wan-mpls
 
 ntp server 172.20.5.101
@@ -852,6 +859,7 @@ router eigrp ENTERPRISE-EIGRP
 ip vrf IWAN-MPLS-1
  rd 65511:101
  
-ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.20.1 name mpls-default```
+ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.20.1 name mpls-default
+```
 
 ___

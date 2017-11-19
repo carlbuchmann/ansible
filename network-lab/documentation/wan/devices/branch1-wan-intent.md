@@ -42,6 +42,7 @@
 ### Running Configuration
 
 ```
+
 hostname branch1-wan
 
 ntp server 172.20.5.101
@@ -223,6 +224,7 @@ ip vrf IWAN-INET-1
  
 ip route vrf IWAN-MPLS-1 0.0.0.0 0.0.0.0 10.255.21.1 name mpls-default
  
-ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.21.1 name inet-default```
+ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.21.1 name inet-default
+```
 
 ___

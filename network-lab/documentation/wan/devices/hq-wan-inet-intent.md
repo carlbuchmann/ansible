@@ -38,6 +38,7 @@
 ### Running Configuration
 
 ```
+
 hostname hq-wan-inet
 
 ntp server 172.20.5.101
@@ -169,6 +170,7 @@ router eigrp ENTERPRISE-EIGRP
 ip vrf IWAN-INET-1
  rd 65511:102
  
-ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.20.1 name inet-default```
+ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.20.1 name inet-default
+```
 
 ___
