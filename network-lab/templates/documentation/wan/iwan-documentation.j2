@@ -29,6 +29,7 @@
 ### Routing:
 
 * VRFs:
+
 | VRF name | route distinguisher |
 | -------- | ------------------- |
 {% for vrf in vrfs %}
@@ -36,17 +37,14 @@
 {% endfor%}
 
 * Static routes:
-
-|      | destination |   |   |
-| ---- | ------      | - | - |
+ 
 | name | prefix | mask | forwarding router | vrf (if applicable) |
 | ---- | ------ | ---- | ----------------- | ------------------- |
 {% for static_route in static_routes %}
-{% if static_route.vrf is defined %}
-| {{ static_route.route_name }} | {{ static_route.destination.prefix }} | {{ static_route.destination.mask }} | {{ static_route.forwarding_router }} | {{ static_route.vrf }} |
-{% else %}
+{%    if static_route.vrf is defined %}
+| {{ static_route.route_name }} | {{ static_route.destination.prefix }} | {{ static_route.destination.mask }} | {{ static_route.forwarding_router }} | {{ static_route.vrf }} |{%    else %}
 | {{ static_route.route_name }} | {{ static_route.destination.prefix }} | {{ static_route.destination.mask }} | {{ static_route.forwarding_router }} | default |
-{%     endif %} 
+{%    endif %} 
 {% endfor%}
 
 _________________________________________________________________
