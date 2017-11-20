@@ -1,11 +1,42 @@
 ---
+
+- hosts: localhost
+
+  tasks:
+  
+    - name: create wan combinned template
+      assemble:
+        src: ./templates/wan/
+        dest: './templates/wan/combined/wan-config.j2'
+        owner: ansible
+        group: ansible_users
+        mode: 0777
+
 - hosts: iwan
 
   tasks:
-   
+
+    - set_fact: interface_facts=null
+    - set_fact: wan_config_file=./configurations/wan/{{inventory_hostname}}.cfg
+
+    - name: create running configuration per device
+      template:
+        src: './templates/wan/combined/wan-config.j2'
+        dest: "{{ wan_config_file }}"
+        owner: ansible
+        group: ansible_users
+        mode: 0777
+
+- hosts: iwan
+
+  vars:
+     wan_config: "{{ lookup('file', wan_config_file) }}"
+
+  tasks:
+    
     - name: create wan documentation per device
       template:
-        src: "./templates/documentation/wan/iwan-documentation.j2"
+        src: './templates/documentation/wan/iwan-documentation.j2'
         dest: './documentation/wan/devices/{{inventory_hostname}}-intent.md'
         owner: ansible
         group: ansible_users
@@ -22,3 +53,4 @@
         owner: ansible
         group: ansible_users
         mode: 0777
+

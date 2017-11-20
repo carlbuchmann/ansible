@@ -1,0 +1,294 @@
+
+hostname {{hostname}}
+
+{% for ntp_server in ntp_servers %}
+ntp server {{ntp_server}}
+{% endfor%}
+
+ip domain name {{domain_name}}
+!
+ip multicast-routing distributed
+!
+snmp-server community {{ snmp_community.ro }} RO
+snmp-server community {{ snmp_community.rw }} RW
+snmp-server trap-source Loopback0
+snmp ifmib ifindex persist
+
+cdp run
+
+{% for wan_key_chain in wan_key_chains %}
+key chain {{ wan_key_chain.key_chain_name }}
+ key 1
+  key-string {{ wan_key_chain.key_string }}
+{% endfor%}
+
+{% for lan_interface in lan_interfaces %}
+{%     if lan_interface.eigrp is defined %}
+{%         for lan_key_chain in lan_key_chains %}
+key chain {{ lan_key_chain.key_chain_name }}
+ key 1
+  key-string {{ lan_key_chain.key_string }}
+{%         endfor%}
+{%     endif %}
+{% endfor%}
+
+{% for ikev2_keyring in crypto.ikev2_keyrings %}
+crypto ikev2 keyring {{ikev2_keyring.keyring_name}}
+ peer {{ikev2_keyring.peer}}
+  address {{ ikev2_keyring.address }}
+  pre-shared-key {{ikev2_keyring.pre_shared_key}}
+{% endfor%}
+
+{% for ikev2_proposal in crypto.ikev2_proposals %}
+crypto ikev2 proposal {{ ikev2_proposal.proposal_name }}
+ encryption {{ ikev2_proposal.encryption }}
+ prf {{ ikev2_proposal.prf}}
+ group {{ ikev2_proposal.group }}
+{% endfor%}
+
+{% for ikev2_policy in crypto.ikev2_policies %}
+crypto ikev2 policy {{ ikev2_policy.policy_name }}
+ match fvrf {{ ikev2_policy.match_fvrf }}
+ proposal {{ ikev2_policy.proposal }}
+{% endfor%}
+
+{% for ikev2_profile in crypto.ikev2_profiles %}
+crypto ikev2 profile {{ ikev2_profile.profile_name }}
+ description {{ ikev2_profile.description }}
+ match fvrf {{ ikev2_profile.match_fvrf }}
+ match identity remote address {{ ikev2_profile.identity.remote_address }}
+ identity local address {{ loopback_interfaces[0].ip.address | ipaddr('address') }}
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local {{ ikev2_profile.keyring_local }}
+{%     if type.site == 'branch' %}
+ dpd 40 5 on-demand
+{%     endif %} 
+{% endfor%}
+
+{% for ipsec_transform_set in crypto.ipsec_transform_sets %}
+crypto ipsec transform-set {{ ipsec_transform_set.transform_set_tag }} {{ ipsec_transform_set.transform_type }} {{ ipsec_transform_set.transform_keys }}
+ mode {{ ipsec_transform_set.mode }}
+{% endfor%}
+
+{% for ipsec_profile in crypto.ipsec_profiles %}
+crypto ipsec profile {{ ipsec_profile.profile_name }}
+ set transform-set {{ ipsec_profile.transform_set }}
+ set ikev2-profile {{ ipsec_profile.ikev2_profile }}
+{% endfor%}
+
+crypto ipsec security-association replay window-size {{ crypto.ipsec_anti_replay_window_size }} 
+{% for loopback_interface in loopback_interfaces %}
+interface {{ loopback_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%     if loopback_interface.state_enabled == true %}
+{%         if interface_facts[loopback_interface.interface] is defined %}
+{%             if interface_facts[loopback_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%           endif %}
+{%         else %}
+ no shutdown
+{%         endif %}
+{%     else %}
+ shutdown
+{% endif %}
+ description {{ loopback_interface.description }}
+ ip address {{ loopback_interface.ip.address | ipaddr('address') }} {{ loopback_interface.ip.address | ipaddr('netmask') }}
+{% endfor%}
+{% for tunnel_interface in tunnel_interfaces %}
+interface {{ tunnel_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%     if tunnel_interface.state_enabled == true %}
+{%         if interface_facts[tunnel_interface.interface] is defined %}
+{%             if interface_facts[tunnel_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%           endif %}
+{%         else %}
+ no shutdown
+{%         endif %}
+{%     else %}
+ shutdown
+{%     endif %}
+{# configure interface settings based host_vars and levarages profile for group_vars defined in iwan.yml #}
+ description {{ tunnel_interface.profile }}
+ bandwidth {{ tunnel_interface.bandwidth }}
+ ip address {{ tunnel_interface.ip.address | ipaddr('address') }} {{ tunnel_interface.ip.address | ipaddr('netmask') }}
+ no ip redirects
+ ip mtu {{ tunnel_profiles[tunnel_interface.profile].mtu }}
+ ip tcp adjust-mss {{ tunnel_profiles[tunnel_interface.profile].ip_tcp_adjust_mss }}
+ hold-queue 4096 in
+ hold-queue 4096 out
+ tunnel source {{ tunnel_interface.source }}
+ tunnel mode {{ tunnel_profiles[tunnel_interface.profile].tunnel_mode.encapsulation }} {{ tunnel_profiles[tunnel_interface.profile].tunnel_mode.type }}
+ tunnel key {{ tunnel_profiles[tunnel_interface.profile].tunnel_key }}
+ tunnel vrf {{ tunnel_profiles[tunnel_interface.profile].tunnel_vrf }}
+ tunnel protection ipsec profile {{ tunnel_profiles[tunnel_interface.profile].tunnel_protection }}
+{%    if tunnel_profiles[tunnel_interface.profile].ip_nhrp is defined %}
+ ip nhrp authentication {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.authentication }}
+ ip nhrp network-id {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.network_id }}
+{# ! default value 600 ! 
+ ip nhrp holdtime {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.holdtime }} - excluded for idempotency #}
+{%        if type.site == 'hub' %}
+{# !default value ip nhrp map multicast dynamic - excluded for idempotency #}
+ ip nhrp redirect
+ ip pim nbma-mode
+{%        endif %}
+{%        if type.site == 'branch' %}
+ ip nhrp nhs {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.nhs }} nbma {{ tunnel_profiles[tunnel_interface.profile].ip_nhrp.nbma }} multicast
+{# !default settings!
+  ip nhrp registration no-unique
+  ip nhrp shortcut 
+  - excluded for idempotency#}
+ if-state nhrp
+{%        endif %} 
+{%        if type.iwan == 'dual-transport' %}
+ no nhrp route-watch
+{%        endif %}
+{%    endif %}
+{%    if tunnel_profiles[tunnel_interface.profile].eigrp is defined %}
+ delay {{ tunnel_profiles[tunnel_interface.profile].eigrp.delay }}
+{%    endif %}
+ cdp enable
+{% endfor%}
+{% for wan_interface in wan_interfaces %}
+interface {{ wan_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%    if wan_interface.state_enabled == true %}
+{%        if interface_facts[wan_interface.interface] is defined %}
+{%            if interface_facts[wan_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%            endif %}
+{%        else %}
+ no shutdown
+{%        endif %}
+{%    else %}
+ shutdown
+{%    endif %}
+ description {{ wan_interface.description }}
+ bandwidth {{ wan_interface.bandwidth }}
+ ip vrf forwarding {{ wan_interface.vrf }}
+ ip address {{ wan_interface.ip.address | ipaddr('address') }} {{ wan_interface.ip.address | ipaddr('netmask') }}
+{# no cdp enable !default #}
+{%    if wan_interface.acl_in is defined %}
+ ip access-group {{ wan_interface.acl_in }} in
+{%    endif %} 
+{%    if wan_interface.zone_member is defined %}
+ zone-member security {{ wan_interface.acl_zone_member }}
+{%    endif %} 
+ hold-queue 4096 in
+ hold-queue 4096 out
+{% endfor%}
+{% for lan_interface in lan_interfaces %}
+interface {{ lan_interface.interface }}
+{# verify state of interface and apply 'no shutdown' if applicable - this is to achieve idempotency when exceuting #}
+{%     if lan_interface.state_enabled == true %}
+{%         if interface_facts[lan_interface.interface] is defined %}
+{%             if interface_facts[lan_interface.interface].operstatus == "administratively down" %}
+ no shutdown
+{%           endif %}
+{%         else %}
+ no shutdown
+{%         endif %}
+{%     else %}
+ shutdown
+{% endif %}
+ description {{ lan_interface.description }}
+{%     if lan_interface.trunk is defined %}
+ encapsulation dot1Q {{ lan_interface.trunk.dot1q }}
+{%     endif %}
+{%     if lan_interface.ip is defined %}
+ ip address {{ lan_interface.ip.address | ipaddr('address') }} {{ lan_interface.ip.address | ipaddr('netmask') }}
+{%     else %}
+ no ip address
+{%     endif %}
+{%     if lan_interface.ip_helper is defined %}
+{%         for helper_address in lan_interface.ip_helper.addresses %}
+ ip helper-address {{ helper_address }}
+{%         endfor%}
+{%     endif %}
+{%     if lan_interface.acl_in is defined %}
+ ip access-group {{lan_interface.acl_in.name}} in
+{%     endif %} 
+{%     if lan_interface.acl_out is defined %}
+ ip access-group {{lan_interface.acl_out.name}} out
+{%     endif %} 
+{%     if lan_interface.eigrp is defined %}
+ delay {{lan_interface.eigrp.delay}}
+{%     endif %} 
+ cdp enable
+{% endfor%}
+{% if eigrp_instances is defined %}
+{%     for eigrp_instance in eigrp_instances %}
+router eigrp {{ eigrp_global[eigrp_instance.instance].virtual_instances_name }}
+ address-family ipv4 unicast autonomous-system {{ eigrp_global[eigrp_instance.instance].ipv4_autonomous_system }}
+  af-interface default
+{%         if eigrp_global[eigrp_instance.instance].af_interface_default.passive_interface == true %}
+   passive-interface
+{%         endif %}
+  exit-af-interface
+  topology base
+{%         if eigrp_instance.summary_addresses is defined %}
+{%             for summary_address in eigrp_instance.summary_addresses %}
+   summary-metric {{ summary_address }} 1000000 10000 255 1 1500
+{%             endfor%}
+{%         endif %}
+  exit-af-topology
+{%         for lan_interface in lan_interfaces %}
+{%             if lan_interface.ip is defined %}
+  network {{ lan_interface.ip.address | ipaddr('network') }} {{ lan_interface.ip.address | ipaddr('hostmask') }}
+{# provision af-interface for lan interfaces #}
+{%                 if lan_interface.eigrp is defined %}
+  af-interface {{ lan_interface.interface }}
+   no passive-interface
+   authentication mode {{ lan_interface.eigrp.authentication.mode }}
+   authentication key-chain {{ lan_interface.eigrp.authentication.key_chain }}
+  exit-af-interface
+{%                 endif %}
+{%             endif %}
+{%         endfor%}
+{# provision af-interface for Tunnels #}
+{%         for tunnel_interface in tunnel_interfaces %}
+{%             if tunnel_profiles[tunnel_interface.profile].eigrp is defined %}
+  af-interface {{ tunnel_interface.interface }}
+{%                 if eigrp_instance.summary_addresses is defined %}
+{%                     for summary_address in eigrp_instance.summary_addresses %}
+   summary-address {{ summary_address | ipaddr('network') }} {{ summary_address | ipaddr('netmask') }}
+{%                     endfor%}
+{%                 endif %}
+   authentication mode {{ tunnel_profiles[tunnel_interface.profile].eigrp.authentication.mode }}
+   authentication key-chain {{ tunnel_profiles[tunnel_interface.profile].eigrp.authentication.key_chain }}
+   hello-interval {{ tunnel_profiles[tunnel_interface.profile].eigrp.hello_interval }}
+   hold-time {{ tunnel_profiles[tunnel_interface.profile].eigrp.hold_time }}
+   no passive-interface
+{%                 if type.site == 'hub' %}
+   no split-horizon
+{%                 endif %}
+{%                 if type.site == 'branch' %}
+   stub-site wan-interface
+{%                 endif %}
+  exit-af-interface
+{%             endif %}
+{# add network statement for tunnel interface note:hostmask=wildcard #}
+{%             if tunnel_interface.ip is defined %}
+  network {{ tunnel_interface.ip.address | ipaddr('network') }} {{ tunnel_interface.ip.address | ipaddr('hostmask') }}
+{%             endif %}
+{%         endfor%}
+{# use first defined loopback interface as loopback id #}
+  eigrp router-id {{ loopback_interfaces[0].ip.address | ipaddr('address') }}
+{%     endfor%}
+{% endif %}
+{# vrf configuration #}
+{% for vrf in vrfs %}
+ip vrf {{ vrf.vrf_name }}
+{%     if vrf_attributes[vrf.vrf_name] is defined %}
+ rd {{ vrf_attributes[vrf.vrf_name].rd }}
+{%     endif %} 
+{% endfor%}
+{# Static route configuration #}
+{% for static_route in static_routes %}
+{%     if static_route.vrf is defined %}
+ip route vrf {{ static_route.vrf }} {{ static_route.destination.prefix }} {{ static_route.destination.mask }} {{ static_route.forwarding_router }} name {{ static_route.route_name }}
+{%     else %}
+ip route {{ static_route.destination.prefix }} {{ static_route.destination.mask }} {{ static_route.forwarding_router }} name {{ static_route.route_name }}
+{%     endif %} 
+{% endfor%}
