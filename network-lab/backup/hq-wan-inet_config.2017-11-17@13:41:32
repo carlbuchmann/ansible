@@ -1,0 +1,309 @@
+Building configuration...
+
+Current configuration : 5446 bytes
+!
+! Last configuration change at 18:05:08 UTC Fri Nov 17 2017 by ********
+!
+version 16.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname hq-wan-inet
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition mgmt
+ !
+ address-family ipv4
+ exit-address-family
+!
+enable secret 5 $1$e.iB$ndpKyQ19Dgh2QKnpnegnr0
+!
+no aaa new-model
+!
+ip vrf IWAN-INET-1
+ rd 65511:102
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+ip domain name iwan.lab
+ip multicast-routing distributed
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+key chain INET-WAN-KEY
+ key 1
+  key-string inet-wan@154
+key chain LAN-KEY
+ key 1
+  key-string eigrp@LAN
+key chain MPLS-WAN-KEY
+ key 1
+  key-string mpls-wan@154
+!
+crypto pki trustpoint TP-self-signed-1645862640
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1645862640
+ revocation-check none
+ rsakeypair TP-self-signed-1645862640
+!
+crypto pki trustpoint TP-self-signed-2712468422
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2712468422
+ revocation-check none
+ rsakeypair TP-self-signed-2712468422
+!
+!
+crypto pki certificate chain TP-self-signed-1645862640
+ certificate self-signed 01
+  	quit
+crypto pki certificate chain TP-self-signed-2712468422
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9TO7MC8EQVG
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+username ******** privilege 15 secret 5 $1$8nT5$8kzsHhNzNiowupGUXhCY.0
+username ansible privilege 15 secret 5 $1$exwy$xvZu5WIuND6MWOmCn6Qa/1
+!
+redundancy
+!
+crypto ikev2 proposal AES/GCM/256 
+ encryption aes-gcm-256
+ prf sha512
+ group 19
+!
+crypto ikev2 policy AES/GCM/256 
+ match fvrf any
+ proposal AES/GCM/256
+!
+crypto ikev2 keyring DMVPN-KEYRING
+ peer ANY
+  address 0.0.0.0 0.0.0.0
+  pre-shared-key iWAN@lab#154
+ !
+!
+!
+crypto ikev2 profile DMVPN-IKEv2-PROFILE
+ description PSK-Profile
+ match fvrf any
+ match identity remote address 0.0.0.0 
+ identity local address 172.20.255.2
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local DMVPN-KEYRING
+!
+!
+!
+cdp run
+!
+! 
+!
+!
+!
+!
+!
+!
+crypto ipsec security-association replay window-size 1024
+!
+crypto ipsec transform-set AES256/GCM/TRANSFORM esp-gcm 256 
+ mode transport
+!
+crypto ipsec profile DMVPN-IPSEC-PROFILE
+ set transform-set AES256/GCM/TRANSFORM 
+ set ikev2-profile DMVPN-IKEv2-PROFILE
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback0
+ description mgmt
+ ip address 172.20.255.2 255.255.255.252
+!
+interface Tunnel11
+ description dmvpn_inet_1
+ bandwidth 100000
+ ip address 172.16.102.1 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip pim nbma-mode
+ ip nhrp authentication LABinet1
+ ip nhrp network-id 102
+ ip nhrp redirect
+ ip tcp adjust-mss 1360
+ delay 2000
+ cdp enable
+ tunnel source GigabitEthernet2
+ tunnel mode gre multipoint
+ tunnel key 102
+ tunnel vrf IWAN-INET-1
+ tunnel protection ipsec profile DMVPN-IPSEC-PROFILE
+ hold-queue 4096 in
+ hold-queue 4096 out
+!
+interface GigabitEthernet1
+ vrf forwarding mgmt
+ ip address 172.16.1.12 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ description inet_provider_ge0/5
+ bandwidth 500000
+ ip vrf forwarding IWAN-INET-1
+ ip address 192.168.20.2 255.255.255.252
+ negotiation auto
+ no mop enabled
+ no mop sysid
+ hold-queue 4096 in
+ hold-queue 4096 out
+!
+interface GigabitEthernet3
+ description hq-core_ge0/3
+ ip address 172.20.0.5 255.255.255.252
+ delay 24000
+ negotiation auto
+ cdp enable
+ no mop enabled
+ no mop sysid
+!
+!
+router eigrp ENTERPRISE-EIGRP
+ !
+ address-family ipv4 unicast autonomous-system 100
+  !
+  af-interface default
+   passive-interface
+  exit-af-interface
+  !
+  af-interface GigabitEthernet3
+   authentication mode md5
+   authentication key-chain LAN-KEY
+   no passive-interface
+  exit-af-interface
+  !
+  af-interface Tunnel11
+   authentication mode md5
+   authentication key-chain INET-WAN-KEY
+   hello-interval 20
+   hold-time 60
+   no passive-interface
+   no split-horizon
+   summary-address 172.20.0.0 255.255.0.0
+  exit-af-interface
+  !
+  topology base
+   summary-metric 172.20.0.0/16 1000000 10000 255 1 1500
+  exit-af-topology
+  network 172.16.102.0 0.0.0.255
+  network 172.20.0.4 0.0.0.3
+  eigrp router-id 172.20.255.2
+ exit-address-family
+!
+
+threat-visibility
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+ip route vrf IWAN-INET-1 0.0.0.0 0.0.0.0 192.168.20.1 name inet-default
+!
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+snmp-server community LAB@APICEMro RO
+snmp-server community LAB@APICEMrw RW
+snmp-server trap-source Loopback0
+snmp ifmib ifindex persist
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+banner motd ^C
+########################################
+##  Network-LAB                       ##
+##  Configured by Ansible             ##
+##  Version .01                       ##
+########################################
+^C
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login local
+!
+ntp server 172.20.5.101
+!
+!
+!
+!
+event manager applet ssh-keys
+ event syslog occurs 1 pattern "%SYS-5-RESTART: System restarted"
+ action 1.0 cli command "enable"
+ action 2.0 cli command "********"
+ action 3.0 cli command "configure terminal"
+ action 4.0 cli command "crypto key generate rsa modulus 1024"
+!
+end
