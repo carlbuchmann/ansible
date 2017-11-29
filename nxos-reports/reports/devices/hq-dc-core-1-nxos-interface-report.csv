@@ -1,4 +1,12 @@
-hq-dc-core-1,Ethernet2/1, asible-test ,down,auto-speed
+hq-dc-core-1,Ethernet2/1, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/2, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/3, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/4, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/5, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/6, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/7, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/8, - ,down,auto-speed
+hq-dc-core-1,Ethernet2/9, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/10, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/11, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/12, - ,down,auto-speed
@@ -9,7 +17,6 @@ hq-dc-core-1,Ethernet2/16, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/17, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/18, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/19, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/2, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/20, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/21, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/22, - ,down,auto-speed
@@ -20,7 +27,6 @@ hq-dc-core-1,Ethernet2/26, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/27, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/28, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/29, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/3, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/30, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/31, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/32, - ,down,auto-speed
@@ -31,7 +37,6 @@ hq-dc-core-1,Ethernet2/36, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/37, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/38, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/39, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/4, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/40, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/41, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/42, - ,down,auto-speed
@@ -41,12 +46,15 @@ hq-dc-core-1,Ethernet2/45, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/46, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/47, - ,down,auto-speed
 hq-dc-core-1,Ethernet2/48, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/5, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/6, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/7, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/8, - ,down,auto-speed
-hq-dc-core-1,Ethernet2/9, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/1, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/2, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/3, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/4, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/5, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/6, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/7, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/8, - ,down,auto-speed
+hq-dc-core-1,Ethernet3/9, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/10, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/11, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/12, - ,down,auto-speed
@@ -57,7 +65,6 @@ hq-dc-core-1,Ethernet3/16, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/17, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/18, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/19, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/2, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/20, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/21, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/22, - ,down,auto-speed
@@ -68,7 +75,6 @@ hq-dc-core-1,Ethernet3/26, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/27, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/28, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/29, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/3, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/30, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/31, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/32, - ,down,auto-speed
@@ -79,7 +85,6 @@ hq-dc-core-1,Ethernet3/36, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/37, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/38, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/39, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/4, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/40, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/41, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/42, - ,down,auto-speed
@@ -89,12 +94,15 @@ hq-dc-core-1,Ethernet3/45, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/46, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/47, - ,down,auto-speed
 hq-dc-core-1,Ethernet3/48, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/5, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/6, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/7, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/8, - ,down,auto-speed
-hq-dc-core-1,Ethernet3/9, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/1, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/2, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/3, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/4, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/5, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/6, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/7, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/8, - ,down,auto-speed
+hq-dc-core-1,Ethernet4/9, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/10, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/11, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/12, - ,down,auto-speed
@@ -105,7 +113,6 @@ hq-dc-core-1,Ethernet4/16, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/17, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/18, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/19, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/2, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/20, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/21, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/22, - ,down,auto-speed
@@ -116,7 +123,6 @@ hq-dc-core-1,Ethernet4/26, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/27, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/28, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/29, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/3, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/30, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/31, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/32, - ,down,auto-speed
@@ -127,7 +133,6 @@ hq-dc-core-1,Ethernet4/36, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/37, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/38, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/39, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/4, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/40, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/41, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/42, - ,down,auto-speed
@@ -137,9 +142,4 @@ hq-dc-core-1,Ethernet4/45, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/46, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/47, - ,down,auto-speed
 hq-dc-core-1,Ethernet4/48, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/5, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/6, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/7, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/8, - ,down,auto-speed
-hq-dc-core-1,Ethernet4/9, - ,down,auto-speed
 hq-dc-core-1,mgmt0, - ,up,1000 Mb/s

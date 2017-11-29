@@ -1,4 +1,12 @@
 hq-dc-acc-2B,Ethernet2/1, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/2, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/3, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/4, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/5, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/6, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/7, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/8, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet2/9, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/10, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/11, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/12, - ,down,auto-speed
@@ -9,7 +17,6 @@ hq-dc-acc-2B,Ethernet2/16, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/17, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/18, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/19, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/2, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/20, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/21, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/22, - ,down,auto-speed
@@ -20,7 +27,6 @@ hq-dc-acc-2B,Ethernet2/26, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/27, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/28, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/29, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/3, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/30, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/31, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/32, - ,down,auto-speed
@@ -31,7 +37,6 @@ hq-dc-acc-2B,Ethernet2/36, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/37, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/38, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/39, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/4, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/40, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/41, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/42, - ,down,auto-speed
@@ -41,12 +46,15 @@ hq-dc-acc-2B,Ethernet2/45, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/46, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/47, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet2/48, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/5, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/6, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/7, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/8, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet2/9, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/1, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/2, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/3, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/4, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/5, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/6, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/7, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/8, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet3/9, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/10, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/11, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/12, - ,down,auto-speed
@@ -57,7 +65,6 @@ hq-dc-acc-2B,Ethernet3/16, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/17, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/18, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/19, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/2, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/20, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/21, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/22, - ,down,auto-speed
@@ -68,7 +75,6 @@ hq-dc-acc-2B,Ethernet3/26, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/27, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/28, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/29, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/3, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/30, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/31, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/32, - ,down,auto-speed
@@ -79,7 +85,6 @@ hq-dc-acc-2B,Ethernet3/36, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/37, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/38, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/39, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/4, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/40, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/41, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/42, - ,down,auto-speed
@@ -89,12 +94,15 @@ hq-dc-acc-2B,Ethernet3/45, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/46, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/47, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet3/48, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/5, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/6, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/7, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/8, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet3/9, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/1, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/2, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/3, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/4, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/5, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/6, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/7, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/8, - ,down,auto-speed
+hq-dc-acc-2B,Ethernet4/9, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/10, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/11, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/12, - ,down,auto-speed
@@ -105,7 +113,6 @@ hq-dc-acc-2B,Ethernet4/16, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/17, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/18, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/19, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/2, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/20, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/21, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/22, - ,down,auto-speed
@@ -116,7 +123,6 @@ hq-dc-acc-2B,Ethernet4/26, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/27, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/28, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/29, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/3, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/30, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/31, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/32, - ,down,auto-speed
@@ -127,7 +133,6 @@ hq-dc-acc-2B,Ethernet4/36, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/37, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/38, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/39, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/4, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/40, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/41, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/42, - ,down,auto-speed
@@ -137,9 +142,4 @@ hq-dc-acc-2B,Ethernet4/45, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/46, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/47, - ,down,auto-speed
 hq-dc-acc-2B,Ethernet4/48, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/5, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/6, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/7, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/8, - ,down,auto-speed
-hq-dc-acc-2B,Ethernet4/9, - ,down,auto-speed
 hq-dc-acc-2B,mgmt0, - ,up,1000 Mb/s

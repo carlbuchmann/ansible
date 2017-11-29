@@ -23,6 +23,7 @@
       template:
         src: './templates/wan/combined/wan-config.j2'
         dest: "{{ wan_config_file }}"
+        trim_blocks: yes
         owner: ansible
         group: ansible_users
         mode: 0777
