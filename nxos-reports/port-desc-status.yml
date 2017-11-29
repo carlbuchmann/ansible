@@ -8,11 +8,11 @@
         provider: "{{ nxosapi }}"
       register: gather_nxos_interfaces
 
-    - set_fact: nxos_facts_interfaces={{ gather_nxos_interfaces.ansible_facts.ansible_net_interfaces }}
+    - set_fact: int_facts={{ gather_nxos_interfaces.ansible_facts.ansible_net_interfaces }}
     
     - name: view output
       debug:
-        msg: "{{ nxos_facts_interfaces }}"
+        msg: "{{ int_facts }}"
    
     - name: save output results per device
       template:
