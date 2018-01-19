@@ -1,0 +1,69 @@
+# This is a comment, starts with "#"
+
+# Start of a yaml document with "---"
+--- 
+
+# end of yaml document with "..."
+...
+
+#Scalar values
+scalar values:
+  - hello   #string
+  - 99      #number
+  - True    #boolean
+  - http://docs.ansible.com # URL can be a string
+
+#special string should be quoted when it contains these special charaters: (:, {, }, [, ], ,, &, *, #, ?, |, -, <, >, =, !, %, @, `)
+special: "YAML: is a simple language" 
+
+
+# multi-line, start with "| or >" , to improve readability
+multi_line:
+  - | 
+    multi-line string
+    indentation matters!
+
+
+# Lists
+List:
+  - zero
+  - one
+  - two
+  - three
+  - four
+# Shorthand
+list_shorthand: [ one, two, three, four ]
+
+
+
+# Dictionary
+ioscli:
+  username: root
+  password: H3ll0w0r1d!@
+  host: "{{inventory_hostname}}"
+  port: 22
+
+# Dictioanary shorthand
+ioscli_shorthand: { username: root, password: H3ll0w0r1d!@, host: "{{inventory_hostname}}", port: 22 }
+
+# Dictionaty + List
+GigabitEthernet4.10:
+  state_enabled: true 
+  description: data
+  trunk:
+    dot1q: 10
+  ip:
+    address: 172.22.10.1/24
+  ip_helper:
+    addresses:
+    - 172.22.10.11
+    - 172.22.10.12
+    - 172.22.10.13
+
+
+
+
+
+
+
+
