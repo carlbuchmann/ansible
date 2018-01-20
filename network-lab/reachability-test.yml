@@ -4,11 +4,18 @@
 
   tasks:
 
-   - name: Test reachability to branch wan loopback IPs using default vrf
-     ios_ping:
-       provider: "{{ ioscli }}"
-       dest: '{{ item }}'
-     with_items:
-       - 172.21.255.1
-       - 172.22.255.1
-       - 172.16.1.201
+    - name: Test reachability to branch wan loopback IPs using default vrf
+      ios_ping:
+        provider: "{{ ioscli }}"
+        dest: '{{ item }}'
+      with_items:
+        - 172.21.255.1
+        - 172.22.255.1
+
+    - name: Test reachability to branch wan loopback IPs using mgmt vrf
+      ios_ping:
+        provider: "{{ ioscli }}"
+        dest: '{{ item }}'
+        vrf: mgmt
+      with_items:
+        - 172.16.1.201
