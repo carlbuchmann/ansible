@@ -24,6 +24,9 @@ branch
 mc
 lan
 
+[gitlabsvr]
+gitlab
+
 [all:vars]
 ansible_user=cisco
 ansible_password=cisco
