@@ -1,0 +1,18 @@
+
+- hosts: gitlabsvr
+
+  vars_files:
+    - vars/gitlab.yml
+  
+  vars_prompt:
+    - name: ansible_user
+      prompt: "Enter ansible user"
+   
+    - name: ansible_password
+      prompt: "Enter ansible password"
+      private: yes
+
+  
+  tasks:
+  - include_role: 
+       name: gitlab
