@@ -82,3 +82,8 @@
     state: enabled
   notify: restart firewalld
 
+- name: Bounce firewalld
+  service: 
+    name: firewalld
+    state: restarted
+
