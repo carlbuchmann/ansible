@@ -43,6 +43,7 @@
   when: (gitlab_file.stat.exists == false)
 
 # Start and configure GitLab. Sometimes the first run fails, but after that,
+# restarts fix problems, so ignore failures on this run.
 
 - name: Reconfigure GitLab (first run).
   command: >
@@ -81,4 +82,3 @@
     permanent: true
     state: enabled
   notify: restart firewalld
-
