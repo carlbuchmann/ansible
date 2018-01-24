@@ -80,4 +80,5 @@
     service: https
     permanent: true
     state: enabled
+  notify: restart firewalld
 
