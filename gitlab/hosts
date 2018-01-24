@@ -1,0 +1,6 @@
+gitlabsvr]
+gitlab
+
+[all:vars]
+ansible_user=root
+

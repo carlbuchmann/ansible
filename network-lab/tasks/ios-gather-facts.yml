@@ -7,4 +7,4 @@
 - set_fact: interface_facts={{ios_facts_results.ansible_facts.ansible_net_interfaces}}
 
 - debug:
-    msg: "{{interface_facts}}"
+    msg: "{{ios_facts_results}}"
