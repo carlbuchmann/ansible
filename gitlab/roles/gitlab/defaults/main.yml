@@ -1,6 +1,6 @@
 ---
 # General config.
-gitlab_external_url: "https://gitlab.homelab.local/"
+gitlab_external_url: "https://gitlab/"
 gitlab_git_data_dir: "/var/opt/gitlab/git-data"
 gitlab_edition: "gitlab-ce"
 gitlab_version: ''
