@@ -12,7 +12,7 @@
         - 172.21.255.1
         - 172.22.255.1
 
-    - name: Test reachability to branch wan loopback IPs using mgmt vrf
+    - name: Test reachability to ansible management IP using mgmt vrf
       ios_ping:
         provider: "{{ ioscli }}"
         dest: '{{ item }}'
