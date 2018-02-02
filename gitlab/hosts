@@ -1,4 +1,5 @@
-[gitlabsvr]
+[enterprise]
+l-ansiblerh3
 gitlab
 
 [all:vars]
