@@ -1,5 +1,5 @@
-ansible_user: ansible
-ansible_password: '@nsible123!'
+ansible_user: ansible@HOMELAB.LOCAL
+ansible_password: ans1b1e123!
 ansible_port: 5985
 ansible_connection: winrm
 # The following is necessary for Python 2.7.9+ (or any older Python that has backported SSLContext, eg, Python 2.7.5 on RHEL7) when using default WinRM self-signed certificates:
