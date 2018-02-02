@@ -1,5 +1,5 @@
 
-- hosts: gitlabsvr
+- hosts: gitlab
 
   vars_files:
     - vars/gitlab.yml
