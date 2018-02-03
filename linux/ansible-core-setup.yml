@@ -24,9 +24,13 @@
         - krb5-libs
         - krb5-workstation
 
-    - name: install winrm
+    - name: install python winrm
       pip:
         name: pywinrm>=0.2.2
+
+    - name: install python-kerberos
+      pip:
+        name: pywinrm[kerberos]
 
     - name: upgrade all packages
       yum:
