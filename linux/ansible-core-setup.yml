@@ -3,7 +3,7 @@
   tasks:
     - name: install administration tools
       yum:
-        name: {{ item }}
+        name: "{{ item }}"
         state: present
       with_items:
         - net-tools
