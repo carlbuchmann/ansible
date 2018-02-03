@@ -26,8 +26,7 @@
 
     - name: install winrm
       pip:
-        name: pywinrm
-        version: '>=0.2.2'
+        name: pywinrm>=0.2.2
 
     - name: upgrade all packages
       yum:
