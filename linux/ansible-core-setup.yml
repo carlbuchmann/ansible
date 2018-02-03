@@ -1,6 +1,11 @@
 - hosts: localhost
   
   tasks:
+    - name: enable extras repo
+      yum:
+        name: epel-release
+        state: present
+
     - name: install administration tools
       yum:
         name: "{{ item }}"
