@@ -7,7 +7,23 @@
         state: present
       with_items:
         - net-tools
-  
+
+    - name: install ansible windows management dependencies
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - python-pip
+        - python-devel
+        - krb5-devel
+        - krb5-libs
+        - krb5-workstation
+
+    - name: install winrm
+      pip:
+        name: pywinrm
+        version: '>=0.2.2'
+
     - name: upgrade all packages
       yum:
         name: '*'
