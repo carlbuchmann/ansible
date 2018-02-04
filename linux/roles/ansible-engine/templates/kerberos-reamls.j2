@@ -17,7 +17,7 @@ includedir /etc/krb5.conf.d/
 
 [realms]
 
- {{ domain_caps }} = { {% for  domain_controller in domain_controllers %}  
+ {{ domain_caps }} = {{% for  domain_controller in domain_controllers %}
   kdc = {{ domain_controller }}{% endfor %}
 
  }
