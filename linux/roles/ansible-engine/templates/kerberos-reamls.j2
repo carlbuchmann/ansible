@@ -19,6 +19,7 @@ includedir /etc/krb5.conf.d/
 
  {{ domain_caps }} = { {% for  domain_controller in domain_controllers %}  
   kdc = {{ domain_controller }}{% endfor %}
+
  }
 
 
