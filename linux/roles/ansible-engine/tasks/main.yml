@@ -11,17 +11,24 @@
   with_items:
     - net-tools
 
-- name: install ansible windows management dependencies
+- name: install python tools
   yum:
     name: "{{ item }}"
     state: present
   with_items:
     - python-pip
     - python-devel
+    - gcc
+
+- name: install ansible windows kerberos dependencies
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
     - krb5-devel
     - krb5-libs
     - krb5-workstation
-    - gcc
+
 
 - name: install python winrm
   pip:
