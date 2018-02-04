@@ -23,6 +23,7 @@
         - krb5-devel
         - krb5-libs
         - krb5-workstation
+        - gcc
 
     - name: install python winrm
       pip:
