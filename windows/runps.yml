@@ -1,9 +1,6 @@
 - name: test script module
   hosts: windows
   tasks:
-    - name: run test script
-      win_shell: files/test_script.ps1
-      register: psoutput
 
     - debug:
         msg: "{{ ansible_facts }}"
