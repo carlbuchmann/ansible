@@ -1,1 +1,1 @@
-Get-WmiObject win32_operatingsystem | Select-Object csname, @{LABEL=’LastBootUpTime’;EXPRESSION={$_.ConverttoDateTime($_.lastbootuptime)}} | ConvertTo-Json
+Get-WmiObject win32_operatingsystem | Select-Object csname, @{LABEL='LastBootUpTime';EXPRESSION={$_.ConverttoDateTime($_.lastbootuptime)}} | ConvertTo-Json
