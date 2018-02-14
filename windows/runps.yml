@@ -3,7 +3,7 @@
   tasks:
 
     - debug:
-        msg: "{{ ansible_facts }}"
+        msg: "{{  ansible_ip_addresses }}"
 
 
 - name: test script module
