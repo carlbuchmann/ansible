@@ -10,13 +10,13 @@
         msg: "{{ psoutput.stdout }}"
 
     - name: run test script
-      win_shell: Get-WmiObject win32_operatingsystem | select csname, @{LABEL=’LastBootUpTime’;EXPRESSION={$_.ConverttoDateTime($_.lastbootuptime)}} | ConvertTo-Json
+      win_shell: Get-WmiObject win32_operatingsystem | ConvertTo-Json
       register: uptime_results
 
     - debug:
         msg: "{{ uptime_results.stdout }}"
 
-    - set_fact: uptime={{ uptime_results.stdout.LastBootUpTime.DateTime }}
+    - set_fact: uptime={{ uptime_results.stdout }}
 
     - name: uptime report
       template:
