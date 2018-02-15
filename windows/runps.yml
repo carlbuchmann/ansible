@@ -3,13 +3,6 @@
   tasks:
 
     - name: run test script
-      script: files/test_script.ps1
-      register: psoutput
-
-    - debug:
-        msg: "{{ psoutput.stdout }}"
-
-    - name: run test script
       win_shell: Get-WmiObject win32_operatingsystem | ConvertTo-Json
       register: uptime_results
 
@@ -17,6 +10,9 @@
         msg: "{{ uptime_results.stdout }}"
 
     - set_fact: uptime={{ uptime_results.stdout }}
+
+    - debug:
+        msg: "{{ hostvars }}"
 
     - name: uptime report
       template:
