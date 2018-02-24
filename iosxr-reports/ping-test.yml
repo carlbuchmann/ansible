@@ -11,5 +11,16 @@
  
     - name: view output
       debug:
-        msg: "{{ ping_results }}"
-   
+        msg: "{{ ping_results.stdout[3] }}"
+
+
+- hosts: localhost
+
+  tasks:
+    - name: record ping results to file 
+      ineinfile:
+        path: ./reports/rtr1-azure.csv 
+        state: present
+        line: '{{ ping_results.stdout[3] }}'
+    
+       
