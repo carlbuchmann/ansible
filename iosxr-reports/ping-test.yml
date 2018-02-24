@@ -8,6 +8,7 @@
         dest: '{{ item }}'
       with_items:
         - 172.16.1.202
+      register: ping_results
       ignore_errors: yes
  
     - name: view output
