@@ -4,9 +4,10 @@
   tasks:
     - name: reachability test
       iosxr_command:
+        provider: "{{ iosxrcli }}"
         commands: ping ipv4 192.168.255.1 vrf VPN_DICT
-        register: ping_results
-        ignore_errors: yes
+      register: ping_results
+      ignore_errors: yes
  
     - name: view output
       debug:
