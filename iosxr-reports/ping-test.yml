@@ -18,7 +18,7 @@
 
   tasks:
     - name: record ping results to file 
-      ineinfile:
+      lineinfile:
         path: ./reports/rtr1-azure.csv 
         state: present
         line: '{{ ping_results.stdout[3] }}'
