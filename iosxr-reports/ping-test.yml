@@ -2,9 +2,9 @@
 - hosts: cloudx
 
   tasks:
-    - name: gather nxos interfaces facts
+    - name: reachability test
       ios_ping:
-        provider: "{{ ioscli }}"
+        provider: "{{ iosxrcli }}"
         dest: '{{ item }}'
       with_items:
         - 172.16.1.202
