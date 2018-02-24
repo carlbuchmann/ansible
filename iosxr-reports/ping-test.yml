@@ -1,0 +1,16 @@
+---
+- hosts: cloudx
+
+  tasks:
+    - name: gather nxos interfaces facts
+      ios_ping:
+        provider: "{{ ioscli }}"
+        dest: '{{ item }}'
+      with_items:
+        - 172.16.1.202
+      ignore_errors: yes
+ 
+    - name: view output
+      debug:
+        msg: "{{ ping_results }}"
+   
