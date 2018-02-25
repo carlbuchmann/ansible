@@ -3,3 +3,5 @@ time,source,destination,packet loss,rtt avg,rtt min,rtt max
 [u'01:57:53.377 UTC Sun Feb 25 2018'],rtr1,telus,0%,2,1,9
 [u'01:58:04.336 UTC Sun Feb 25 2018'],rtr1,telus,0%,2,1,9
 [u'01:58:28.665 UTC Sun Feb 25 2018'],rtr1,telus,0%,1,1,1
+[u'02:43:16.371 UTC Sun Feb 25 2018'],rtr1,telus,0%,1,1,1
+[u'02:52:54.541 UTC Sun Feb 25 2018'],rtr1,telus,0%,2,1,9
