@@ -1,0 +1,36 @@
+- hosts: windows
+
+  vars_prompt:
+    - name: ansible_user
+      prompt: "Enter ansible user"
+      private: no
+
+    - name: ansible_password
+      prompt: "Enter ansible password"
+      private: yes
+
+
+  tasks:
+
+    - name: run get-sandisk
+      win_shell: get-sandisk | ConvertTo-json
+      register: get_sandisk_results
+
+    - name: view sandisk stdout
+      debug: 
+       var: get_sandisk_results.stdout
+       verbosity: 2
+
+    - set_fact: get_sandisk={{ get_sandisk_results.stdout }}
+
+    - name: create SAN Path report
+      template:
+        src: ./templates/get-sandisk-md.j2
+        dest: ./reports/get-sandisk.md
+      delegate_to: localhost
+      run_once: true
+
+    
+    
+    
+    
