@@ -18,8 +18,8 @@
 
     - name: view sandisk stdout
       debug: 
-       var: get_sandisk_results.stdout
-       verbosity: 2
+        var: get_sandisk_results.stdout
+        verbosity: 2
 
     - set_fact: get_sandisk={{ get_sandisk_results.stdout }}
 
@@ -30,7 +30,7 @@
       delegate_to: localhost
       run_once: true
 
-    
+
     
     
     
