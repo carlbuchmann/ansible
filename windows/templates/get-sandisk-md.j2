@@ -5,7 +5,7 @@
 {% for server in groups['windows'] %}
 {%     if hostvars[server].get_sandisk is defined %}
 {%         for lun in hostvars[server].get_sandisk %}
-|{{ server }}|{% if lun.LunPath is defined %} {{ lun.LunPath }} {% else %} - {% endif %}|{% if lun.PathCount is defined %} {{ lun.PathCount }} {% else %} - {% endif %}|{% if lun.Storage is defined %} {{ lun.Storage }} {% else %} - {% endif %}|{% if lun.PathCount is defined %}{% if lun.PathCount <= 3 %} Warning {% else %} OK {% endif %} - {% endif %}|
+|{{ server }}|{{ lun.LunPath }}|{{ lun.PathCount }}|{{ lun.Storage }}|{% if lun.PathCount <= 3 %} Warning {% else %} OK {% endif %}|
 {%         endfor %}
 {%     endif %}
 {% endfor %}

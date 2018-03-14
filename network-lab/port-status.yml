@@ -1,0 +1,35 @@
+---
+  - hosts: iwan
+  
+    tasks:
+      - name: gather ios interfaces facts
+        ios_facts:
+          gather_subset: interfaces
+          provider: "{{ ioscli }}"
+        register: gather_ios_interfaces
+  
+      - set_fact: int_facts={{ gather_ios_interfaces.ansible_facts.ansible_net_interfaces }}
+      
+      - name: view output
+        debug:
+          msg: "{{ int_facts }}"
+     
+      - name: save output results per device
+        template:
+          src: "./templates/port-dest-status-report.j2"
+          dest: './reports/devices/{{inventory_hostname}}-nxos-interface-report.csv'
+          owner: ansible
+          group: ansible_users
+          mode: 0777
+  
+  - hosts: localhost
+  
+    tasks:
+    
+      - name: create combinned report
+        assemble:
+          src: ./reports/devices
+          dest: './reports/nxos-interface-report.csv'
+          owner: ansible
+          group: ansible_users
+          mode: 0777
