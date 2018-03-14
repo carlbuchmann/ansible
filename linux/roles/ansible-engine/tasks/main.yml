@@ -42,6 +42,10 @@
   pip:
     name: ansible[azure]
 
+- name: install napalm-ansible
+  pip:
+    name: napalm-ansible
+
 - name: Copy Kerberos reaml configuration file
   template:
     src: kerberos-reamls.j2
