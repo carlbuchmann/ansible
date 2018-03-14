@@ -1,0 +1,3 @@
+{% for interface in int_facts|natural_sort() %}
+{{ inventory_hostname }},{{ interface }},{% if int_facts[interface].description is defined %} {{ int_facts[interface].description }} {% else %} - {% endif %},{{ int_facts[interface].state }},{{ int_facts[interface].speed }}
+{% endfor %}
