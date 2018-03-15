@@ -1,6 +1,6 @@
 Switch Name,Interface,Description,State,Speed
-{% for router in groups['wan'] %}
+{% for router in groups['iwan'] %}
 {%     for interface in hostvars[router].int_facts|natural_sort() %}
-{{ inventory_hostname }},{{ interface }},{% if int_facts[interface].description is defined %} {{ int_facts[interface].description }} {% else %} - {% endif %},{{ int_facts[interface].operstatus }},{{ int_facts[interface].bandwidth }}
+{{ router }},{{ interface }},{% if hostvars[router].int_facts[interface].description is defined %} {{ hostvars[router].int_facts[interface].description }} {% else %} - {% endif %},{{ hostvars[router].int_facts[interface].operstatus }},{{ hostvars[router].int_facts[interface].bandwidth }}
 {%     endfor %}
 {% endfor %}
