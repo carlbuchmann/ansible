@@ -1,3 +1,6 @@
-{% for interface in int_facts|natural_sort() %}
+Switch Name,Interface,Description,State,Speed
+{% for router in groups['wan'] %}
+{%     for interface in hostvars[router].int_facts|natural_sort() %}
 {{ inventory_hostname }},{{ interface }},{% if int_facts[interface].description is defined %} {{ int_facts[interface].description }} {% else %} - {% endif %},{{ int_facts[interface].operstatus }},{{ int_facts[interface].bandwidth }}
+{%     endfor %}
 {% endfor %}

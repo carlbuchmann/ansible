@@ -1,5 +1,0 @@
-hq-wan-inet,GigabitEthernet1,  ,up,1000000
-hq-wan-inet,GigabitEthernet2, inet_provider_ge0/5 ,up,500000
-hq-wan-inet,GigabitEthernet3, hq-core_ge0/3 ,up,1000000
-hq-wan-inet,Loopback0, mgmt ,up,8000000
-hq-wan-inet,Tunnel11, dmvpn_inet_1 ,up,100000

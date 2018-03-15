@@ -17,13 +17,6 @@
       - name: save output results per device
         template:
           src: "./templates/reports/port-status-report.j2"
-          dest: './reports/devices/{{inventory_hostname}}-interface-report.csv'
-  
-  - hosts: localhost
-  
-    tasks:
-    
-      - name: create combinned report
-        assemble:
-          src: ./reports/devices
-          dest: './reports/interface-report.csv'
+          dest: './reports/devices/interface-report.csv'
+        delegate_to: localhost
+        run_once: true

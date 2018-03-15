@@ -1,7 +1,0 @@
-branch1-wan,GigabitEthernet1,  ,up,1000000
-branch1-wan,GigabitEthernet2, mpls_provider ,up,100000
-branch1-wan,GigabitEthernet3, inet_provider ,up,250000
-branch1-wan,GigabitEthernet4, branch1-core_ge0/1 ,up,1000000
-branch1-wan,Loopback0, mgmt ,up,8000000
-branch1-wan,Tunnel10, dmvpn_mpls_1 ,up,100000
-branch1-wan,Tunnel11, dmvpn_inet_1 ,up,250000
