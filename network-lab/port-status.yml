@@ -9,10 +9,6 @@
         register: gather_ios_interfaces
   
       - set_fact: int_facts={{ gather_ios_interfaces.ansible_facts.ansible_net_interfaces }}
-      
-      - name: view output
-        debug:
-          msg: "{{ int_facts }}"
      
       - name: save output results per device
         template:
