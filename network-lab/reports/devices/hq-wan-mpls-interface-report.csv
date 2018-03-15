@@ -1,0 +1,5 @@
+hq-wan-mpls,GigabitEthernet1,  ,up,1000000
+hq-wan-mpls,GigabitEthernet2, mpls_provider_ge0/2 ,up,500000
+hq-wan-mpls,GigabitEthernet3, hq-core_ge0/2 ,up,1000000
+hq-wan-mpls,Loopback0, mgmt ,up,8000000
+hq-wan-mpls,Tunnel10, dmvpn_mpls_1 ,up,100000

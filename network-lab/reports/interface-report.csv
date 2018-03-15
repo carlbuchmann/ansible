@@ -1,0 +1,30 @@
+switch_name,interface,description,state,speed
+branch1-wan,GigabitEthernet1,  ,up,1000000
+branch1-wan,GigabitEthernet2, mpls_provider ,up,100000
+branch1-wan,GigabitEthernet3, inet_provider ,up,250000
+branch1-wan,GigabitEthernet4, branch1-core_ge0/1 ,up,1000000
+branch1-wan,Loopback0, mgmt ,up,8000000
+branch1-wan,Tunnel10, dmvpn_mpls_1 ,up,100000
+branch1-wan,Tunnel11, dmvpn_inet_1 ,up,250000
+branch2-wan,GigabitEthernet1,  ,up,1000000
+branch2-wan,GigabitEthernet2, mpls_provider ,up,100000
+branch2-wan,GigabitEthernet3, inet_provider ,up,250000
+branch2-wan,GigabitEthernet4, branch2-lan_ge0/1 ,up,1000000
+branch2-wan,GigabitEthernet4.10, data ,up,1000000
+branch2-wan,GigabitEthernet4.11, voice ,up,1000000
+branch2-wan,GigabitEthernet4.12, guest ,up,1000000
+branch2-wan,GigabitEthernet4.13, wifi ,up,1000000
+branch2-wan,GigabitEthernet4.14, wifi2 ,up,1000000
+branch2-wan,Loopback0, mgmt ,up,8000000
+branch2-wan,Tunnel10, dmvpn_mpls_1 ,up,100000
+branch2-wan,Tunnel11, dmvpn_inet_1 ,up,250000
+hq-wan-inet,GigabitEthernet1,  ,up,1000000
+hq-wan-inet,GigabitEthernet2, inet_provider_ge0/5 ,up,500000
+hq-wan-inet,GigabitEthernet3, hq-core_ge0/3 ,up,1000000
+hq-wan-inet,Loopback0, mgmt ,up,8000000
+hq-wan-inet,Tunnel11, dmvpn_inet_1 ,up,100000
+hq-wan-mpls,GigabitEthernet1,  ,up,1000000
+hq-wan-mpls,GigabitEthernet2, mpls_provider_ge0/2 ,up,500000
+hq-wan-mpls,GigabitEthernet3, hq-core_ge0/2 ,up,1000000
+hq-wan-mpls,Loopback0, mgmt ,up,8000000
+hq-wan-mpls,Tunnel10, dmvpn_mpls_1 ,up,100000
