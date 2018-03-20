@@ -46,6 +46,10 @@
   pip:
     name: napalm-ansible
 
+- name: install network address filter
+  pip:
+    name: python-netaddr
+
 - name: Copy Kerberos reaml configuration file
   template:
     src: kerberos-reamls.j2
