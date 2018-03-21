@@ -136,6 +136,19 @@ lan_interfaces:
     acl_in:
       name: acl-wifi
     delay: 25000
+    
+  - interface: GigabitEthernet4.15
+    state_enabled: true 
+    description: hoc_demo
+    trunk:
+      dot1q: 15
+    ip:
+      address: 172.22.15.1/24
+    ip_helper:
+      addresses:
+      - 172.20.5.11
+      - 172.20.5.12
+
 
 tunnel_interfaces:
   
