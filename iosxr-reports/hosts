@@ -1,0 +1,9 @@
+[cloudx]
+172.16.1.10
+
+
+[all:vars]
+ansible_user=cisco
+ansible_password=cisco
+
+

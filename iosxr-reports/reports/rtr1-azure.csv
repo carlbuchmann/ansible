@@ -1,0 +1,10 @@
+time,source,destination,packet loss,rtt avg,rtt min,rtt max
+[u'01:46:22.065 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'01:47:33.120 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'01:47:55.528 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'01:54:55.139 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'01:57:53.377 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'01:58:04.336 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'01:58:28.665 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'02:43:16.371 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'02:52:54.541 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1

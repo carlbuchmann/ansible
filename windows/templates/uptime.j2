@@ -1,0 +1,5 @@
+{{ inventory_hostname }} {{ uptime.LastBootUpTime }} {{ uptime.ClassPath.ClassName }}
+
+{% for SystemProperty in uptime.SystemProperties %}
+{{ SystemProperty.Name }} {{ SystemProperty.Value }}
+{% endfor %}

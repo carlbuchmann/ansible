@@ -1,0 +1,24 @@
+- name: test script module
+  hosts: windows
+  tasks:
+
+    - name: run test script
+      win_shell: Get-WmiObject win32_operatingsystem | ConvertTo-Json
+      register: uptime_results
+
+    - debug:
+        msg: "{{ uptime_results.stdout }}"
+
+    - set_fact: uptime={{ uptime_results.stdout }}
+
+    - debug:
+        msg: "{{ hostvars }}"
+
+    - name: uptime report
+      template:
+        src: ./templates/uptime.j2
+        dest: ./reports/servers/{{ inventory_hostname }}-uptime.md
+        owner: root
+        group: root
+        mode: 0777
+      delegate_to: localhost

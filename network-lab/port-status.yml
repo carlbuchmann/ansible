@@ -1,0 +1,18 @@
+---
+  - hosts: iwan
+  
+    tasks:
+      - name: gather ios interfaces facts
+        ios_facts:
+          gather_subset: interfaces
+          provider: "{{ ioscli }}"
+        register: gather_ios_interfaces
+  
+      - set_fact: int_facts={{ gather_ios_interfaces.ansible_facts.ansible_net_interfaces }}
+     
+      - name: save output results per device
+        template:
+          src: "./templates/reports/port-status-report.j2"
+          dest: './reports/interface-report.csv'
+        delegate_to: localhost
+        run_once: true

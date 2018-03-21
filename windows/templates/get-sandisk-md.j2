@@ -1,0 +1,11 @@
+# SAN Disk Path Report
+
+| Hostname | Lun Path | Path Count | Storage | State |
+| -------- | -------- |----------- | ------- |------ |
+{% for server in groups['windows'] %}
+{%     if hostvars[server].get_sandisk is defined %}
+{%         for lun in hostvars[server].get_sandisk %}
+|{{ server }}|{{ lun.LunPath }}|{{ lun.PathCount }}|{{ lun.Storage }}|{% if lun.PathCount <= 3 %} Warning {% else %} OK {% endif %}|
+{%         endfor %}
+{%     endif %}
+{% endfor %}
