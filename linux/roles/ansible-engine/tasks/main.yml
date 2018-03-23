@@ -50,6 +50,14 @@
   pip:
     name: python-netaddr
 
+- name: install F5 dependencies
+  pip:
+    name: "{{ item }}"
+  with_items:  
+    - f5-sdk
+    - bigsuds
+    - deepdiff
+
 - name: Copy Kerberos reaml configuration file
   template:
     src: kerberos-reamls.j2
