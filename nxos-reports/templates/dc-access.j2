@@ -1,59 +1,74 @@
 {% for server in servers|natural_sort() %}
 {%     for adapter in servers[server].adapters %}
-{# ###### Type CNA  ######### #}
-{%             for switch in adapter.switches %}
-{%                 if switch is number %}
-{%                     set port_channel_id = (adapter.switches[0] - 100) * 100 + adapter.switch_ports[0] %}
+{%         for switch in adapter.switches %}
+{%             if switch is number %}
+{%                 set port_channel_id = (adapter.switches[0] - 100) * 100 + adapter.switch_ports[0] %}
 interface Ethernet{{ switch }}/1/{{ adapter.switch_ports[loop.index0] }}
   description {{ server }}_{{ adapter.server_ports[loop.index0] }}
-{%                     if port_profiles[adapter.profile].mode == "access" %}
+{%                 if port_profiles[adapter.profile].mode == "access" %}
   switchport access vlan {{ port_profiles[adapter.profile].vlans }}
-{%                     elif port_profiles[adapter.profile].mode == "trunk" %}
+{%                 elif port_profiles[adapter.profile].mode == "trunk" %}
   switchport mode trunk
   switchport trunk native vlan 99
   switchport trunk allowed vlan {{ port_profiles[adapter.profile].vlans }}
-{%                     elif port_profiles[adapter.profile].mode == "private-vlan" %}
+{%                 elif port_profiles[adapter.profile].mode == "private-vlan" %}
   switchport mode private-vlan host
-{%                     endif %}
-{%                     if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
+{%                 endif %}
+{%                 if adapter.type != "cna" %}
+  speed 1000
+{%                 endif %}
+{%                 if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
   channel-group {{ port_channel_id }} mode active
-{%                     endif %}
-{%                 else %}
-{%                     set port_channel_id = adapter.port_channel.id %}
-{%                     if adapter.switches[loop.index0] == inventory_hostname %}
+{%                 endif %}
+{%             else %}
+{%                 set port_channel_id = adapter.port_channel.id %}
+{%                 if adapter.switches[loop.index0] == inventory_hostname %}
 interface Ethernet{{ adapter.switch_ports[loop.index0]}}
   description {{ server }}_{{ adapter.server_ports[loop.index0] }}
+{%                 if port_profiles[adapter.profile].mode == "access" %}
+  switchport access vlan {{ port_profiles[adapter.profile].vlans }}
+{%                 elif port_profiles[adapter.profile].mode == "trunk" %}
   switchport mode trunk
   switchport trunk native vlan 99
   switchport trunk allowed vlan {{ port_profiles[adapter.profile].vlans }}
-{%                         if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
+{%                 elif port_profiles[adapter.profile].mode == "private-vlan" %}
+  switchport mode private-vlan host
+{%                 endif %}
+{%                     if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
   channel-group {{ port_channel_id }} mode active
-{%                         endif %}
 {%                     endif %}
 {%                 endif %}
-{%                 if loop.last %}
-{%                     if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
+{%             endif %}
+{%             if loop.last %}
+{%                 if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
 interface port-channel{{ port_channel_id }}
-  inherit port-profile {{ adapter.profile }}
-  description {{ server }}
+  description {{ server }}_{{ adapter.port_channel.description }}
+{%                 if port_profiles[adapter.profile].mode == "access" %}
+  switchport access vlan {{ port_profiles[adapter.profile].vlans }}
+{%                 elif port_profiles[adapter.profile].mode == "trunk" %}
+  switchport mode trunk
+  switchport trunk native vlan 99
+  switchport trunk allowed vlan {{ port_profiles[adapter.profile].vlans }}
+{%                 elif port_profiles[adapter.profile].mode == "private-vlan" %}
+  switchport mode private-vlan host
+{%                 endif %}
   no lacp suspend-individual
-  speed 10000
   vpc {{ port_channel_id }}
+{%                 endif %}
+{%                 if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
+{%                     if fabric == "A" %}{% set port_id = 0 %}
+{%                     elif fabric == "B" %}{% set port_id = 1 %}
 {%                     endif %}
-{%                     if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
-{%                         if fabric == "A" %}{% set port_id = 0 %}
-{%                         elif fabric == "B" %}{% set port_id = 1 %}
-{%                         endif %}
-{%                         set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
+{%                     set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
 interface vfc {{ vfc_id }}
   bind interface {{ switch }}/1/{{ adapter.switch_ports[port_id] }}
   switchport description {{ server }}_{{ adapter.server_ports[port_id] }}
   no shutdown
 vsan database
   vsan {{ fcoe_vlan }} interface vfc {{ vfc_id }}
-{%                     endif %} 
-{%                 endif %}
-{%             endfor %}
+{%                 endif %} 
+{%             endif %}
+{%         endfor %}
 {%     endfor %}
 {% endfor %}
 
