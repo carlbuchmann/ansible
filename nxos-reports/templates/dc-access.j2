@@ -16,6 +16,8 @@ interface Ethernet{{ switch }}/1/{{ adapter.switch_ports[loop.index0] }}
 {%                 endif %}
 {%                 if adapter.type != "cna" %}
   speed 1000
+  service-policy type queuing input DATA-IN-POLICY
+  service-policy type queuing output DATA-OUT-POLICY
 {%                 endif %}
 {%                 if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
   channel-group {{ port_channel_id }} mode active
@@ -71,13 +73,3 @@ vsan database
 {%         endfor %}
 {%     endfor %}
 {% endfor %}
-
-{#
-  service-policy type queuing input DATA-IN-POLICY
-  service-policy type queuing output DATA-OUT-POLICY
-{%             endif %}
-  speed 1000
-
-{%         endif %} 
-{%     endfor %}
-{% endfor %} #}
