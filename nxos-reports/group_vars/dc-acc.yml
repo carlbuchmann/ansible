@@ -1,0 +1,88 @@
+
+port_profiles:
+
+  VMware-TestLAB:
+    mode: trunk
+    vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000'   
+
+  iSCSI_SAN:
+    mode: trunk
+    vlans: '3000'  
+
+  OPZone:
+    mode: access
+    vlans: '701'  
+
+  OPZone_SAN:
+    mode: trunk
+    vlans: '{{ fcoe_vlan }},701'  
+
+servers:
+  
+  C220M3_TESTVHOST:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ CNA_1, CNA_2 ]
+        switch_ports: [ 7, 7 ]
+        switches: [ 110, 120 ]
+        FCoE:
+          state: present
+        port_channel:
+          state: present
+          description: LAN_Uplinks
+        profile: VMware-TestLAB
+
+  C220M3_TESTVHOST2:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ CNA_1, CNA_2 ]
+        switch_ports: [ 8, 8 ]
+        switches: [ 110, 120 ]
+        FCoE:
+          state: present
+        port_channel:
+          state: present
+          description: LAN_Uplinks
+        profile: VMware-TestLAB
+
+  SOLIDEFIRE:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ eth0, eth1 ]
+        switch_ports: [ 7/6, 7/6 ]
+        switches: [ hq-dc-acc-1A, hq-dc-acc-1B ]
+        port_channel:
+          state: present
+          id: 706
+          description: iSCSI
+        profile: iSCSI_SAN
+      - type: nic-team
+        server_ports: [ eth2, eth3 ]
+        switch_ports: [ 36, 36 ]
+        switches: [ 110, 120 ]
+        port_channel:
+          state: present
+          description: mgmt
+        profile: OPZone
+
+  NetApp FAS:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ e0b, e0d ]
+        switch_ports: [ 34, 34 ]
+        switches: [ 110, 120 ]
+        FCoE:
+          state: present
+        port_channel:
+          state: present
+          description: SAN
+        profile: OPZone_SAN
+      - type: nic
+        server_ports: [ e0M ]
+        switch_ports: [ 44 ]
+        switches: [ 120 ]
+        profile: OPZone

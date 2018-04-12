@@ -1,0 +1,8 @@
+- hosts: dc-acc
+
+  tasks:
+    - name:  create dc access configuration
+      template:
+        src: "./templates/dc-access.j2"
+        dest: './reports/devices/{{inventory_hostname}}-dc-access.cfg'
+      

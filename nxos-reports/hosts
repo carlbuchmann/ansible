@@ -20,8 +20,8 @@ hq-dc-core-2
 [dc-acc]
 hq-dc-acc-1A
 hq-dc-acc-1B
-hq-dc-acc-2A
-hq-dc-acc-2B
+#hq-dc-acc-2A
+#hq-dc-acc-2B
 
 [dc:children]
 dc-core
