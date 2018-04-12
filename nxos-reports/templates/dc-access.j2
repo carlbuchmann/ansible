@@ -85,16 +85,12 @@ interface vfc{{ vfc_id }}
 vsan database
 {% for server in servers|natural_sort() %}
 {%     for adapter in servers[server].adapters %}
-{%         for switch in adapter.switches %}
-{%             if loop.last %}
-{%                 if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
-{%                     if fabric == "A" %}{% set port_id = 0 %}
-{%                     elif fabric == "B" %}{% set port_id = 1 %}
-{%                     endif %}
-{%                     set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
-  vsan {{ fcoe_vlan }} interface vfc {{ vfc_id }}
-{%                 endif %}
+{%         if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
+{%             if fabric == "A" %}{% set port_id = 0 %}
+{%             elif fabric == "B" %}{% set port_id = 1 %}
 {%             endif %}
-{%         endfor %}
+{%             set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
+  vsan {{ fcoe_vlan }} interface vfc {{ vfc_id }}
+{%         endif %}
 {%     endfor %}
 {% endfor %}
