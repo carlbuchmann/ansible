@@ -3,7 +3,7 @@
 {%         for switch in adapter.switches %}
 {%             if switch is number %}
 {%                 set port_channel_id = (adapter.switches[0] - 100) * 100 + adapter.switch_ports[0] %}
-{# Interface Configuration #}
+{# Interface FEX Configuration #}
 interface Ethernet{{ switch }}/1/{{ adapter.switch_ports[loop.index0] }}
   description {{ server }}_{{ adapter.server_ports[loop.index0] }}
 {%                 if port_profiles[adapter.profile].mode == "access" %}
@@ -17,13 +17,16 @@ interface Ethernet{{ switch }}/1/{{ adapter.switch_ports[loop.index0] }}
 {%                 endif %}
 {%                 if adapter.type != "cna" %}
   speed 1000
-{#  service-policy type queuing input DATA-IN-POLICY
-  service-policy type queuing output DATA-OUT-POLICY #}
+{%                     if adapter.port_channel is not defined %}
+  service-policy type queuing input DATA-IN-POLICY
+  service-policy type queuing output DATA-OUT-POLICY
+{%                     endif %}
 {%                 endif %}
 {%                 if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
   channel-group {{ port_channel_id }} mode active
 {%                 endif %}
 {%             else %}
+{# Interface 5K Configuration #}
 {%                 set port_channel_id = adapter.port_channel.id %}
 {%                 if adapter.switches[loop.index0] == inventory_hostname %}
 interface Ethernet{{ adapter.switch_ports[loop.index0]}}
@@ -57,6 +60,10 @@ interface port-channel{{ port_channel_id }}
   switchport mode private-vlan host
 {%                 endif %}
   no lacp suspend-individual
+{%                 if adapter.type != "cna" %}
+  service-policy type queuing input DATA-IN-POLICY
+  service-policy type queuing output DATA-OUT-POLICY
+{%                 endif %}
   vpc {{ port_channel_id }}
 {%                 endif %}
 {# vFC interface configuration #}
