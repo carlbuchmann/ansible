@@ -1,8 +1,22 @@
 - hosts: dc-acc
 
   tasks:
-    - name:  create dc access configuration
+    - name: create dc access configuration file
       template:
         src: "./templates/configuration/dc-access.j2"
         dest: './reports/configuration/{{inventory_hostname}}-dc-access.cfg'
+
+    - name: create dc access dictionary
+      template:
+        src: "./templates/configuration/dc-access-dict.j2"
+        dest: './reports/configuration/{{inventory_hostname}}-dc-access-dict.yml'
+
+    - name: load dc-access dictionary
+      include_vars: './reports/configuration/{{inventory_hostname}}-dc-access-dict.yml'
+
+    - name:  create dc access csv file
+      template:
+        src: "./templates/configuration/dc-access-csv.j2"
+        dest: './reports/configuration/{{inventory_hostname}}-dc-access.csv'
+ 
       

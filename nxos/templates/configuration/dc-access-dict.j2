@@ -1,0 +1,62 @@
+interfaces:
+{% for server in servers|natural_sort() %}
+{%     for adapter in servers[server].adapters %}
+{%         for switch in adapter.switches %}
+{%             if switch is number %}
+{%                 set port_channel_id = (adapter.switches[0] - 100) * 100 + adapter.switch_ports[0] %}
+{# Interface FEX Configuration #}
+  ethernet{{ switch }}/1/{{ adapter.switch_ports[loop.index0] }}:
+    host: {{ server }}
+    description: {{ adapter.server_ports[loop.index0] }}
+    mode: {{ port_profiles[adapter.profile].mode }}
+    vlans: {{ port_profiles[adapter.profile].vlans }}
+{%                 if adapter.type != "cna" %}
+    speed: 1000
+{%                 else %}
+    speed: 10000
+{# placeholder for QoS #}
+{%                 endif %}
+{%                 if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
+    port_channel: {{ port_channel_id }}
+{%                 endif %}
+{%             else %}
+{# Interface 5K Configuration #}
+{%                 set port_channel_id = adapter.port_channel.id %}
+{%                 if adapter.switches[loop.index0] == inventory_hostname %}
+  ethernet{{ adapter.switch_ports[loop.index0]}}:
+    host: {{ server }}
+    description: {{ adapter.server_ports[loop.index0] }}
+    mode: {{ port_profiles[adapter.profile].mode }}
+    vlans: {{ port_profiles[adapter.profile].vlans }}
+{%                     if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
+    port_channel: {{ port_channel_id }}
+{%                     endif %}
+{%                 endif %}
+{%             endif %}
+{# Port-Channel Configuration #}
+{%             if loop.last %}
+{%                 if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
+  port-channel{{ port_channel_id }}:
+    host: {{ server }}
+    description: {{ adapter.port_channel.description }}
+    mode: {{ port_profiles[adapter.profile].mode }}
+    vlans: {{ port_profiles[adapter.profile].vlans }}
+{%                     if switch is not number %}
+    vpc: {{ port_channel_id }}
+{%                     endif %}
+{%                 endif %}
+{# vFC interface configuration #}
+{%                 if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
+{%                     if fabric == "A" %}{% set port_id = 0 %}
+{%                     elif fabric == "B" %}{% set port_id = 1 %}
+{%                     endif %}
+{%                     set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
+  vfc{{ vfc_id }}:
+    host: {{ server }}
+    description: {{ adapter.server_ports[port_id] }}
+    bind_interface: Ethernet{{ adapter.switches[port_id] }}/1/{{ adapter.switch_ports[port_id] }}
+{%                 endif %} 
+{%             endif %}
+{%         endfor %}
+{%     endfor %}
+{% endfor %}

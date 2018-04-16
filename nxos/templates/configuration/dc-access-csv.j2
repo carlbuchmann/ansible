@@ -1,0 +1,5 @@
+Interface,Host,Description,Mode,VLANs,Port-Channel,Speed
+{% for interface in interfaces|natural_sort() %}
+{{ interface }},{{ interfaces[interface].host }},{{ interfaces[interface].description }},{% if interfaces[interface].mode is defined %}{{ interfaces[interface].mode }}{% else %}N/A{% endif %},{% if interfaces[interface].vlans is defined %}"{{ interfaces[interface].vlans }}"{% else %}N/A{% endif %},{% if interfaces[interface].port_channel is defined %}{{ interfaces[interface].port_channel }}{% else %}N/A{% endif %},{% if interfaces[interface].speed is defined %}{{ interfaces[interface].speed }}{% else %}N/A{% endif %}
+
+{% endfor %}

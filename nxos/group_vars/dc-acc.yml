@@ -3,7 +3,7 @@ port_profiles:
 
   VMware-TestLAB:
     mode: trunk
-    vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000,3001'   
+    vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000'   
 
   iSCSI_SAN:
     mode: trunk
@@ -39,6 +39,20 @@ servers:
       - type: cna
         server_ports: [ CNA_1, CNA_2 ]
         switch_ports: [ 8, 8 ]
+        switches: [ 110, 120 ]
+        FCoE:
+          state: present
+        port_channel:
+          state: present
+          description: LAN_Uplinks
+        profile: VMware-TestLAB
+
+  C220M3_TESTVHOST3:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ CNA_1, CNA_2 ]
+        switch_ports: [ 9, 9 ]
         switches: [ 110, 120 ]
         FCoE:
           state: present
