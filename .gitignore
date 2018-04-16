@@ -1,1 +1,2 @@
-nxos-reports/plugins/filters/*.pyc
+*.pyc
+
