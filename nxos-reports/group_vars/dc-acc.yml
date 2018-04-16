@@ -3,7 +3,7 @@ port_profiles:
 
   VMware-TestLAB:
     mode: trunk
-    vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000'   
+    vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000,3001'   
 
   iSCSI_SAN:
     mode: trunk

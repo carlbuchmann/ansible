@@ -50,21 +50,23 @@ interface Ethernet{{ adapter.switch_ports[loop.index0]}}
 {%                 if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
 interface port-channel{{ port_channel_id }}
   description {{ server }}_{{ adapter.port_channel.description }}
-{%                 if port_profiles[adapter.profile].mode == "access" %}
+{%                     if port_profiles[adapter.profile].mode == "access" %}
   switchport access vlan {{ port_profiles[adapter.profile].vlans }}
-{%                 elif port_profiles[adapter.profile].mode == "trunk" %}
+{%                     elif port_profiles[adapter.profile].mode == "trunk" %}
   switchport mode trunk
   switchport trunk native vlan 99
   switchport trunk allowed vlan {{ port_profiles[adapter.profile].vlans }}
-{%                 elif port_profiles[adapter.profile].mode == "private-vlan" %}
+{%                     elif port_profiles[adapter.profile].mode == "private-vlan" %}
   switchport mode private-vlan host
-{%                 endif %}
+{%                     endif %}
   no lacp suspend-individual
-{%                 if adapter.type != "cna" %}
+{%                     if adapter.type != "cna" %}
   service-policy type queuing input DATA-IN-POLICY
   service-policy type queuing output DATA-OUT-POLICY
-{%                 endif %}
+{%                     endif %}
+{%                     if switch is not number %}
   vpc {{ port_channel_id }}
+{%                     endif %}
 {%                 endif %}
 {# vFC interface configuration #}
 {%                 if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
@@ -73,7 +75,7 @@ interface port-channel{{ port_channel_id }}
 {%                     endif %}
 {%                     set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
 interface vfc{{ vfc_id }}
-  bind interface Ethernet{{ switch }}/1/{{ adapter.switch_ports[port_id] }}
+  bind interface Ethernet{{ adapter.switches[port_id] }}/1/{{ adapter.switch_ports[port_id] }}
   switchport description {{ server }}_{{ adapter.server_ports[port_id] }}
   no shutdown
 {%                 endif %} 
@@ -90,7 +92,7 @@ vsan database
 {%             elif fabric == "B" %}{% set port_id = 1 %}
 {%             endif %}
 {%             set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
-  vsan {{ fcoe_vlan }} interface vfc {{ vfc_id }}
+  vsan {{ fcoe_vlan }} interface vfc{{ vfc_id }}
 {%         endif %}
 {%     endfor %}
 {% endfor %}
