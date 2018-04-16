@@ -47,6 +47,20 @@ servers:
           description: LAN_Uplinks
         profile: VMware-TestLAB
 
+  C220M3_TESTVHOST3:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ CNA_1, CNA_2 ]
+        switch_ports: [ 9, 9 ]
+        switches: [ 110, 120 ]
+        FCoE:
+          state: present
+        port_channel:
+          state: present
+          description: LAN_Uplinks
+        profile: VMware-TestLAB
+
   SOLIDEFIRE:
     rack: K5_6_023
     adapters: 
