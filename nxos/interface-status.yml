@@ -16,11 +16,8 @@
    
     - name: save output results per device
       template:
-        src: "./templates/port-dest-status-report.j2"
-        dest: './reports/devices/{{inventory_hostname}}-nxos-interface-report.csv'
-        owner: ansible
-        group: ansible_users
-        mode: 0777
+        src: "./templates/interface-status/interface-status.j2"
+        dest: "./reports/interface-status/devices/{{inventory_hostname}}-nxos-interface-report.csv"
 
 - hosts: localhost
 
@@ -28,8 +25,5 @@
   
     - name: create combinned report
       assemble:
-        src: ./reports/devices
-        dest: './reports/nxos-interface-report.csv'
-        owner: ansible
-        group: ansible_users
-        mode: 0777
+        src: "./reports/interface-status/devices"
+        dest: "./reports/interface-status/nxos-interface-report.csv"
