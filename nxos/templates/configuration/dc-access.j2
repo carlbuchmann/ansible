@@ -83,8 +83,8 @@ interface vfc{{ vfc_id }}
 {%         endfor %}
 {%     endfor %}
 {% endfor %}
-{# VSAN Database #}
-vsan database
+{# VSAN Database
+vsan database #}
 {% for server in servers|natural_sort() %}
 {%     for adapter in servers[server].adapters %}
 {%         if adapter.FCoE is defined and adapter.FCoE.state == "present" %}

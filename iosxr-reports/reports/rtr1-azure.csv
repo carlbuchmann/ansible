@@ -8,3 +8,6 @@ time,source,destination,packet loss,rtt avg,rtt min,rtt max
 [u'01:58:28.665 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
 [u'02:43:16.371 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
 [u'02:52:54.541 UTC Sun Feb 25 2018'],rtr1,azure,0%,1,1,1
+[u'19:30:58.850 UTC Fri Apr 13 2018'],rtr1,azure,0%,2,1,9
+[u'19:32:42.163 UTC Fri Apr 13 2018'],rtr1,azure,0%,2,1,9
+[u'19:34:16.837 UTC Fri Apr 13 2018'],rtr1,azure,60%,1,1,1

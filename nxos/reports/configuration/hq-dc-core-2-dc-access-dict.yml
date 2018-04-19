@@ -1,0 +1,27 @@
+interfaces:
+  ethernet1/10:
+    host: HOST_10
+    description: CNA_2
+    mode: trunk
+    vlans: 701,900,2020,2021,3000
+    port_channel: 1010
+  port-channel1010:
+    host: HOST_10
+    description: LAN_Uplinks
+    mode: trunk
+    vlans: 701,900,2020,2021,3000
+    vpc: 1010
+ 
+  ethernet1/11:
+    host: HOST_11
+    description: CNA_2
+    mode: trunk
+    vlans: 701,900,2020,2021,3000
+    port_channel: 1011
+  port-channel1011:
+    host: HOST_11
+    description: LAN_Uplinks
+    mode: trunk
+    vlans: 701,900,2020,2021,3000
+    vpc: 1011
+ 

@@ -1,4 +1,4 @@
-- hosts: dc-acc
+- hosts: dc-core
 
   tasks:
     - name: create dc access configuration file

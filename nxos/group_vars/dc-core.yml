@@ -1,0 +1,46 @@
+
+port_profiles:
+
+  VMware-TestLAB:
+    mode: trunk
+    vlans: '10-11'   
+
+  iSCSI_SAN:
+    mode: trunk
+    vlans: '3000'  
+
+  OPZone:
+    mode: access
+    vlans: '701'  
+
+  OPZone_SAN:
+    mode: trunk
+    vlans: '501,701'  
+
+servers:
+  
+  HOST_10:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ CNA_1, CNA_2 ]
+        switch_ports: [ 1/10, 1/10 ]
+        switches: [ hq-dc-core-1, hq-dc-core-2 ]
+        port_channel:
+          state: present
+          description: LAN_Uplinks
+          id: 1010
+        profile: VMware-TestLAB
+
+  HOST_11:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ CNA_1, CNA_2 ]
+        switch_ports: [ 1/11, 1/11 ]
+        switches: [ hq-dc-core-1, hq-dc-core-2 ]
+        port_channel:
+          state: present
+          description: LAN_Uplinks
+          id: 1011
+        profile: VMware-TestLAB
