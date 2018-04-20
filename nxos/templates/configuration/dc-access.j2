@@ -78,7 +78,7 @@ interface vfc{{ vfc_id }}
   bind interface Ethernet{{ adapter.switches[port_id] }}/1/{{ adapter.switch_ports[port_id] }}
   switchport description {{ server }}_{{ adapter.server_ports[port_id] }}
   no shutdown
-{%                 endif %} 
+{%                 endif %}
 {%             endif %}
 {%         endfor %}
 {%     endfor %}
