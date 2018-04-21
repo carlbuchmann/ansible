@@ -2,3 +2,7 @@
 dc01.homelab.local
 svr01.homelab.local
 tfs.homelab.local
+
+[linux]
+ansible01.homelab.local
+gitlab.homelab.local

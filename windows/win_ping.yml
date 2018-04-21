@@ -1,0 +1,20 @@
+- hosts: linux
+  gather_facts: no
+
+  tasks:
+
+    - name: ping linux hosts from dc01
+      win_shell: ping "{{ inventory_hostname }}" 
+      register: win_ping_results
+      delegate_to: dc01.homelab.local
+
+    - name: view sandisk stdout
+      debug: 
+        var: win_ping_results.stdout
+        verbosity: 2
+
+
+
+    
+    
+    
