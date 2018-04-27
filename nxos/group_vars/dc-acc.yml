@@ -100,3 +100,17 @@ servers:
         switch_ports: [ 44 ]
         switches: [ 120 ]
         profile: OPZone
+
+  C220M3_TESTVHOST4:
+    rack: K5_6_023
+    adapters: 
+      - type: cna
+        server_ports: [ CNA_1, CNA_2 ]
+        switch_ports: [ 10, 10 ]
+        switches: [ 110, 120 ]
+        FCoE:
+          state: present
+        port_channel:
+          state: present
+          description: LAN_Uplinks
+        profile: VMware-TestLAB
