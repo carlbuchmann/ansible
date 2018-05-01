@@ -1,0 +1,10 @@
+- hosts: localhost
+ 
+  tasks:
+
+    - include_vars: ../defaults/main.yml
+
+    - name: Copy Kerberos reaml configuration file
+      template:
+        src: ../templates/kerberos-reamls.j2
+        dest: ../kerberos-file.txt
