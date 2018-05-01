@@ -2,8 +2,6 @@
 
 # Enter windows domain name
 domain: homelab.local
-# Enter windows domain name in all capital letters
-domain_caps: HOMELAB.LOCAL
 # Domain controllers list
 domain_controllers:
   - dc01.homelab.local

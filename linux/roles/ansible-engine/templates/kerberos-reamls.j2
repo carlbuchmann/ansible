@@ -12,16 +12,16 @@ includedir /etc/krb5.conf.d/
  renew_lifetime = 7d
  forwardable = true
  rdns = false
- default_realm = {{ domain_caps }}
+ default_realm = {{ domain | upper }}
  default_ccache_name = KEYRING:persistent:%{uid}
 
 [realms]
- {{ domain_caps }} = {
+ {{ domain | upper }} = {
 {% for  domain_controller in domain_controllers %}
   kdc = {{ domain_controller }}
 {% endfor %}
  }
 
 [domain_realm]
- .{{ domain }} = {{ domain_caps }}
+ .{{ domain }} = {{ domain | upper }}
 
