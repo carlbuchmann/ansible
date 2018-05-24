@@ -80,7 +80,7 @@ lan_interfaces:
   
   - interface: GigabitEthernet4.11
     state_enabled: true 
-    description: voice
+    description: demo_hoc
     trunk:
       dot1q: 11
     ip:
