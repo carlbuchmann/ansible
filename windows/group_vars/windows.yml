@@ -1,5 +1,5 @@
-ansible_user: ansible@HOMELAB.LOCAL
-ansible_password: ans1b1e123!
+ansible_user: "{{ vault_ansible_user}}"
+ansible_password: "{{ vault_ansible_password }}"
 ansible_port: 5985
 ansible_connection: winrm
 ansible_winrm_transport: kerberos
