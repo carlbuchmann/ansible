@@ -3,14 +3,11 @@
 - hosts: localhost
 
   tasks:
-  
+
     - name: create wan combinned template
       assemble:
         src: ./templates/wan/
         dest: './templates/wan/combined/wan-config.j2'
-        owner: ansible
-        group: ansible_users
-        mode: 0777
 
 - hosts: iwan
 
@@ -24,9 +21,6 @@
         src: './templates/wan/combined/wan-config.j2'
         dest: "{{ wan_config_file }}"
         trim_blocks: yes
-        owner: ansible
-        group: ansible_users
-        mode: 0777
 
 - hosts: iwan
 
@@ -34,24 +28,19 @@
      wan_config: "{{ lookup('file', wan_config_file) }}"
 
   tasks:
-    
+
     - name: create wan documentation per device
       template:
         src: './templates/documentation/wan/iwan-documentation.j2'
         dest: './documentation/wan/devices/{{inventory_hostname}}-intent.md'
-        owner: ansible
-        group: ansible_users
-        mode: 0777
 
 - hosts: localhost
 
   tasks:
-  
+
     - name: create wan combinned documentation
       assemble:
         src: ./documentation/wan/devices/
         dest: './documentation/README.md'
-        owner: ansible
-        group: ansible_users
-        mode: 0777
+
 
