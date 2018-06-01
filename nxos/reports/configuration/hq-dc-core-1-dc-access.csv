@@ -1,0 +1,5 @@
+Interface,Host,Description,Mode,VLANs,Port-Channel,Speed
+ethernet1/10,HOST_10,CNA_1,trunk,"10-11",1010,N/A
+ethernet1/11,HOST_11,CNA_1,trunk,"10-11",1011,N/A
+port-channel1010,HOST_10,LAN_Uplinks,trunk,"10-11",N/A,N/A
+port-channel1011,HOST_11,LAN_Uplinks,trunk,"10-11",N/A,N/A

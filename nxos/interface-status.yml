@@ -1,5 +1,5 @@
 ---
-- hosts: dc
+- hosts: dc-core
 
   tasks:
     - name: gather nxos interfaces facts

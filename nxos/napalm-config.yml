@@ -1,0 +1,19 @@
+- hosts: dc-core
+
+  tasks:
+#    - name: create dc access configuration file
+#      template:
+#        src: "./templates/configuration/dc-access.j2"
+#        dest: './reports/configuration/{{inventory_hostname}}-dc-access.cfg'
+
+    - name: Install Config and save diff
+      napalm_install_config:
+        hostname: '{{ inventory_hostname }}'
+        username: 'admin'
+        dev_os: 'nxos_ssh'
+        password: 'Cisco1234!'
+        config_file: './reports/configuration/{{inventory_hostname}}-dc-access.cfg'
+        commit_changes: True
+        replace_config: False
+        get_diffs: True
+#        diff_file: './reports/configuration/{{inventory_hostname}}-config-diff.txt'

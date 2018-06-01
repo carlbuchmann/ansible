@@ -1,0 +1,43 @@
+---
+
+- hosts: branch2-wan
+
+  vars:
+    month: "{{ lookup('pipe', 'date +%b') }}"
+    date: "{{ lookup('pipe', 'date +%x') }}"
+    time: "{{ lookup('pipe', 'date +%R:%S') }}"
+
+  tasks:
+
+    - name: Test reachability to branch wan loopback IPs using default vrf
+      ios_ping:
+        provider: "{{ ioscli }}"
+        dest: '{{ item }}'
+        count: 10
+      with_items:
+        - 172.21.255.1
+        - 172.22.255.1
+      ignore_errors: yes
+      register: ping_results
+
+    - set_fact: branch2_mpls={{ ping_results.results[0] }}
+    - set_fact: branch2_inet={{ ping_results.results[1] }}
+
+
+    - name: record ping results branch2 mpls
+      lineinfile:
+        path: ./reports/branch2-mpls-{{ month }}.csv
+        state: present
+        create: yes
+        line: '{{ date }},{{ time }},branch2-wan,mpls-hub(172.21.255.1),{{ branch2_mpls.packet_loss }},{{ branch2_mpls.rtt.avg }},{{ branch2_mpls.rtt.min }},{{ branch2_mpls.rtt.max }}'
+      delegate_to: localhost
+
+    - name: record ping results branch2 inet
+      lineinfile:
+        path: ./reports/branch2-inet-{{ month }}.csv
+        state: present
+        create: yes
+        line: '{{ date }},{{ time }},branch2-wan,inet-hub(172.22.255.1),{{ branch2_inet.packet_loss }},{{ branch2_inet.rtt.avg }},{{ branch2_inet.rtt.min }},{{ branch2_inet.rtt.max }}'
+      delegate_to: localhost
+
+

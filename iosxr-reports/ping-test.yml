@@ -13,8 +13,7 @@
         provider: "{{ iosxrcli }}"
         dest: '{{ item }}'
       with_items:
-        - 192.168.255.1 vrf VPN_DICT
-        - 172.16.10.2 vrf VPN_DICT 
+        - 192.168.200.2 vrf VPN_001_TBS
       register: ping_results
       ignore_errors: yes
 
@@ -23,7 +22,6 @@
         msg: "{{ ping_results.results[0].packet_loss }}"
 
     - set_fact: rtr1_az={{ ping_results.results[0] }}   
-    - set_fact: rtr1_tel={{ ping_results.results[1] }}
 
 
     - name: record ping results rtr1 azure 
@@ -32,12 +30,4 @@
         state: present
         create: yes
         line: '{{ time.stdout }},rtr1,azure,{{ rtr1_az.packet_loss }},{{ rtr1_az.rtt.avg }},{{ rtr1_az.rtt.min }},{{ rtr1_az.rtt.max }}'
-      delegate_to: localhost 
-
-    - name: record ping results rtr1 telus
-      lineinfile:
-        path: ./reports/rtr1-telus.csv
-        state: present
-        create: yes
-        line: '{{ time.stdout }},rtr1,telus,{{ rtr1_tel.packet_loss }},{{ rtr1_tel.rtt.avg }},{{ rtr1_tel.rtt.min }},{{ rtr1_tel.rtt.max }}'
       delegate_to: localhost
