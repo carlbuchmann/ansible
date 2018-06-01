@@ -12,16 +12,14 @@ includedir /etc/krb5.conf.d/
  renew_lifetime = 7d
  forwardable = true
  rdns = false
- default_realm = {{ domain | upper }}
+ default_realm = HOMELAB.LOCAL
  default_ccache_name = KEYRING:persistent:%{uid}
 
 [realms]
- {{ domain | upper }} = {
-{% for  domain_controller in domain_controllers %}
-  kdc = {{ domain_controller }}
-{% endfor %}
+ HOMELAB.LOCAL = {
+  kdc = dc01.homelab.local
+  kdc = dc02.homelab.local
  }
 
 [domain_realm]
- .{{ domain }} = {{ domain | upper }}
-
+ .homelab.local = HOMELAB.LOCAL

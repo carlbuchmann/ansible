@@ -48,7 +48,7 @@
 
 - name: install network address filter
   pip:
-    name: python-netaddr
+    name: netaddr
 
 - name: install F5 dependencies
   pip:

@@ -1,5 +1,8 @@
 - hosts: windows
 
+  vars_files: 
+    - ./group_vars/vault.yml
+
   tasks:
 
     - name: run ipconfig
