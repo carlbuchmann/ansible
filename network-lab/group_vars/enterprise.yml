@@ -1,14 +1,14 @@
 ---
 
-ntp_servers: 
+ntp_servers:
   - 172.20.5.101
-  
-domain_name: iwan.lab
+
+domain_name: homelab.lab
 
 snmp_community:
   ro: LAB@APICEMro
   rw: LAB@APICEMrw
 
-lan_key_chains: 
+lan_key_chains:
    - key_chain_name: LAN-KEY
      key_string: eigrp@LAN
