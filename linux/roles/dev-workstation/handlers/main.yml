@@ -2,3 +2,8 @@
 
 - name: reboot host
   command: /sbin/reboot
+
+- name: restart firewalld
+  service:
+    name: firewalld
+    state: restarted
