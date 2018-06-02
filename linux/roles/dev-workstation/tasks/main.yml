@@ -1,0 +1,14 @@
+---
+- name: enable extras repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: install xrdp
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - xrdp
+    - tigervnc-server
+
