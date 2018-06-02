@@ -28,13 +28,12 @@
     state: enabled
   notify: restart firewalld
 
-- sefcontext:
-    target: '/usr/sbin/xrdp'
+- name: Configure SE Linux for XRDP
+  sefcontext:
+    target: "{{ item }}"
     setype: bin_t
     state: present
-
-- sefcontext:
-    target: '/usr/sbin/xrdp-sesman'
-    setype: bin_t
-    state: present
+  with_items:
+    - '/usr/sbin/xrdp'
+    - '/usr/sbin/xrdp-sesman'
 
