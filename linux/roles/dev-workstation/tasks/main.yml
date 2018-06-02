@@ -12,3 +12,9 @@
     - xrdp
     - tigervnc-server
 
+- name: start and enable xrdp service
+  service:
+    name: xrdp
+    enabled: yes
+    state: started
+
