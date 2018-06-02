@@ -18,3 +18,10 @@
     enabled: yes
     state: started
 
+- name: enable rdp 3389/tcp
+  firewalld:
+    service: 3389/tcp
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+
