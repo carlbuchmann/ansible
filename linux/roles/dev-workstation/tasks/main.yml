@@ -52,4 +52,17 @@
 - name: install vscode
   yum:
     name: code
+    state: latest
+
+# Update Git Version
+
+- name: enable WANDisco's repo
+  yum:
+    name: http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm
     state: present
+
+- name: Update Git version
+  yum:
+    name: git
+    state: latest
+
