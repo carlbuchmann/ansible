@@ -1,5 +1,9 @@
 - hosts: localhost
 
   tasks:
-  - include_role:
+  - name: Enable remote desktop and deploy development tools (Visual Studio Code and Git)
+    include_role:
        name: dev-workstation
+  - name: deploy ansible, enable windows management and varios module dependencies
+    include_role:
+       name: ansible-engine
