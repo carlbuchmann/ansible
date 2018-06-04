@@ -1,4 +1,1 @@
 ---
-
-- name: reboot host
-  command: /sbin/reboot
