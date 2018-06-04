@@ -53,10 +53,18 @@
 - name: install F5 dependencies
   pip:
     name: "{{ item }}"
-  with_items:  
+  with_items:
     - f5-sdk
     - bigsuds
     - deepdiff
+
+- name: install AWS dependencies
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - boto
+    - boto3
+    - botocore
 
 - name: Copy Kerberos reaml configuration file
   template:
@@ -65,9 +73,3 @@
     owner: root
     group: root
     mode: 0644
-
-- name: upgrade all packages
-  yum:
-    name: '*'
-    state: latest
-  notify: reboot host
