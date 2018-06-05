@@ -4,11 +4,6 @@
     name: epel-release
     state: present
 
-- name: upgrade ansible to latest version
-  yum:
-    name: ansible
-    state: latest
-
 - name: install administration tools
   yum:
     name: "{{ item }}"
@@ -78,3 +73,8 @@
     owner: root
     group: root
     mode: 0644
+
+- name: upgrade ansible to latest version
+  yum:
+    name: ansible
+    state: latest
