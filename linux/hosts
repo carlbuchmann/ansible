@@ -1,7 +1,9 @@
-[enterprise]
-l-ansiblerh3
-gitlab
+[enterprise:children]
+management
 
-[all:vars]
-ansible_user=root
+[management]
+ansible01.homelab.local
+ansible02.homelab.local
 
+[vault:children]
+enterprise
