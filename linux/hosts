@@ -1,9 +1,19 @@
 [enterprise:children]
-management
+ansible-servers
+gitlab-servers
+development-workstations
 
-[management]
+[ansible-servers]
 ansible01.homelab.local
 ansible02.homelab.local
+
+[gitlab-servers]
+gitlab
+
+[development-workstations]
+dev01
+dev02
+dev03
 
 [vault:children]
 enterprise
