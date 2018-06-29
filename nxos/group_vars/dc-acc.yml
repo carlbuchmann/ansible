@@ -1,27 +1,29 @@
+platform_defaults:
+  type: 5000
 
 port_profiles:
 
   VMware-TestLAB:
     mode: trunk
-    vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000'   
+    vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000'
 
   iSCSI_SAN:
     mode: trunk
-    vlans: '3000'  
+    vlans: '3000'
 
   OPZone:
     mode: access
-    vlans: '701'  
+    vlans: '701'
 
   OPZone_SAN:
     mode: trunk
-    vlans: '{{ fcoe_vlan }},701'  
+    vlans: '{{ fcoe_vlan }},701'
 
 servers:
-  
+
   C220M3_TESTVHOST:
     rack: K5_6_023
-    adapters: 
+    adapters:
       - type: cna
         server_ports: [ CNA_1, CNA_2 ]
         switch_ports: [ 7, 7 ]
@@ -35,7 +37,7 @@ servers:
 
   C220M3_TESTVHOST2:
     rack: K5_6_023
-    adapters: 
+    adapters:
       - type: cna
         server_ports: [ CNA_1, CNA_2 ]
         switch_ports: [ 8, 8 ]
@@ -49,7 +51,7 @@ servers:
 
   C220M3_TESTVHOST3:
     rack: K5_6_023
-    adapters: 
+    adapters:
       - type: cna
         server_ports: [ CNA_1, CNA_2 ]
         switch_ports: [ 9, 9 ]
@@ -63,7 +65,7 @@ servers:
 
   SOLIDEFIRE:
     rack: K5_6_023
-    adapters: 
+    adapters:
       - type: cna
         server_ports: [ eth0, eth1 ]
         switch_ports: [ 7/6, 7/6 ]
@@ -84,7 +86,7 @@ servers:
 
   NetApp FAS:
     rack: K5_6_023
-    adapters: 
+    adapters:
       - type: cna
         server_ports: [ e0b, e0d ]
         switch_ports: [ 34, 34 ]
@@ -103,7 +105,7 @@ servers:
 
   C220M3_TESTVHOST4:
     rack: K5_6_023
-    adapters: 
+    adapters:
       - type: cna
         server_ports: [ CNA_1, CNA_2 ]
         switch_ports: [ 10, 10 ]
