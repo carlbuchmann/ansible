@@ -81,13 +81,13 @@ servers:
           state: present
           description: LAN_Uplinks
         profile: VMware-TestLAB
-#      - type: cna
-#        server_ports: [ CNA_3 ]
-#        switch_ports: [ 30 ]
-#        switches: [ 110 ]
-#        FCoE:
-#          state: present
-#        profile: VMware-TestLAB
+      - type: cna
+        server_ports: [ CNA_3 ]
+        switch_ports: [ 30 ]
+        switches: [ 110 ]
+        FCoE:
+          state: present
+        profile: VMware-TestLAB
 
   SOLIDEFIRE:
     rack: K5_6_023

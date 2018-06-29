@@ -74,6 +74,16 @@ interfaces:
     description: LAN_Uplinks
     mode: trunk
     vlans: 201,701,900,2020,2021,3000
+  ethernet110/1/30:
+    host: C220M3_TESTVHOST3
+    description: CNA_3
+    mode: trunk
+    vlans: 201,701,900,2020,2021,3000
+    speed: 10000
+  vfc1030:
+    host: C220M3_TESTVHOST3
+    description: CNA_3
+    bind_interface: Ethernet110/1/30
   ethernet110/1/10:
     host: C220M3_TESTVHOST4
     description: CNA_1
