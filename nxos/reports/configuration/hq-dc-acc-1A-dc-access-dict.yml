@@ -6,6 +6,10 @@ interfaces:
     vlans: 201,701,900,2020,2021,3000
     speed: 10000
     port_channel: 1007
+  vfc1007:
+    host: C220M3_TESTVHOST
+    description: CNA_1
+    bind_interface: Ethernet110/1/7
   ethernet120/1/7:
     host: C220M3_TESTVHOST
     description: CNA_2
@@ -18,11 +22,6 @@ interfaces:
     description: LAN_Uplinks
     mode: trunk
     vlans: 201,701,900,2020,2021,3000
-  vfc1007:
-    host: C220M3_TESTVHOST
-    description: CNA_1
-    bind_interface: Ethernet110/1/7
- 
   ethernet110/1/8:
     host: C220M3_TESTVHOST2
     description: CNA_1
@@ -30,6 +29,10 @@ interfaces:
     vlans: 201,701,900,2020,2021,3000
     speed: 10000
     port_channel: 1008
+  vfc1008:
+    host: C220M3_TESTVHOST2
+    description: CNA_1
+    bind_interface: Ethernet110/1/8
   ethernet120/1/8:
     host: C220M3_TESTVHOST2
     description: CNA_2
@@ -42,11 +45,12 @@ interfaces:
     description: LAN_Uplinks
     mode: trunk
     vlans: 201,701,900,2020,2021,3000
-  vfc1008:
+  ethernet120/1/30:
     host: C220M3_TESTVHOST2
-    description: CNA_1
-    bind_interface: Ethernet110/1/8
- 
+    description: CNA_3
+    mode: trunk
+    vlans: 201,701,900,2020,2021,3000
+    speed: 10000
   ethernet110/1/9:
     host: C220M3_TESTVHOST3
     description: CNA_1
@@ -54,6 +58,10 @@ interfaces:
     vlans: 201,701,900,2020,2021,3000
     speed: 10000
     port_channel: 1009
+  vfc1009:
+    host: C220M3_TESTVHOST3
+    description: CNA_1
+    bind_interface: Ethernet110/1/9
   ethernet120/1/9:
     host: C220M3_TESTVHOST3
     description: CNA_2
@@ -66,11 +74,6 @@ interfaces:
     description: LAN_Uplinks
     mode: trunk
     vlans: 201,701,900,2020,2021,3000
-  vfc1009:
-    host: C220M3_TESTVHOST3
-    description: CNA_1
-    bind_interface: Ethernet110/1/9
- 
   ethernet110/1/10:
     host: C220M3_TESTVHOST4
     description: CNA_1
@@ -78,6 +81,10 @@ interfaces:
     vlans: 201,701,900,2020,2021,3000
     speed: 10000
     port_channel: 1010
+  vfc1010:
+    host: C220M3_TESTVHOST4
+    description: CNA_1
+    bind_interface: Ethernet110/1/10
   ethernet120/1/10:
     host: C220M3_TESTVHOST4
     description: CNA_2
@@ -90,11 +97,6 @@ interfaces:
     description: LAN_Uplinks
     mode: trunk
     vlans: 201,701,900,2020,2021,3000
-  vfc1010:
-    host: C220M3_TESTVHOST4
-    description: CNA_1
-    bind_interface: Ethernet110/1/10
- 
   ethernet110/1/34:
     host: NetApp FAS
     description: e0b
@@ -102,6 +104,10 @@ interfaces:
     vlans: 201,701
     speed: 10000
     port_channel: 1034
+  vfc1034:
+    host: NetApp FAS
+    description: e0b
+    bind_interface: Ethernet110/1/34
   ethernet120/1/34:
     host: NetApp FAS
     description: e0d
@@ -114,18 +120,12 @@ interfaces:
     description: SAN
     mode: trunk
     vlans: 201,701
-  vfc1034:
-    host: NetApp FAS
-    description: e0b
-    bind_interface: Ethernet110/1/34
- 
   ethernet120/1/44:
     host: NetApp FAS
     description: e0M
     mode: access
     vlans: 701
     speed: 1000
- 
   ethernet7/6:
     host: SOLIDEFIRE
     description: eth0
@@ -138,7 +138,6 @@ interfaces:
     mode: trunk
     vlans: 3000
     vpc: 706
- 
   ethernet110/1/36:
     host: SOLIDEFIRE
     description: eth2
@@ -158,4 +157,3 @@ interfaces:
     description: mgmt
     mode: access
     vlans: 701
- 

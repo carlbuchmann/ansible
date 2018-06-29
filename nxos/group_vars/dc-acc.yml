@@ -6,18 +6,30 @@ port_profiles:
   VMware-TestLAB:
     mode: trunk
     vlans: '{{ fcoe_vlan }},701,900,2020,2021,3000'
+    qos:
+      input: default
+      output: default
 
   iSCSI_SAN:
     mode: trunk
     vlans: '3000'
+    qos:
+      input: DATA-IN-POLICY
+      output: DATA-OUT-POLICY
 
   OPZone:
     mode: access
     vlans: '701'
+    qos:
+      input: DATA-IN-POLICY
+      output: DATA-OUT-POLICY
 
   OPZone_SAN:
     mode: trunk
     vlans: '{{ fcoe_vlan }},701'
+    qos:
+      input: default
+      output: default
 
 servers:
 
@@ -48,6 +60,13 @@ servers:
           state: present
           description: LAN_Uplinks
         profile: VMware-TestLAB
+      - type: cna
+        server_ports: [ CNA_3 ]
+        switch_ports: [ 30 ]
+        switches: [ 120 ]
+        FCoE:
+          state: present
+        profile: VMware-TestLAB
 
   C220M3_TESTVHOST3:
     rack: K5_6_023
@@ -62,6 +81,13 @@ servers:
           state: present
           description: LAN_Uplinks
         profile: VMware-TestLAB
+#      - type: cna
+#        server_ports: [ CNA_3 ]
+#        switch_ports: [ 30 ]
+#        switches: [ 110 ]
+#        FCoE:
+#          state: present
+#        profile: VMware-TestLAB
 
   SOLIDEFIRE:
     rack: K5_6_023

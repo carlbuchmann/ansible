@@ -39,6 +39,19 @@ interface Ethernet{{ switch }}/1/{{ adapter.switch_ports[loop.index0] }}
   channel-group {{ port_channel_id }} mode active
 {%                        endif %}
 {%                     endif %}
+{# vFC interface configuration #}
+{%                 if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
+{%                     if switch >= 110 and switch <= 119 %}{% set switch_fabric = "A" %}
+{%                     elif switch >= 120 and switch <= 129 %}{% set switch_fabric = "B" %}
+{%                     endif %}
+{%                     if switch_fabric == fabric %}
+{%                     set vfc_id = (adapter.switches[loop.index0] - 100) * 100 + adapter.switch_ports[loop.index0] %}
+interface vfc{{ vfc_id }}
+  bind interface Ethernet{{ adapter.switches[loop.index0] }}/1/{{ adapter.switch_ports[loop.index0] }}
+  switchport description {{ server }}_{{ adapter.server_ports[loop.index0] }}
+  no shutdown
+{%                     endif %}
+{%                 endif %}
 {# Interface 5K Configuration #}
 {%                 else %}
 {%                     set port_channel_id = adapter.port_channel.id %}
@@ -65,7 +78,6 @@ interface Ethernet{{ adapter.switch_ports[loop.index0]}}
 {%                 endif %}
 {# Port-Channel Configuration #}
 {%                 if loop.last %}
-{# Port-Channel Configuration #}
 {%                     if adapter.port_channel is defined and adapter.port_channel.state == "present" %}
 interface port-channel{{ port_channel_id }}
   description {{ server }}_{{ adapter.port_channel.description }}
@@ -88,20 +100,6 @@ interface port-channel{{ port_channel_id }}
   spanning-tree port type edge trunk
 {%                         endif %}
 {%                     endif %}
-{# vFC interface configuration #}
-{%                     if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
-{%                         if adapter.switches[1] is defined %}
-{%                             if fabric == "A" %}{% set port_id = 0 %}
-{%                             elif fabric == "B" %}{% set port_id = 1 %}
-{%                             endif %}
-{%                         else %}{% set port_id = 0 %}
-{%                         endif %}
-{%                         set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
-interface vfc{{ vfc_id }}
-  bind interface Ethernet{{ adapter.switches[port_id] }}/1/{{ adapter.switch_ports[port_id] }}
-  switchport description {{ server }}_{{ adapter.server_ports[port_id] }}
-  no shutdown
-{%                     endif %}
 {%                 endif %}
 {%             endfor %}
 {%         endfor %}
@@ -110,13 +108,17 @@ interface vfc{{ vfc_id }}
 vsan database
 {%     for server in servers|natural_sort() %}
 {%         for adapter in servers[server].adapters %}
-{%             if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
-{%                 if fabric == "A" %}{% set port_id = 0 %}
-{%                 elif fabric == "B" %}{% set port_id = 1 %}
-{%                 endif %}
-{%                 set vfc_id = (adapter.switches[port_id] - 100) * 100 + adapter.switch_ports[port_id] %}
+{%             for switch in adapter.switches %}
+{%                 if adapter.FCoE is defined and adapter.FCoE.state == "present" %}
+{%                     if switch >= 110 and switch <= 119 %}{% set switch_fabric = "A" %}
+{%                     elif switch >= 120 and switch <= 129 %}{% set switch_fabric = "B" %}
+{%                     endif %}
+{%                     if switch_fabric == fabric %}
+{%                     set vfc_id = (adapter.switches[loop.index0] - 100) * 100 + adapter.switch_ports[loop.index0] %}
   vsan {{ fcoe_vlan }} interface vfc{{ vfc_id }}
-{%             endif %}
+{%                     endif %}
+{%                 endif %}
+{%             endfor %}
 {%         endfor %}
 {%     endfor %}
 {% endif %}
