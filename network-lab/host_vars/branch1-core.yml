@@ -15,13 +15,13 @@ loopback_interfaces:
 lan_interfaces:
 
   - interface: GigabitEthernet0/0
-    state_enabled: true 
+    state_enabled: true
     description: mgmt
     trunk:
       dot1q: 10-13
 
   - interface: GigabitEthernet0/1
-    state_enabled: true 
+    state_enabled: true
     description: branch1-lan-p2p
     ip:
       address: 172.21.0.2/30
@@ -29,27 +29,25 @@ lan_interfaces:
 vlan_interfaces:
   
   - interface: Vlan10
-    state_enabled: true 
+    state_enabled: true
     description: data
     ip:
       address: 172.21.10.1/24
 
   - interface: Vlan11
-    state_enabled: true 
+    state_enabled: true
     description: voice
     ip:
-      address: 172.21.11.1/24   
+      address: 172.21.11.1/24
 
   - interface: Vlan12
-    state_enabled: true 
+    state_enabled: true
     description: guest
     ip:
-      address: 172.21.12.1/24   
+      address: 172.21.12.1/24
 
   - interface: Vlan13
-    state_enabled: true 
+    state_enabled: true
     description: wifi
     ip:
-      address: 172.21.13.1/24    
-
-      # Hola  
+      address: 172.21.13.1/24
