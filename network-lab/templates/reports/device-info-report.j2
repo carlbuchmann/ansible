@@ -1,0 +1,4 @@
+Device Name,Model,Version,Serial Number,Total Memory
+{% for router in groups['iwan'] %}
+{{ router }},{{ gather_ios_facts.ansible_facts.ansible_net_model }},{{ gather_ios_facts.ansible_facts.ansible_net_version }},{{ gather_ios_facts.ansible_facts.ansible_net_serialnum }},{{ gather_ios_facts.ansible_facts.ansible_net_memtotal_mb }}
+{% endfor %}

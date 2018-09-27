@@ -1,4 +1,4 @@
-Switch Name,Interface,Description,State,Speed
+Device Name,Interface,Description,State,Speed
 {% for router in groups['iwan'] %}
 {%     for interface in hostvars[router].int_facts|natural_sort() %}
 {{ router }},{{ interface }},{% if hostvars[router].int_facts[interface].description is defined %} {{ hostvars[router].int_facts[interface].description }} {% else %} - {% endif %},{{ hostvars[router].int_facts[interface].operstatus }},{{ hostvars[router].int_facts[interface].bandwidth }}
