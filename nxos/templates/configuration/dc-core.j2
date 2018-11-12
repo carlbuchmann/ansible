@@ -1,0 +1,8 @@
+hostname {{inventory_hostname}}
+
+{% for vrf in VRFs|natural_sort() %}
+{{ vrf }}
+{%     for SVI in VRFs[vrf].SVIs|natural_sort() %}
+vlan{{SVI}}
+{%     endfor %}
+{% endfor %}
