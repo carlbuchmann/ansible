@@ -9,7 +9,7 @@ class FilterModule(object):
 
   def natural_sort(self,el):
     convert = lambda text: int(text) if text.isdigit() else text.lower()
-    alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ]
+    alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', str(key)) ]
     return sorted(el, key = alphanum_key)
 
   def filters(self):
