@@ -1,4 +1,5 @@
 mount_path: c:\MPs\
+share_path: c$\MPs\
 
 libraries:
   DL-GridStor01:
