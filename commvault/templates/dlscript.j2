@@ -9,5 +9,15 @@ qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName {{ li
 {%             endif %}
 {%         endfor %}
 {%     endfor %}
+{%     for media_agent in libraries[library]|natural_sort %}
+{%         for media_agent_share in libraries[library]|natural_sort %}
+{%             for lun in libraries[library][media_agent].luns %}
+{%                 if libraries[library][media_agent] != libraries[library][media_agent_share] %}
+{{ media_agent }}  map {{ media_agent_share}}
+{%                 endif %}
+{%             endfor %}
+{%         endfor %}
+
+{%     endfor %}
 
 {% endfor %}
