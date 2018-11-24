@@ -5,60 +5,27 @@ libraries:
   DL-GridStor01:
     ma01:
       role: primary
-      luns:
-        - ma1-lun01
-        - ma1-lun02
-        - ma1-lun03
-        - ma1-lun04
+      luns: [ ma1-lun01, ma1-lun02, ma1-lun03, ma1-lun04 ]
     ma02:
       role: slave
-      luns:
-        - ma2-lun01
-        - ma2-lun02
-        - ma2-lun03
-        - ma2-lun04
+      luns: [ ma2-lun01, ma2-lun02, ma2-lun03, ma2-lun04 ]
     ma03:
       role: slave
-      luns:
-        - ma3-lun01
-        - ma3-lun02
-        - ma3-lun03
-        - ma3-lun04
+      luns: [ ma3-lun01, ma3-lun02, ma3-lun03, ma3-lun04 ]
     ma04:
       role: slave
-      luns:
-        - ma4-lun01
-        - ma4-lun02
-        - ma4-lun03
-        - ma4-lun04
-
+      luns: [ ma4-lun01, ma4-lun02, ma4-lun03, ma4-lun04 ]
 
   DL-GridStor02:
     ma05:
       role: primary
-      luns:
-        - ma5-lun01
-        - ma5-lun02
-        - ma5-lun03
-        - ma5-lun04
+      luns: [ ma5-lun01, ma5-lun02, ma5-lun03, ma5-lun04 ]
     ma06:
       role: slave
-      luns:
-        - ma6-lun01
-        - ma6-lun02
-        - ma6-lun03
-        - ma6-lun04
+      luns: [ ma6-lun01, ma6-lun02, ma6-lun03, ma6-lun04 ]
     ma07:
       role: slave
-      luns:
-        - ma7-lun01
-        - ma7-lun02
-        - ma7-lun03
-        - ma7-lun04
+      luns: [ ma7-lun01, ma7-lun02, ma7-lun03, ma7-lun04 ]
     ma08:
       role: slave
-      luns:
-        - ma8-lun01
-        - ma8-lun02
-        - ma8-lun03
-        - ma8-lun04
+      luns: [ ma8-lun01, ma8-lun02, ma8-lun03, ma8-lun04 ]
