@@ -15,57 +15,57 @@ qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-Gr
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun02
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun03
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun04
-ma01  map ma02
-ma01  map ma02
-ma01  map ma02
-ma01  map ma02
-ma01  map ma03
-ma01  map ma03
-ma01  map ma03
-ma01  map ma03
-ma01  map ma04
-ma01  map ma04
-ma01  map ma04
-ma01  map ma04
+ma01  map server:ma02 lun:ma2-lun01
+ma01  map server:ma02 lun:ma2-lun02
+ma01  map server:ma02 lun:ma2-lun03
+ma01  map server:ma02 lun:ma2-lun04
+ma01  map server:ma03 lun:ma3-lun01
+ma01  map server:ma03 lun:ma3-lun02
+ma01  map server:ma03 lun:ma3-lun03
+ma01  map server:ma03 lun:ma3-lun04
+ma01  map server:ma04 lun:ma4-lun01
+ma01  map server:ma04 lun:ma4-lun02
+ma01  map server:ma04 lun:ma4-lun03
+ma01  map server:ma04 lun:ma4-lun04
 
-ma02  map ma01
-ma02  map ma01
-ma02  map ma01
-ma02  map ma01
-ma02  map ma03
-ma02  map ma03
-ma02  map ma03
-ma02  map ma03
-ma02  map ma04
-ma02  map ma04
-ma02  map ma04
-ma02  map ma04
+ma02  map server:ma01 lun:ma1-lun01
+ma02  map server:ma01 lun:ma1-lun02
+ma02  map server:ma01 lun:ma1-lun03
+ma02  map server:ma01 lun:ma1-lun04
+ma02  map server:ma03 lun:ma3-lun01
+ma02  map server:ma03 lun:ma3-lun02
+ma02  map server:ma03 lun:ma3-lun03
+ma02  map server:ma03 lun:ma3-lun04
+ma02  map server:ma04 lun:ma4-lun01
+ma02  map server:ma04 lun:ma4-lun02
+ma02  map server:ma04 lun:ma4-lun03
+ma02  map server:ma04 lun:ma4-lun04
 
-ma03  map ma01
-ma03  map ma01
-ma03  map ma01
-ma03  map ma01
-ma03  map ma02
-ma03  map ma02
-ma03  map ma02
-ma03  map ma02
-ma03  map ma04
-ma03  map ma04
-ma03  map ma04
-ma03  map ma04
+ma03  map server:ma01 lun:ma1-lun01
+ma03  map server:ma01 lun:ma1-lun02
+ma03  map server:ma01 lun:ma1-lun03
+ma03  map server:ma01 lun:ma1-lun04
+ma03  map server:ma02 lun:ma2-lun01
+ma03  map server:ma02 lun:ma2-lun02
+ma03  map server:ma02 lun:ma2-lun03
+ma03  map server:ma02 lun:ma2-lun04
+ma03  map server:ma04 lun:ma4-lun01
+ma03  map server:ma04 lun:ma4-lun02
+ma03  map server:ma04 lun:ma4-lun03
+ma03  map server:ma04 lun:ma4-lun04
 
-ma04  map ma01
-ma04  map ma01
-ma04  map ma01
-ma04  map ma01
-ma04  map ma02
-ma04  map ma02
-ma04  map ma02
-ma04  map ma02
-ma04  map ma03
-ma04  map ma03
-ma04  map ma03
-ma04  map ma03
+ma04  map server:ma01 lun:ma1-lun01
+ma04  map server:ma01 lun:ma1-lun02
+ma04  map server:ma01 lun:ma1-lun03
+ma04  map server:ma01 lun:ma1-lun04
+ma04  map server:ma02 lun:ma2-lun01
+ma04  map server:ma02 lun:ma2-lun02
+ma04  map server:ma02 lun:ma2-lun03
+ma04  map server:ma02 lun:ma2-lun04
+ma04  map server:ma03 lun:ma3-lun01
+ma04  map server:ma03 lun:ma3-lun02
+ma04  map server:ma03 lun:ma3-lun03
+ma04  map server:ma03 lun:ma3-lun04
 
 
 ##DL-GridStor02##
@@ -85,56 +85,56 @@ qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-Gr
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun02
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun03
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun04
-ma05  map ma06
-ma05  map ma06
-ma05  map ma06
-ma05  map ma06
-ma05  map ma07
-ma05  map ma07
-ma05  map ma07
-ma05  map ma07
-ma05  map ma08
-ma05  map ma08
-ma05  map ma08
-ma05  map ma08
+ma05  map server:ma06 lun:ma6-lun01
+ma05  map server:ma06 lun:ma6-lun02
+ma05  map server:ma06 lun:ma6-lun03
+ma05  map server:ma06 lun:ma6-lun04
+ma05  map server:ma07 lun:ma7-lun01
+ma05  map server:ma07 lun:ma7-lun02
+ma05  map server:ma07 lun:ma7-lun03
+ma05  map server:ma07 lun:ma7-lun04
+ma05  map server:ma08 lun:ma8-lun01
+ma05  map server:ma08 lun:ma8-lun02
+ma05  map server:ma08 lun:ma8-lun03
+ma05  map server:ma08 lun:ma8-lun04
 
-ma06  map ma05
-ma06  map ma05
-ma06  map ma05
-ma06  map ma05
-ma06  map ma07
-ma06  map ma07
-ma06  map ma07
-ma06  map ma07
-ma06  map ma08
-ma06  map ma08
-ma06  map ma08
-ma06  map ma08
+ma06  map server:ma05 lun:ma5-lun01
+ma06  map server:ma05 lun:ma5-lun02
+ma06  map server:ma05 lun:ma5-lun03
+ma06  map server:ma05 lun:ma5-lun04
+ma06  map server:ma07 lun:ma7-lun01
+ma06  map server:ma07 lun:ma7-lun02
+ma06  map server:ma07 lun:ma7-lun03
+ma06  map server:ma07 lun:ma7-lun04
+ma06  map server:ma08 lun:ma8-lun01
+ma06  map server:ma08 lun:ma8-lun02
+ma06  map server:ma08 lun:ma8-lun03
+ma06  map server:ma08 lun:ma8-lun04
 
-ma07  map ma05
-ma07  map ma05
-ma07  map ma05
-ma07  map ma05
-ma07  map ma06
-ma07  map ma06
-ma07  map ma06
-ma07  map ma06
-ma07  map ma08
-ma07  map ma08
-ma07  map ma08
-ma07  map ma08
+ma07  map server:ma05 lun:ma5-lun01
+ma07  map server:ma05 lun:ma5-lun02
+ma07  map server:ma05 lun:ma5-lun03
+ma07  map server:ma05 lun:ma5-lun04
+ma07  map server:ma06 lun:ma6-lun01
+ma07  map server:ma06 lun:ma6-lun02
+ma07  map server:ma06 lun:ma6-lun03
+ma07  map server:ma06 lun:ma6-lun04
+ma07  map server:ma08 lun:ma8-lun01
+ma07  map server:ma08 lun:ma8-lun02
+ma07  map server:ma08 lun:ma8-lun03
+ma07  map server:ma08 lun:ma8-lun04
 
-ma08  map ma05
-ma08  map ma05
-ma08  map ma05
-ma08  map ma05
-ma08  map ma06
-ma08  map ma06
-ma08  map ma06
-ma08  map ma06
-ma08  map ma07
-ma08  map ma07
-ma08  map ma07
-ma08  map ma07
+ma08  map server:ma05 lun:ma5-lun01
+ma08  map server:ma05 lun:ma5-lun02
+ma08  map server:ma05 lun:ma5-lun03
+ma08  map server:ma05 lun:ma5-lun04
+ma08  map server:ma06 lun:ma6-lun01
+ma08  map server:ma06 lun:ma6-lun02
+ma08  map server:ma06 lun:ma6-lun03
+ma08  map server:ma06 lun:ma6-lun04
+ma08  map server:ma07 lun:ma7-lun01
+ma08  map server:ma07 lun:ma7-lun02
+ma08  map server:ma07 lun:ma7-lun03
+ma08  map server:ma07 lun:ma7-lun04
 
 
