@@ -15,6 +15,58 @@ qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-Gr
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun02
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun03
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun04
+ma01  map ma02
+ma01  map ma02
+ma01  map ma02
+ma01  map ma02
+ma01  map ma03
+ma01  map ma03
+ma01  map ma03
+ma01  map ma03
+ma01  map ma04
+ma01  map ma04
+ma01  map ma04
+ma01  map ma04
+
+ma02  map ma01
+ma02  map ma01
+ma02  map ma01
+ma02  map ma01
+ma02  map ma03
+ma02  map ma03
+ma02  map ma03
+ma02  map ma03
+ma02  map ma04
+ma02  map ma04
+ma02  map ma04
+ma02  map ma04
+
+ma03  map ma01
+ma03  map ma01
+ma03  map ma01
+ma03  map ma01
+ma03  map ma02
+ma03  map ma02
+ma03  map ma02
+ma03  map ma02
+ma03  map ma04
+ma03  map ma04
+ma03  map ma04
+ma03  map ma04
+
+ma04  map ma01
+ma04  map ma01
+ma04  map ma01
+ma04  map ma01
+ma04  map ma02
+ma04  map ma02
+ma04  map ma02
+ma04  map ma02
+ma04  map ma03
+ma04  map ma03
+ma04  map ma03
+ma04  map ma03
+
 
 ##DL-GridStor02##
 qoperation execute -af \CV_Scripts\create_disk_library_local_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma05 -library/mountPath c:\MPs\ma5-lun01
@@ -33,4 +85,56 @@ qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-Gr
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun02
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun03
 qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun04
+ma05  map ma06
+ma05  map ma06
+ma05  map ma06
+ma05  map ma06
+ma05  map ma07
+ma05  map ma07
+ma05  map ma07
+ma05  map ma07
+ma05  map ma08
+ma05  map ma08
+ma05  map ma08
+ma05  map ma08
+
+ma06  map ma05
+ma06  map ma05
+ma06  map ma05
+ma06  map ma05
+ma06  map ma07
+ma06  map ma07
+ma06  map ma07
+ma06  map ma07
+ma06  map ma08
+ma06  map ma08
+ma06  map ma08
+ma06  map ma08
+
+ma07  map ma05
+ma07  map ma05
+ma07  map ma05
+ma07  map ma05
+ma07  map ma06
+ma07  map ma06
+ma07  map ma06
+ma07  map ma06
+ma07  map ma08
+ma07  map ma08
+ma07  map ma08
+ma07  map ma08
+
+ma08  map ma05
+ma08  map ma05
+ma08  map ma05
+ma08  map ma05
+ma08  map ma06
+ma08  map ma06
+ma08  map ma06
+ma08  map ma06
+ma08  map ma07
+ma08  map ma07
+ma08  map ma07
+ma08  map ma07
+
 
