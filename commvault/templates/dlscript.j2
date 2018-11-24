@@ -1,0 +1,13 @@
+{% for library in libraries|natural_sort %}
+##{{ library }}##
+{%     for media_agent in libraries[library]|natural_sort %}
+{%         for lun in libraries[library][media_agent].luns %}
+{%             if libraries[library][media_agent].role == "primary" and loop.first %}
+qoperation execute -af \CV_Scripts\create_disk_library_local_path.xml -library/libraryName {{ library }} -library/mediaAgentName {{ media_agent }} -library/mountPath {{ mount_path }}{{ lun }}
+{%             else %}
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName {{ library }} -library/mediaAgentName {{ media_agent }} -library/mountPath {{ mount_path }}{{ lun }}
+{%             endif %}
+{%         endfor %}
+{%     endfor %}
+
+{% endfor %}

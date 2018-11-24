@@ -1,0 +1,11 @@
+- hosts: localhost
+
+  tasks:
+
+    - name: load variables
+      include_vars: './vars/dl-libraries.yml'
+
+    - name: create commvault batch file script
+      template:
+        src: './templates/dlscript.j2'
+        dest: './output/dlscript.txt'

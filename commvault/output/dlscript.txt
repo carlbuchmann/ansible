@@ -1,0 +1,36 @@
+##DL-GridStor01##
+qoperation execute -af \CV_Scripts\create_disk_library_local_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma01 -library/mountPath c:\MPs\ma1-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma01 -library/mountPath c:\MPs\ma1-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma01 -library/mountPath c:\MPs\ma1-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma01 -library/mountPath c:\MPs\ma1-lun04
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma02 -library/mountPath c:\MPs\ma2-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma02 -library/mountPath c:\MPs\ma2-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma02 -library/mountPath c:\MPs\ma2-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma02 -library/mountPath c:\MPs\ma2-lun04
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma03 -library/mountPath c:\MPs\ma3-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma03 -library/mountPath c:\MPs\ma3-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma03 -library/mountPath c:\MPs\ma3-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma03 -library/mountPath c:\MPs\ma3-lun04
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor01 -library/mediaAgentName ma04 -library/mountPath c:\MPs\ma4-lun04
+
+##DL-GridStor02##
+qoperation execute -af \CV_Scripts\create_disk_library_local_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma05 -library/mountPath c:\MPs\ma5-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma05 -library/mountPath c:\MPs\ma5-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma05 -library/mountPath c:\MPs\ma5-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma05 -library/mountPath c:\MPs\ma5-lun04
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma06 -library/mountPath c:\MPs\ma6-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma06 -library/mountPath c:\MPs\ma6-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma06 -library/mountPath c:\MPs\ma6-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma06 -library/mountPath c:\MPs\ma6-lun04
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma07 -library/mountPath c:\MPs\ma7-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma07 -library/mountPath c:\MPs\ma7-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma07 -library/mountPath c:\MPs\ma7-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma07 -library/mountPath c:\MPs\ma7-lun04
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun01
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun02
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun03
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName ma08 -library/mountPath c:\MPs\ma8-lun04
+
