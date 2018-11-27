@@ -15,18 +15,7 @@ qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName {{ li
 {%         for media_agent_share in libraries[library]|natural_sort %}
 {%             for lun in libraries[library][media_agent].luns %}
 {%                 if libraries[library][media_agent] != libraries[library][media_agent_share] %}
-{{ media_agent }}  share_lun:{{ lun }} to: {{ media_agent_share}}
-{%                 endif %}
-{%             endfor %}
-{%         endfor %}
-
-{%     endfor %}
-## Mount Shared LUNS
-{%     for media_agent in libraries[library]|natural_sort %}
-{%         for media_agent_share in libraries[library]|natural_sort %}
-{%             for lun in libraries[library][media_agent_share].luns %}
-{%                 if libraries[library][media_agent] != libraries[library][media_agent_share] %}
-{{ media_agent }}  mount_share:\{{ media_agent_share }}\{{ share_path }}\{{ lun}}
+qoperation execute -af \CV_Scripts\share_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName {{ media_agent }} -library/mountPath {{ mount_path }}{{ lun }} -libNewProp/mountPath \\{{ media_agent }}\{{ share_path }}{{ lun }} -libNewProp/mediaAgentName {{ media_agent_share}}
 {%                 endif %}
 {%             endfor %}
 {%         endfor %}
