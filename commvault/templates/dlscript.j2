@@ -1,0 +1,25 @@
+{% for library in libraries|natural_sort %}
+##{{ library }}##
+## Mount LUNs##
+{%     for media_agent in libraries[library]|natural_sort %}
+{%         for lun in libraries[library][media_agent].luns %}
+{%             if libraries[library][media_agent].role == "primary" and loop.first %}
+qoperation execute -af \CV_Scripts\create_disk_library_local_path.xml -library/libraryName {{ library }} -library/mediaAgentName {{ media_agent }} -library/mountPath {{ mount_path }}{{ lun }}
+{%             else %}
+qoperation execute -af \CV_Scripts\add_mount_path.xml -library/libraryName {{ library }} -library/mediaAgentName {{ media_agent }} -library/mountPath {{ mount_path }}{{ lun }}
+{%             endif %}
+{%         endfor %}
+{%     endfor %}
+## Share LUNS to MAs##
+{%     for media_agent in libraries[library]|natural_sort %}
+{%         for media_agent_share in libraries[library]|natural_sort %}
+{%             for lun in libraries[library][media_agent].luns %}
+{%                 if libraries[library][media_agent] != libraries[library][media_agent_share] %}
+qoperation execute -af \CV_Scripts\share_mount_path.xml -library/libraryName DL-GridStor02 -library/mediaAgentName {{ media_agent }} -library/mountPath {{ mount_path }}{{ lun }} -libNewProp/mountPath \\{{ media_agent }}\{{ share_path }}{{ lun }} -libNewProp/mediaAgentName {{ media_agent_share}}
+{%                 endif %}
+{%             endfor %}
+{%         endfor %}
+
+{%     endfor %}
+
+{% endfor %}
