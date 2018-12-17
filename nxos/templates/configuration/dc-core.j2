@@ -1,8 +1,71 @@
 hostname {{inventory_hostname}}
 
-{% for vrf in VRFs|natural_sort() %}
-{{ vrf }}
-{%     for SVI in VRFs[vrf].SVIs|natural_sort() %}
-vlan{{SVI}}
+{# L2 VLANs #}
+{% for vrf in vrfs|natural_sort() %}
+{%     for svi in vrfs[vrf].svis|natural_sort() %}
+vlan {{ svi }}
+  name {{ vrfs[vrf].svis[svi].name }}
 {%     endfor %}
 {% endfor %}
+
+{# VRF Section #}
+{% for vrf in vrfs|natural_sort() %}
+vrf context {{ vrf }}
+  description {{ vrfs[vrf].description }}
+{%     for route in vrfs[vrf].routes %}
+  ip route {{ route.ip_prefix }} {{ route.next_hop }}
+{%     endfor %}
+{% endfor %}
+
+
+{# L3 VLAN #}
+{% for vrf in vrfs|natural_sort() %}
+{%     for svi in vrfs[vrf].svis|natural_sort() %}
+interface vlan{{ svi }}
+  description {{ vrfs[vrf].svis[svi].name }}
+{%         if vrfs[vrf].svis[svi].enabled == true %}
+  no shutdown
+{%         else %}
+  shutdown
+{%         endif %}
+  vrf member {{ vrf }}
+{%         if role == "primary" %}
+  ip address {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') | ipmath(1) }}/{{ vrfs[vrf].svis[svi].ip_address | ipaddr('prefix') }}
+{%         elif role == "secondary" %}
+  ip address {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') | ipmath(2) }}/{{ vrfs[vrf].svis[svi].ip_address | ipaddr('prefix') }}
+{%         endif %}
+{%         if vrfs[vrf].ospf is defined %}
+  ip router ospf {{ vrfs[vrf].ospf.process_tag }} area {{ vrfs[vrf].ospf.area.id }}
+{%         endif %}
+  hsrp version {{ hsrp.version }}
+  hsrp {{ svi }}
+    authentication {{ hsrp.authentication }}
+    priority {{ hsrp.priority[role] }}
+    ip {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') }}
+{%         if vrfs[vrf].svis[svi].dhcp_servers is defined %}
+{%             for dhcp_server in vrfs[vrf].svis[svi].dhcp_servers %}
+  ip address relay address {{ dhcp_server }}
+{%            endfor %}
+{%         endif %}
+{%     endfor %}
+
+{% endfor %}
+
+{# Router OSPF #}
+{% if ospf_process_tags is defined %}
+{%     for ospf_process_tag in ospf_process_tags|natural_sort() %}
+router ospf {{ ospf_process_tag }}
+{%         for vrf in vrfs|natural_sort() %}
+  vrf {{ vrf }}
+    router-id {{ vrfs[vrf].ospf.router_id }}
+{%             if vrfs[vrf].ospf.area.type is defined %}
+    area {{ vrfs[vrf].ospf.area.id }} {{ vrfs[vrf].ospf.area.type }}
+{%             endif %}
+{%             for standard in ospf_process_tags[ospf_process_tag].standards %}
+    {{ standard }}
+{%             endfor %}
+{%         endfor %}
+{%     endfor %}
+{% endif %}
+
+

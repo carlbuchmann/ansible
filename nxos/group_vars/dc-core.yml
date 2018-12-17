@@ -1,13 +1,67 @@
-VRFs:
+hsrp:
+  version: 2
+  authentication: "md5 key-chain hsrp-md5-key"
+  priority:
+    primary: 255
+    secondary: 254
+
+ospf_process_tags:
+  100:
+    standards:
+      - log-adjacency-changes
+      - "passive-interface default"
+
+
+vrfs:
 
   bleu:
-    SVIs:
+    description: bleu tenant
+    routes:
+      - ip_prefix: 0.0.0.0/0
+        next_hop: 10.100.0.1
+    ospf:
+      process_tag: 100
+      router_id: 10.100.255.255
+      area:
+        id: 0.0.0.100
+        type: nssa
+    svis:
       100:
         name: test100
-        ip: 10.0.0.1/24
+        enabled: true
+        ip_address: 10.100.1.1/24
+        hsrp: true
+      101:
+        name: test101
+        enabled: true
+        ip_address: 10.101.1.1/24
+        hsrp: true
+        dhcp_servers:
+          - 10.1.1.10
+          - 10.1.1.11
 
   red:
-    SVIs:
+    description: red tenant
+    routes:
+      - ip_prefix: 0.0.0.0/0
+        next_hop: 10.200.0.1
+    ospf:
+      process_tag: 100
+      router_id: 10.200.255.255
+      area:
+        id: 0.0.0.200
+    svis:
       200:
         name: test200
-        ip: 10.0.0.1/24
+        enabled: false
+        ip_address: 10.200.1.1/24
+        hsrp: true
+      201:
+        name: test201
+        enabled: false
+        ip_address: 10.201.1.1/24
+        hsrp: true
+        dhcp_servers:
+          - 10.1.1.10
+          - 10.1.1.11
+
