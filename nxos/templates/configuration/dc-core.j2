@@ -12,7 +12,7 @@ vlan {{ svi }}
 {% for vrf in vrfs|natural_sort() %}
 vrf context {{ vrf }}
   description {{ vrfs[vrf].description }}
-{%     for route in vrfs[vrf].routes %}
+{%     for route in vrfs[vrf].static_routes %}
   ip route {{ route.ip_prefix }} {{ route.next_hop }}
 {%     endfor %}
 {% endfor %}
@@ -23,12 +23,16 @@ vrf context {{ vrf }}
 {%     for svi in vrfs[vrf].svis|natural_sort() %}
 interface vlan{{ svi }}
   description {{ vrfs[vrf].svis[svi].name }}
+{# add gather_facts logic for idempotency #}
 {%         if vrfs[vrf].svis[svi].enabled == true %}
   no shutdown
 {%         else %}
   shutdown
 {%         endif %}
   vrf member {{ vrf }}
+{%         for security_config in svi_standards.security_configs|natural_sort() %}
+  {{ security_config }}
+{%         endfor %}
 {%         if role == "primary" %}
   ip address {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') | ipmath(1) }}/{{ vrfs[vrf].svis[svi].ip_address | ipaddr('prefix') }}
 {%         elif role == "secondary" %}
@@ -37,10 +41,10 @@ interface vlan{{ svi }}
 {%         if vrfs[vrf].ospf is defined %}
   ip router ospf {{ vrfs[vrf].ospf.process_tag }} area {{ vrfs[vrf].ospf.area.id }}
 {%         endif %}
-  hsrp version {{ hsrp.version }}
+  hsrp version {{ svi_standards.hsrp.version }}
   hsrp {{ svi }}
-    authentication {{ hsrp.authentication }}
-    priority {{ hsrp.priority[role] }}
+    authentication {{ svi_standards.hsrp.authentication }}
+    priority {{ svi_standards.hsrp.priority[role] }}
     ip {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') }}
 {%         if vrfs[vrf].svis[svi].dhcp_servers is defined %}
 {%             for dhcp_server in vrfs[vrf].svis[svi].dhcp_servers %}
