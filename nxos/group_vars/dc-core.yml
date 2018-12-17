@@ -1,24 +1,28 @@
-hsrp:
-  version: 2
-  authentication: "md5 key-chain hsrp-md5-key"
-  priority:
-    primary: 255
-    secondary: 254
-
 ospf_process_tags:
   100:
     standards:
       - log-adjacency-changes
       - "passive-interface default"
 
+svi_standards:
+  hsrp:
+    version: 2
+    authentication: "md5 key-chain hsrp-md5-key"
+    priority:
+      primary: 255
+      secondary: 254
+  security_configs:
+    - "no ip redirects"
 
 vrfs:
 
   bleu:
     description: bleu tenant
-    routes:
+    static_routes:
       - ip_prefix: 0.0.0.0/0
         next_hop: 10.100.0.1
+      - ip_prefix: 10.0.0.0/8
+        next_hop: 10.100.0.10
     ospf:
       process_tag: 100
       router_id: 10.100.255.255
@@ -42,7 +46,7 @@ vrfs:
 
   red:
     description: red tenant
-    routes:
+    static_routes:
       - ip_prefix: 0.0.0.0/0
         next_hop: 10.200.0.1
     ospf:
