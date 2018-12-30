@@ -1,6 +1,6 @@
 ltm_pool name,member name,member description
 {% for ltm_pool in ltm_pools %}
 {%     for member in ltm_pool.members %}
-{{ltm_pool.name }},{{ member.name }},{{ member.description }}
+{{ ltm_pool.name }},{{ member.name }},{{ member.description }}
 {%     endfor %}
 {% endfor %}
