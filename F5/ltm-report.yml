@@ -1,0 +1,11 @@
+- hosts: localhost
+
+  tasks:
+
+    - name: load variables
+      include_vars: './vars/ltm-pools.json'
+
+    - name: create ltm report
+      template:
+        src: './templates/ltm-report.j2'
+        dest: './reports/ltm-report.csv'

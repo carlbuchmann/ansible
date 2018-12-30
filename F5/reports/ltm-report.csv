@@ -1,0 +1,6 @@
+ltm_pool name,member name,member description
+sql,sql01:1433,sqlserver sql01
+sql,sql02:1433,sqlserver sql02
+web,skyline:80,webserver skyline
+web,web01:80,webserver web01
+web,web02:80,webserver web02
