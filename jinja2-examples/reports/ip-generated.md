@@ -1,6 +1,7 @@
 # IP address Filter
 
-## issue with first network address not yielding any results when using "ip.address | ipaddr(loop.index0) | ipaddr('address')"
+## issue with first network address not yielding any results when using:
+## "ip.address | ipaddr(loop.index0) | ipaddr('address')"
 
 | Address | Available IP | Generated IP |
 | ------- | ------------ | ------------ |
@@ -11,7 +12,8 @@
 |10.1.0.128/25|second ip|10.1.0.129|
 |10.1.0.128/25|third ip|10.1.0.130|
 
-## fix using ipmath instead based of network "ip.address | ipaddr('network') | ipmath(loop.index0)"
+## fix using ipmath instead based of network:
+## "ip.address | ipaddr('network') | ipmath(loop.index0)"
 
 | Address | Available IP | Generated IP |
 | ------- | ------------ | ------------ |
