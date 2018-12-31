@@ -1,0 +1,11 @@
+ips:
+ - address: 10.0.0.0/24
+   available_ips:
+     - first ip
+     - second ip
+     - third ip
+ - address: 10.1.0.128/25
+   available_ips:
+     - first ip
+     - second ip
+     - third ip

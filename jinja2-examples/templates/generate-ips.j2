@@ -1,0 +1,23 @@
+# IP address Filter
+
+## issue with first network address not yielding any results when using:
+## "ip.address | ipaddr(loop.index0) | ipaddr('address')"
+
+| Address | Available IP | Generated IP |
+| ------- | ------------ | ------------ |
+{% for ip in ips %}
+{%     for available_ip in ip.available_ips %}
+|{{ ip.address }}|{{ available_ip }}|{{ ip.address | ipaddr(loop.index0) | ipaddr('address') }}|
+{%     endfor %}
+{% endfor %}
+
+## fix using ipmath instead based of network:
+## "ip.address | ipaddr('network') | ipmath(loop.index0)"
+
+| Address | Available IP | Generated IP |
+| ------- | ------------ | ------------ |
+{% for ip in ips %}
+{%     for available_ip in ip.available_ips %}
+|{{ ip.address }}|{{ available_ip }}|{{ ip.address | ipaddr('network') | ipmath(loop.index0) }}|
+{%     endfor %}
+{% endfor %}

@@ -1,0 +1,11 @@
+- hosts: localhost
+
+  tasks:
+
+    - name: load variables
+      include_vars: './vars/ips.yaml'
+
+    - name: Genarate IPs from vars file
+      template:
+        src: './templates/generate-ips.j2'
+        dest: './reports/ip-generated.md'
