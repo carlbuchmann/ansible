@@ -35,13 +35,43 @@
 {% endfor %}
 
 
+## try fix with using ipaddr('ip') instead... same result not yielding any results for first IP of subnet:
+## "ip.address | ipaddr(loop.index0) | ipaddr('ip')"
+
+| Address | Available IP | Generated IP |
+| ------- | ------------ | ------------ |
+{% for ip in ips %}
+{%     for available_ip in ip.available_ips %}
+|{{ ip.address }}|{{ available_ip }}|{{ ip.address | ipaddr(loop.index0) | ipaddr('ip') }}|
+{%     endfor %}
+{% endfor %}
+
 ## fix using ipmath instead based of network:
 ## "ip.address | ipaddr('network') | ipmath(loop.index0)"
+## But this doesn't provide error condition and might assign ip beyond subnet
+## example fifth IP on /30 subnet should return false
 
 | Address | Available IP | Generated IP |
 | ------- | ------------ | ------------ |
 {% for ip in ips %}
 {%     for available_ip in ip.available_ips %}
 |{{ ip.address }}|{{ available_ip }}|{{ ip.address | ipaddr('network') | ipmath(loop.index0) }}|
+{%     endfor %}
+{% endfor %}
+
+
+## fix using conditonal, to provide error condition when IP gets assigned beyond subnet range
+## if loop index = 0 -> "ip.address | ipaddr('network')"
+## Else: -> "ip.address | ipaddr(loop.index0) | ipaddr('address')"
+
+| Address | Available IP | Generated IP |
+| ------- | ------------ | ------------ |
+{% for ip in ips %}
+{%     for available_ip in ip.available_ips %}
+{%         if loop.index0 == 0 %}
+|{{ ip.address }}|{{ available_ip }}|{{ ip.address | ipaddr('network') }}|
+{%         else %}
+|{{ ip.address }}|{{ available_ip }}|{{ ip.address | ipaddr(loop.index0) | ipaddr('address') }}|
+{%         endif %}
 {%     endfor %}
 {% endfor %}
