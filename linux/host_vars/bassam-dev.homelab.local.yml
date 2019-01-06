@@ -1,0 +1,4 @@
+ansible_user: balsattah
+ansible_password: "{{ vault_bassam_password }}"
+ansible_become: true
+ansible_become_password: "{{ vault_bassam_become_password }}"
