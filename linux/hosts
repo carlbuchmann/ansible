@@ -11,9 +11,10 @@ ansible02.homelab.local
 gitlab
 
 [development-workstations]
-dev01
-dev02
-dev03
+pedro-dev.homelab.local
+baber-dev.homelab.local
+bassam-dev.homelab.local
+
 
 [vault:children]
 enterprise
