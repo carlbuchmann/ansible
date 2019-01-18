@@ -249,6 +249,7 @@ ___
 | GigabitEthernet4.11 | voice |  172.22.11.1/24 |
 | GigabitEthernet4.12 | guest |  172.22.12.1/24 |
 | GigabitEthernet4.13 | wifi |  172.22.13.1/24 |
+| GigabitEthernet4.99 | Cisco Gold Audit |  172.22.99.1/24 |
 
 * **WAN Interfaces**
 
@@ -466,6 +467,18 @@ interface GigabitEthernet4.13
  
  
  cdp enable
+interface GigabitEthernet4.99
+ no shutdown
+ description Cisco Gold Audit
+ encapsulation dot1Q 10
+ ip address 172.22.99.1 255.255.255.0
+ ip helper-address 172.22.10.11
+ ip helper-address 172.22.10.12
+ ip helper-address 172.22.10.13
+ 
+ 
+ 
+ cdp enable
 router eigrp ENTERPRISE-EIGRP
  address-family ipv4 unicast autonomous-system 100
   af-interface default
@@ -478,6 +491,7 @@ router eigrp ENTERPRISE-EIGRP
   network 172.22.11.0 0.0.0.255
   network 172.22.12.0 0.0.0.255
   network 172.22.13.0 0.0.0.255
+  network 172.22.99.0 0.0.0.255
   af-interface Tunnel10
    summary-address 172.22.0.0 255.255.0.0
    authentication mode md5
