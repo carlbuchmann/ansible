@@ -1,0 +1,38 @@
+  tasks:
+
+    - name: show running config
+      ios_command:
+        commands: show running
+        provider: "{{ ioscli }}"
+      register: backup
+      check_mode: no
+
+    - name: copy running config to temp folder
+      copy:
+        content: "{{ backup.stdout[0] }}"
+        dest: "./configs/{{ inventory_hostname }}_running-config.conf"
+      check_mode: no
+
+    - name: replace ip flow monitor PrimeNFMon input on interfaces if present
+      replace:
+        path: "./configs/{{ inventory_hostname }}_running-config.conf"
+        regexp: '^ ip flow monitor PrimeNFMon input'
+        replace: ' no ip flow monitor PrimeNFMon input'
+      check_mode: no
+
+    - name: replace ip flow monitor PrimeNFMonEgress output on interfaces if present
+      replace:
+        path: "./configs/{{ inventory_hostname }}_running-config.conf"
+        regexp: '^ ip flow monitor PrimeNFMonEgress output'
+        replace: ' no ip flow monitor PrimeNFMonEgress output'
+      check_mode: no
+
+    - name: remove ip flow monitor on interfaces
+      ios_config:
+        src: "./configs/{{ inventory_hostname }}_running-config.conf"
+        provider: "{{ ioscli }}"
+      register: flow_monitor_interfaces
+
+    - name: view changes ip flow interfaces
+      debug:
+        msg: "{{ flow_monitor_interfaces }}"
