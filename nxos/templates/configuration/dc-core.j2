@@ -35,8 +35,10 @@ interface vlan{{ svi }}
 {%         endfor %}
 {%         if role == "primary" %}
   ip address {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') | ipmath(1) }}/{{ vrfs[vrf].svis[svi].ip_address | ipaddr('prefix') }}
+  mac-address  {{ mac_address_base }}{{ (svi + 4096*2) | dectohex }}
 {%         elif role == "secondary" %}
   ip address {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') | ipmath(2) }}/{{ vrfs[vrf].svis[svi].ip_address | ipaddr('prefix') }}
+  mac-address  {{ mac_address_base }}{{ (svi + 4096*3) | dectohex }}
 {%         endif %}
 {%         if vrfs[vrf].ospf is defined %}
   ip router ospf {{ vrfs[vrf].ospf.process_tag }} area {{ vrfs[vrf].ospf.area.id }}
@@ -46,6 +48,7 @@ interface vlan{{ svi }}
     authentication {{ svi_standards.hsrp.authentication }}
     priority {{ svi_standards.hsrp.priority[role] }}
     ip {{ vrfs[vrf].svis[svi].ip_address | ipaddr('address') }}
+    mac-address  {{ mac_address_base }}{{ (svi + 4096) | dectohex }}
 {%         if vrfs[vrf].svis[svi].dhcp_servers is defined %}
 {%             for dhcp_server in vrfs[vrf].svis[svi].dhcp_servers %}
   ip address relay address {{ dhcp_server }}

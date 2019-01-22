@@ -1,3 +1,5 @@
+mac_address_base: 0025.b500.
+
 ospf_process_tags:
   100:
     standards:
