@@ -1,4 +1,4 @@
-- hosts: development-workstations
+- hosts: enterprise
 
   tasks:
 

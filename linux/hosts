@@ -9,6 +9,7 @@ ansible02.homelab.local
 
 [gitlab-servers]
 gitlab
+gitlab-runner
 
 [development-workstations]
 pedro-dev.homelab.local
